@@ -1,0 +1,20 @@
+@import './../../style/style_addictions';
+
+.header {
+    color: $color_text_wh;
+}
+
+.wrapper {
+    background-color: $color_primary;
+    width: $page__width;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+}
+
+.logo {
+    font-size: 3.6rem;
+}
