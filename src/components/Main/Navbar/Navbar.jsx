@@ -6,10 +6,10 @@ const Navbar = () => {
         <section className={s.section}>
         <div className={s.imgName}>
             <div className={s.avatar}>
-                <img src="" alt="avatar"/>
+                <img src="https://qwes.pw/img/photo.jpg" alt="avatar"/>
             </div>
             <div className={s.name}>
-                <h3>Мила Стан</h3>
+                <h3>Аширов Назар</h3>
             </div>
         </div>
         <div className={s.progress__bar}>

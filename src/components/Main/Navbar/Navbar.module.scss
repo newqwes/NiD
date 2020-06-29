@@ -1,0 +1,14 @@
+@import './../../../style/style_addictions';
+
+.section {
+    background-color: $color_bg_navbar;
+}
+
+.avatar {
+    padding-top: 23px;
+    img {
+        height: 204px;
+        width: 204px;
+        border-radius: 50%;
+    }
+}

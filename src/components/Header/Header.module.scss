@@ -1,4 +1,4 @@
-@import './../../style/style_addictions';
+@import "./../../style/style_addictions";
 
 .header {
     color: $color_text_wh;
@@ -12,9 +12,21 @@
 
 .row {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    :first-child {
+        flex-basis: 26%;
+    }
+    :last-child {
+        flex-basis: 74%;
+    }
 }
 
 .logo {
+    font-family: "MuseoModerno", cursive;
+    padding-left: 26px;
     font-size: 3.6rem;
+}
+
+.title {
+    text-align: center;
 }

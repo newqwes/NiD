@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from '../Navbar/Navbar';
-import Profile from '../Profile/Profile';
+import Navbar from './Navbar/Navbar';
+import Profile from './Profile/Profile';
 import s from './Main.module.scss';
 
 const Main = () => {
