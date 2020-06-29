@@ -11,10 +11,4 @@
     flex-wrap: wrap;
     height: 400px;
     text-align: center;
-    :first-child {
-        flex-basis: 26%;
-    }
-    :last-child {
-        flex-basis: 74%;
-    }
 }

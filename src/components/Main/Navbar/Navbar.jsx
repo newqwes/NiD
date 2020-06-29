@@ -1,5 +1,6 @@
 import React from 'react'
 import s from './Navbar.module.scss'
+import Menu from './Menu/Menu';
 
 const Navbar = () => {
     return (
@@ -15,15 +16,7 @@ const Navbar = () => {
         <div className={s.progress__bar}>
             progress bar
         </div>
-        <nav className={s.navbar}>
-            <ul>
-                <li>sdf</li>
-                <li>sdf</li>
-                <li>sdf</li>
-                <li>sdf</li>
-                <li>sdf</li>
-            </ul>
-        </nav>
+        <Menu />
         </section>
     )
 }

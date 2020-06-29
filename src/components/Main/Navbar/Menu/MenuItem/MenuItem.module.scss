@@ -1,0 +1,14 @@
+@import './../../../../../style/style_addictions';
+
+.li {
+    padding: 20px 0;
+}
+.link {
+    text-decoration: none;
+    @include font(2.8rem, 600, 0.1rem, 3.8rem);
+    color: $color_text_standart;
+    transition: 0.2s ease;
+    &:hover {
+        color: $color_primary;
+    }
+}

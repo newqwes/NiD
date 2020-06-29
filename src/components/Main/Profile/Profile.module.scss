@@ -1,1 +1,21 @@
-@import './../../../style/style_addictions';
+@import "./../../../style/style_addictions";
+.section {
+    flex-basis: 74%;
+}
+.wrapper {
+    font-size: 20px;
+    background-color: rgb(243, 230, 230);
+}
+.img {
+    background-image: url("https://roomester.ru/wp-content/uploads/2018/07/dizajn-kvartir-v-stile-minimalizm-18.jpg");
+    background-size: cover;
+    height: 250px;
+}
+.level {
+    height: 150px;
+    background-color: rgb(243, 240, 230);
+}
+.catalog {
+    height: 210px;
+    background-color: rgb(243, 240, 210);
+}

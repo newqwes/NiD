@@ -6,11 +6,16 @@
 
 .wrapper {
     background-color: $color_primary;
+    border-radius: 20px 20px 0 0;
     width: $page__width;
     margin: 0 auto;
+    height: 60px;
+    display: flex;
 }
 
 .row {
+    width: 100%;
+    margin: auto;
     display: flex;
     flex-wrap: wrap;
     :first-child {
@@ -23,10 +28,13 @@
 
 .logo {
     font-family: "MuseoModerno", cursive;
-    padding-left: 26px;
-    font-size: 3.6rem;
+    @include font(3.6rem, 400, 0.1rem, 4rem);
+    padding-left: 30px;
 }
 
 .title {
     text-align: center;
+    h2 {
+        @include font(2.8rem, bold, 0.1rem, 3.8rem);
+    }
 }
