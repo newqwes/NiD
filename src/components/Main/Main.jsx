@@ -1,10 +1,11 @@
 import React from 'react';
 import Navbar from './Navbar/Navbar';
-import Profile from './Profile/Profile';
+import Profile from './Pages/Profile/Profile';
 import s from './Main.module.scss';
 import Dialogs from './Pages/Dialogs/Dialogs';
 import { BrowserRouter, Route } from 'react-router-dom';
-import News from './News/News';
+import News from './Pages/News/News';
+import Chat from './Pages/Chat/Chat';
 
 const Main = () => {
     return (
@@ -13,7 +14,7 @@ const Main = () => {
                 <div className={s.wrapper}>
                     <Navbar />
                     <Route path='/Profile' component={Profile} />
-                    <Route path='/Chat' component={News} />
+                    <Route path='/Chat' component={Chat} />
                     <Route path='/Dialogs' component={Dialogs} />
                     <Route path='/News' component={News} />
                 </div>

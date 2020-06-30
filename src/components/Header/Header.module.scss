@@ -10,20 +10,13 @@
     width: $page__width;
     margin: 0 auto;
     height: 60px;
-    display: flex;
 }
 
 .row {
     width: 100%;
     margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    :first-child {
-        flex-basis: 26%;
-    }
-    :last-child {
-        flex-basis: 74%;
-    }
+    display: grid;
+    grid-template-columns: 2fr 10fr;
 }
 
 .logo {
@@ -33,6 +26,9 @@
 }
 
 .title {
+    
+    align-self: center;
+    justify-self: center;
     text-align: center;
     h2 {
         @include font(2.8rem, bold, 0.1rem, 3.8rem);

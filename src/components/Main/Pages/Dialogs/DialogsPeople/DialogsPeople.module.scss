@@ -1,0 +1,13 @@
+@import "./../../../../../style/style_addictions";
+.section {
+    padding: 15px;
+}
+a {
+    text-decoration: none;
+    font-size: 2rem;
+    color: $color_text_standart;
+    transition: 0.1s ease;
+    &:hover {
+        color: $color_primary;
+    }
+}

@@ -6,7 +6,3 @@
   letter-spacing: $letterSpacing;
   line-height: $lineHeight;
   }
-  
-  .sidebar {
-    @include font(float, left, right);
-  }
