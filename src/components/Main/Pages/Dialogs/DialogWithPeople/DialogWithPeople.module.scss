@@ -1,5 +1,13 @@
 @import "./../../../../../style/style_addictions";
 .section {
     padding: 15px;
-    background-color: rgb(146, 34, 180);
+    display: grid;
+    grid-template-rows: 9fr 1fr;
+    height: 80vh;
+}
+.submit {
+    display: grid;
+    grid-template-columns: 9fr 1fr;
+    grid-gap: 10px;
+    align-self: end;
 }

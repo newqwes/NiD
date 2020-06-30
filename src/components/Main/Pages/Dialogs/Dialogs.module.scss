@@ -1,6 +1,9 @@
 @import "./../../../../style/style_addictions";
 
-
+.section {
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+}
 .dialogsPeople {
     background-color: $color_bg_content;
     border-right: 1px $color_text_standart solid;

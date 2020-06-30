@@ -5,7 +5,7 @@ import MenuItem from './MenuItem/MenuItem'
 const Menu = () => {
     return (
         <nav className={s.menu}>
-            <ul>
+            <ul className={s.ul}>
                 <MenuItem value="Моя страница" status="active" linkUrl="/Profile" />
                 <MenuItem value="Чат" linkUrl="/Chat" />
                 <MenuItem value="Сообщения" linkUrl="/Dialogs" />

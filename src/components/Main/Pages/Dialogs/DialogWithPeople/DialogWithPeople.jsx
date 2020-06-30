@@ -4,7 +4,13 @@ import s from './DialogWithPeople.module.scss'
 const DialogWithPeople = () => {
     return (
         <div className={s.section}>
-            dssdf
+            <div className={s.text}>
+                text
+            </div>
+            <div className={s.submit}>
+                <textarea></textarea>
+                <button>Отправить</button>
+            </div>
         </div>
     )
 }
