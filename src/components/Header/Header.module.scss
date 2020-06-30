@@ -12,16 +12,17 @@
 }
 .row {
     display: grid;
-    grid-template-columns: 2fr 10fr;
+    grid-template-columns: 2fr 8fr;
 }
 .logo {
-    border: 2px black solid;
+    align-self: center;
+    justify-self: center;
     font-family: "MuseoModerno", cursive;
     @include font(3.6rem, 400, 0.1rem, 4rem);
 }
 
 .title {
-    border: 2px black solid;
+    justify-self: center;
     h2 {
         @include font(2.8rem, bold, 0.1rem, 3.8rem);
     }

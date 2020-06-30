@@ -12,11 +12,13 @@ const Main = () => {
         <BrowserRouter>
             <section className={s.section}>
                 <div className={s.wrapper}>
-                    <Navbar />
-                    <Route path='/Profile' component={Profile} />
-                    <Route path='/Chat' component={Chat} />
-                    <Route path='/Dialogs' component={Dialogs} />
-                    <Route path='/News' component={News} />
+                    <div className={s.row}>
+                        <Navbar />
+                        <Route path='/Profile' component={Profile} />
+                        <Route path='/Chat' component={Chat} />
+                        <Route path='/Dialogs' component={Dialogs} />
+                        <Route path='/News' component={News} />
+                    </div>
                 </div>
             </section>
         </BrowserRouter>
