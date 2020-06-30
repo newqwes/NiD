@@ -9,27 +9,19 @@
     border-radius: 20px 20px 0 0;
     width: $page__width;
     margin: 0 auto;
-    height: 60px;
 }
-
 .row {
-    width: 100%;
-    margin: auto;
     display: grid;
     grid-template-columns: 2fr 10fr;
 }
-
 .logo {
+    border: 2px black solid;
     font-family: "MuseoModerno", cursive;
     @include font(3.6rem, 400, 0.1rem, 4rem);
-    padding-left: 30px;
 }
 
 .title {
-    
-    align-self: center;
-    justify-self: center;
-    text-align: center;
+    border: 2px black solid;
     h2 {
         @include font(2.8rem, bold, 0.1rem, 3.8rem);
     }
