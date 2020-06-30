@@ -14,7 +14,9 @@ const Navbar = () => {
             </div>
         </div>
         <div className={s.progress__bar}>
-            progress bar
+            <div>progress bar</div>
+            <div>progress bar</div>
+            <div>progress bar</div>
         </div>
         <Menu />
         </section>
