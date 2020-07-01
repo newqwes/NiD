@@ -4,9 +4,10 @@ import { NavLink } from 'react-router-dom';
 
 const DialogsPeople = (props) => {
     return (
-        <div className={s.section}>
-            <NavLink to={props.urlDialog} activeClassName={s.active}>{props.namePerson}</NavLink>
-        </div>
+        <NavLink to={props.urlDialog} activeClassName={s.active} className={s.a}>
+            <img src={props.urlAvatarDialog} alt=""/>
+            {props.namePerson}
+        </NavLink>
     )
 }
 

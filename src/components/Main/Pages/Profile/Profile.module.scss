@@ -1,19 +1,52 @@
 @import "./../../../../style/style_addictions";
 
 .wrapper {
-    font-size: 20px;
-    background-color: rgb(243, 230, 230);
+    background-color: $color_bg_content;
 }
-.img {
-    background-image: url("https://roomester.ru/wp-content/uploads/2018/07/dizajn-kvartir-v-stile-minimalizm-18.jpg");
-    background-size: cover;
-    height: 250px;
+.imgSection {
+    grid-area: img;
+    display: grid;
+    grid-gap: 5px;
 }
 .level {
-    height: 150px;
-    background-color: rgb(243, 240, 230);
+    grid-area: level;
 }
 .catalog {
-    height: 210px;
-    background-color: rgb(243, 240, 210);
+    grid-area: catalog;
+}
+.post {
+    grid-area: post;
+}
+.row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 15px;
+    grid-template-areas:
+        "img level level level"
+        "catalog catalog catalog catalog"
+        "post post post post";
+    > div {
+        background-color: $color_text_wh;
+        padding: 10px;
+        border-radius: 3px;
+        box-shadow: 0 0 1px #141f2c94;
+    }
+}
+.imgContainer {
+    img {
+        max-width: 180px;
+    }
+}
+.imgButtonContainer {
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: 9fr 1fr;
+    grid-gap: 5px;
+    button {
+        font-size: 1.3rem;
+    }
+}
+.imgSection {
+    text-align: center;
 }

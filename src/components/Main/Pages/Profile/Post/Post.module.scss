@@ -1,12 +1,15 @@
 @import "./../../../../../style/style_addictions";
-.form__wrapper {
-    padding: 40px 10%;
-}
-
 textarea {
     resize: none;
 }
-
 .itemPost {
-    margin: 0 35%;
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    padding: 10px 10px 20px;
+}
+.form {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-gap: 20px;
+    padding: 10px;
 }

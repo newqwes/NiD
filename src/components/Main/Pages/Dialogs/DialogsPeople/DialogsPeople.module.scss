@@ -1,16 +1,28 @@
 @import "./../../../../../style/style_addictions";
-.section {
-    padding: 15px;
-}
-a {
+.a {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    border-top: 1px $color_border solid;
+    padding: 5px;
+    @include font(1.2rem, bold, 0.05rem, 1.4rem);
+    &:hover {
+        background-color: $color_border;
+    }
     text-decoration: none;
-    font-size: 2rem;
     color: $color_text_standart;
     transition: 0.1s ease;
-    &:hover {
-        color: $color_primary;
-    }
 }
 .active {
-    color: $color_primary;
+    color: $color_text_wh;
+    background-color: $color_primary;
+    &:hover {
+        background-color: $color_primary;
+    }
+}
+
+.a > img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 5px;
 }

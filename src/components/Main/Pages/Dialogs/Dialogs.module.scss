@@ -2,12 +2,13 @@
 
 .section {
     display: grid;
-    grid-template-columns: 2fr 8fr;
+    grid-template-columns: 2fr 6fr;
+    background-color: $color_text_wh;
+    min-height: 600px;
 }
 .dialogsPeople {
-    background-color: $color_bg_content;
-    border-right: 1px $color_text_standart solid;
+    border-right: 1px $color_border solid;
 }
-.dialogWithPeople {
-    background-color: $color_bg_navbar;
+.dialogsPeople > a:last-child {
+    border-bottom: 1px $color_border solid;
 }

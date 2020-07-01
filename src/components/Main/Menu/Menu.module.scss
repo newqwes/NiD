@@ -1,0 +1,10 @@
+@import "./../../../style/style_addictions";
+
+.ul {
+    margin: 0;
+    padding: 0;
+    transition: 0.1s ease;
+    & > li:hover {
+        background-color: $color_border;
+    }
+}
