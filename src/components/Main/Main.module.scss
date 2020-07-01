@@ -1,13 +1,12 @@
 @import "./../../style/style_addictions";
 .section {
-    background-color: #fff;
+    background-color: $color_bg_content;
 }
 .wrapper {
-    background-color: $color_bg_content;
     width: $page__width;
     margin: 0 auto;
 }
 .row {
     display: grid;
-    grid-template-columns: 3fr 10fr;
+    grid-template-columns: 1fr 10fr;
 }

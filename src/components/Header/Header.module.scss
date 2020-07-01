@@ -1,29 +1,56 @@
 @import "./../../style/style_addictions";
 
 .header {
-    color: $color_text_wh;
+    background-color: $color_primary;
+    height: 42px;
 }
 
 .wrapper {
-    background-color: $color_primary;
-    border-radius: 20px 20px 0 0;
     width: $page__width;
     margin: 0 auto;
 }
 .row {
     display: grid;
-    grid-template-columns: 2fr 8fr;
+    grid-template-columns: 1fr 9fr;
+    padding-top: 6px;
 }
 .logo {
     align-self: center;
     justify-self: center;
     font-family: "MuseoModerno", cursive;
-    @include font(3.6rem, 400, 0.1rem, 4rem);
+    @include font(2.6rem, 400, 0.1rem, 3rem);
+    color: $color_text_wh;
+    border-radius: 50%;
+    cursor: pointer;
+    &:hover {
+        animation: shadow-pulse 1s infinite;
+    }
 }
 
 .title {
     justify-self: center;
+    align-self: center;
     h2 {
-        @include font(2.8rem, bold, 0.1rem, 3.8rem);
+        @include font(1.8rem, bold, 0.1rem, 1.8rem);
+        color: $color_text_wh;
+        margin: 0;
+    }
+}
+
+// pulse logo
+@keyframes shadow-pulse {
+    0% {
+        box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 0 15px rgba(255, 0, 0, 0);
+    }
+}
+@keyframes shadow-pulse-big {
+    0% {
+        box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.1);
+    }
+    100% {
+        box-shadow: 0 0 0 30px rgba(255, 0, 0, 0);
     }
 }
