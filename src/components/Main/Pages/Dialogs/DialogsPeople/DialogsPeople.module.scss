@@ -12,6 +12,9 @@
     color: $color_text_standart;
     transition: 0.1s ease;
 }
+.a:first-child {
+    border-top: none;
+}
 .active {
     color: $color_text_wh;
     background-color: $color_primary;
@@ -21,8 +24,7 @@
 }
 
 .a > img {
-    height: 40px;
-    width: 40px;
+    height: 45px;
     border-radius: 50%;
     margin-right: 5px;
 }

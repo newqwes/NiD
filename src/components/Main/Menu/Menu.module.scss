@@ -2,7 +2,7 @@
 
 .ul {
     margin: 0;
-    padding: 0;
+    padding: 10px 0 0 0;
     transition: 0.1s ease;
     text-align: center;
     & > li:hover {
@@ -10,15 +10,16 @@
     }
     background-color: $color_text_wh;
 }
+.menu {
+    box-shadow: 0 0 1px $color_text_standart;
+}
 
 .imgSection {
     grid-area: img;
     display: grid;
     grid-gap: 5px;
-    background-color: $color_text_wh;
-    
+
     border-radius: 3px;
-    box-shadow: 0 0 1px #141f2c94;
 }
 .imgContainer {
     img {
@@ -42,6 +43,8 @@
     align-items: center;
     padding-left: 10px;
 }
-.bar1, .bar2, .bar3 {
+.bar1,
+.bar2,
+.bar3 {
     height: 20px;
 }

@@ -8,6 +8,12 @@ import Chat from './Pages/Chat/Chat';
 import Menu from './Menu/Menu';
 
 const Main = () => {
+    let MainData = [
+        { path: '/Profile', component: Profile },
+        { path: '/News', component: News },
+        { path: '/Chat', component: Chat },
+        { path: '/Dialogs', component: Dialogs }
+    ]
     return (
         <BrowserRouter>
             <section className={s.section}>
@@ -15,10 +21,10 @@ const Main = () => {
                     <div className={s.row}>
                         <Menu />
                         <div className={s.content}>
-                            <Route path='/Profile' component={Profile} />
-                            <Route path='/News' component={News} />
-                            <Route path='/Chat' component={Chat} />
-                            <Route path='/Dialogs' component={Dialogs} />
+                            <Route path={MainData[0].path} component={MainData[0].component} />
+                            <Route path={MainData[1].path} component={MainData[1].component} />
+                            <Route path={MainData[2].path} component={MainData[2].component} />
+                            <Route path={MainData[3].path} component={MainData[3].component} />
                         </div>
                     </div>
                 </div>

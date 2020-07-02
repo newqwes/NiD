@@ -3,12 +3,16 @@
 .section {
     display: grid;
     grid-template-columns: 2fr 6fr;
+    grid-gap: 10px;
     background-color: $color_text_wh;
     min-height: 600px;
 }
 .dialogsPeople {
-    border-right: 1px $color_border solid;
+    box-shadow: 0 0 1px $color_text_standart;
 }
 .dialogsPeople > a:last-child {
     border-bottom: 1px $color_border solid;
+}
+.dialogWithPeople {
+    box-shadow: 0 0 1px $color_text_standart;
 }
