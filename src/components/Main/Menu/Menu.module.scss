@@ -4,7 +4,44 @@
     margin: 0;
     padding: 0;
     transition: 0.1s ease;
+    text-align: center;
     & > li:hover {
         background-color: $color_border;
     }
+    background-color: $color_text_wh;
+}
+
+.imgSection {
+    grid-area: img;
+    display: grid;
+    grid-gap: 5px;
+    background-color: $color_text_wh;
+    
+    border-radius: 3px;
+    box-shadow: 0 0 1px #141f2c94;
+}
+.imgContainer {
+    img {
+        max-width: 180px;
+    }
+}
+.imgSection {
+    text-align: center;
+}
+.barContainer {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    align-items: center;
+}
+.barTitle {
+    text-align: right;
+}
+.bar {
+    height: 30px;
+    display: grid;
+    align-items: center;
+    padding-left: 10px;
+}
+.bar1, .bar2, .bar3 {
+    height: 20px;
 }
