@@ -1,4 +1,4 @@
-@import "./../../../../style/style_addictions";
+@import "./../../../style/style_addictions";
 
 .li {
     list-style-type: none;
@@ -10,7 +10,7 @@
 }
 .link {
     text-decoration: none;
-    @include font(1.3rem, 600, 0.05rem, 1.5rem);
+    @include font(1.4rem, 600, 0.05rem, 1.4rem);
     color: $color_text_standart;
     transition: 0.2s ease;
 }

@@ -2,14 +2,9 @@ import React from 'react'
 import s from './Menu.module.scss'
 import MenuItem from './MenuItem/MenuItem'
 
-const Menu = () => {
-    let menuItemData = [
-        { value: "Новости", linkUrl: "/News" },
-        { value: "Сообщения", linkUrl: "/Dialogs" },
-        { value: "Чат", linkUrl: "/Chat" }
-    ];
-    let menuItemDataElements = menuItemData.map(m => <MenuItem value={m.value} linkUrl={m.linkUrl} />)
-    
+const Menu = (props) => {
+    let menuItemDataElements = props.state.menuItemData.map(m => <MenuItem value={m.value} linkUrl={m.linkUrl} />)
+
     return (
         <nav className={s.menu}>
             <div className={s.imgSection}>
@@ -56,7 +51,7 @@ const Menu = () => {
                 </div>
             </div>
             <ul className={s.ul}>
-                { menuItemDataElements }
+                {menuItemDataElements}
             </ul>
         </nav>
     )

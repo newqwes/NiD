@@ -1,4 +1,4 @@
-@import "./../../../style/style_addictions";
+@import "./../../style/style_addictions";
 
 .ul {
     margin: 0;
@@ -10,15 +10,12 @@
     }
     background-color: $color_text_wh;
 }
-.menu {
-    box-shadow: 0 0 1px $color_text_standart;
-}
 
 .imgSection {
     grid-area: img;
     display: grid;
     grid-gap: 5px;
-
+    background-color: $color_text_wh;
     border-radius: 3px;
 }
 .imgContainer {
