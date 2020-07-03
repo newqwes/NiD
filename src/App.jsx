@@ -26,7 +26,7 @@ function App(props) {
                     <div className={s.row}>
                         <Menu state={props.state.menuSideBar} />
                         <div className={s.content}>
-                            {appDataElements}
+                            { appDataElements }
                         </div>
                     </div>
                 </div>

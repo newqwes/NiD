@@ -1,13 +1,20 @@
 @import "./../../../../style/style_addictions";
-.section {
-    padding: 15px;
-    display: grid;
-    grid-template-rows: 9fr 1fr;
-    height: 80vh;
+
+.containerOwn {
+    text-align: right; 
 }
-.submit {
+.imgEnemy img, .imgOwn img {
+    width: 60px;
+    border-radius: 50%;
+}
+
+.containerEnemy {
     display: grid;
-    grid-template-columns: 9fr 1fr;
-    grid-gap: 10px;
-    align-self: end;
+    grid-template-columns: 1fr 7fr;
+}
+.containerOwn {
+    display: grid;
+    grid-template-columns: 7fr 1fr;
+}
+.containerNameMessage {
 }
