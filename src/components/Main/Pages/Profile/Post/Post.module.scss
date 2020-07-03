@@ -1,15 +1,34 @@
 @import "./../../../../../style/style_addictions";
+.wrapper {
+    display: grid;
+    grid-gap: 20px;
+}
 textarea {
     resize: none;
 }
 .itemPost {
     display: grid;
-    grid-template-columns: 1fr 6fr;
-    padding: 10px 10px 20px;
+    grid-template-columns: 1fr 9fr;
+    cursor: pointer;
+    padding: 5px;
+    transition: 0.1s ease;
+    &:hover {
+        background-color: $color_border;
+    }
 }
 .form {
     display: grid;
     grid-template-columns: 4fr 1fr;
     grid-gap: 20px;
     padding: 10px;
+}
+.avatarContainer {
+    text-align: center;
+}
+.avatarImg {
+    width: 50px;
+    border-radius: 50%;
+}
+.nameUser {
+    @include font(1.4rem, 600, 0.1, 1.8rem);
 }

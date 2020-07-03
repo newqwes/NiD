@@ -22,8 +22,10 @@
     border-radius: 3px;
 }
 .imgContainer {
+    align-items: top;
     img {
         max-width: 180px;
+        padding: 10px;
     }
 }
 .imgSection {
@@ -47,4 +49,7 @@
 .bar2,
 .bar3 {
     height: 20px;
+}
+.imgTitle > li > a {
+    padding-top: 0;
 }

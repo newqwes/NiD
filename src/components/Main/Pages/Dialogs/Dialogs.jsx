@@ -9,16 +9,13 @@ const Dialogs = () => {
         { name: "Майя", avatar: "https://cdn3.iconfinder.com/data/icons/avatars-flat/33/woman_9-512.png", url: "/Dialogs/Maya" },
         { name: "Азим", avatar: "https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/avat-01-512.png", url: "/Dialogs/Azim" },
         { name: "Бабуля", avatar: "https://img.favpng.com/10/23/1/computer-icons-user-profile-avatar-png-favpng-ypy9BWih5X28x0zDEBeemwyx8.jpg", url: "/Dialogs/Grandmather" },
-        { name: "Назар", avatar: "https://qwes.pw/img/photo.jpg", url: "/Dialogs/Nazar" }
+        { name: "Назар", avatar: "https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png", url: "/Dialogs/Nazar" }
     ];
+    let dialogDataElement = dialogData.map(n => <DialogsPeople namePerson={n.name} urlAvatarDialog={n.avatar} urlDialog={n.url} />)
     return (
         <section className={s.section}>
             <div className={s.dialogsPeople}>
-                <DialogsPeople namePerson={dialogData[0].name} urlAvatarDialog={dialogData[0].avatar} urlDialog={dialogData[0].url} />
-                <DialogsPeople namePerson={dialogData[1].name} urlAvatarDialog={dialogData[1].avatar} urlDialog={dialogData[1].url} />
-                <DialogsPeople namePerson={dialogData[2].name} urlAvatarDialog={dialogData[2].avatar} urlDialog={dialogData[2].url} />
-                <DialogsPeople namePerson={dialogData[3].name} urlAvatarDialog={dialogData[3].avatar} urlDialog={dialogData[3].url} />
-                <DialogsPeople namePerson={dialogData[4].name} urlAvatarDialog={dialogData[4].avatar} urlDialog={dialogData[4].url} />
+                {dialogDataElement}
             </div>
             <div className={s.dialogWithPeople}>
                 <DialogWithPeople />

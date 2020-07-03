@@ -28,3 +28,12 @@
         box-shadow: 0 0 1px #141f2c94;
     }
 }
+.catalog {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+}
+.imgCatalog {
+    width: 170px;
+    border-radius: 5px;
+}

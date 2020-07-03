@@ -3,16 +3,18 @@ import s from './Menu.module.scss'
 import MenuItem from './MenuItem/MenuItem'
 
 const Menu = () => {
-    let MenuItemData = [
+    let menuItemData = [
         { value: "Новости", linkUrl: "/News" },
         { value: "Сообщения", linkUrl: "/Dialogs" },
-        { value: "Чат", linkUrl: "/Chat" },
-    ]
+        { value: "Чат", linkUrl: "/Chat" }
+    ];
+    let menuItemDataElements = menuItemData.map(m => <MenuItem value={m.value} linkUrl={m.linkUrl} />)
+    
     return (
         <nav className={s.menu}>
             <div className={s.imgSection}>
                 <div className={s.imgContainer}>
-                    <img src="https://qwes.pw/img/photo.jpg" alt="" />
+                    <img src="https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png" alt="" />
                 </div>
                 <div className={s.imgTitle}>
                     <MenuItem value="Аширов Назар" status="active" linkUrl="/Profile" />
@@ -54,9 +56,7 @@ const Menu = () => {
                 </div>
             </div>
             <ul className={s.ul}>
-                <MenuItem value={MenuItemData[0].value} linkUrl={MenuItemData[0].linkUrl} />
-                <MenuItem value={MenuItemData[1].value} linkUrl={MenuItemData[1].linkUrl} />
-                <MenuItem value={MenuItemData[2].value} linkUrl={MenuItemData[2].linkUrl} />
+                { menuItemDataElements }
             </ul>
         </nav>
     )
