@@ -3,6 +3,11 @@ import s from './DialogWithPeople.module.scss'
 
 const DialogWithPeople = (props) => {
 
+    let textNewMessage = React.createRef();
+    let addNewMessageText = () => {
+        props.addNewMessage(textNewMessage.current.value, props.id)
+        textNewMessage.current.value = ""
+    }
     return (
         <div className={s.section}>
             <div className={s.containerEnemy}>
@@ -34,8 +39,8 @@ const DialogWithPeople = (props) => {
 
             </div>
             <div className={s.submit}>
-                <textarea></textarea>
-                <button>Отправить</button>
+                <textarea ref={textNewMessage}></textarea>
+                <button onClick={addNewMessageText}>Отправить</button>
             </div>
         </div>
     )

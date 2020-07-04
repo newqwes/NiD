@@ -14,7 +14,7 @@ const Profile = (props) => {
                         {galaryPhotosDataElements}
                     </div>
                     <div className={s.post}>
-                        <Post postData={props.state.postData} />
+                        <Post postData={props.state.postData} addNewPost={props.addNewPost}/>
                     </div>
 
                 </div>
