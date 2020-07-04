@@ -5,23 +5,10 @@
     grid-template-columns: 2fr 6fr;
     grid-gap: 10px;
 }
-.dialogsPeople, .dialogWithPeople {
+.dialogsPeople {
     box-shadow: 0 0 1px $color_text_standart;
     background-color: $color_text_wh;
 }
 .dialogsPeople > a:last-child {
     border-bottom: 1px $color_border solid;
-}
-.dialogWithPeople {
-    display: grid;
-    grid-template-rows: 2fr 1fr;
-    padding: 10px;
-    align-items: end;
-    
-}
-.submit {
-    display: grid;
-    grid-template-columns: 5fr 1fr;
-    grid-gap: 10px;
-    max-height: 30px;
 }

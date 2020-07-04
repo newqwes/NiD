@@ -1,5 +1,11 @@
 @import "./../../../../style/style_addictions";
-
+.section {
+    display: grid;
+    grid-template-rows: 1fr 1fr 30px;
+    box-shadow: 0 0 1px $color_text_standart;
+    background-color: $color_text_wh;
+    padding: 10px;
+}
 .containerOwn {
     text-align: right; 
 }
@@ -16,5 +22,9 @@
     display: grid;
     grid-template-columns: 7fr 1fr;
 }
-.containerNameMessage {
+
+.submit {
+    display: grid;
+    grid-template-columns: 6fr 1fr;
+    grid-gap: 10px;
 }

@@ -33,7 +33,10 @@ const DialogWithPeople = (props) => {
                 </div>
 
             </div>
-
+            <div className={s.submit}>
+                <textarea></textarea>
+                <button>Отправить</button>
+            </div>
         </div>
     )
 }

@@ -13,13 +13,8 @@ const Dialogs = (props) => {
                 <div className={s.dialogsPeople}>
                     {dialogDataElement}
                 </div>
-                <div className={s.dialogWithPeople}>
                     { messageDataElement }
-                    <div className={s.submit}>
-                        <textarea></textarea>
-                        <button>Отправить</button>
-                    </div>
-                </div>
+                    
             </section>
         </BrowserRouter>
     )
