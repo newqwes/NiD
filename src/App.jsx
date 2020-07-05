@@ -17,11 +17,15 @@ function App(props) {
                 <div className={s.wrapper}>
                     <div className={s.row}>
                         <Menu state={props.state.menuSideBar} />
-                        <div className={s.content}> 
-                            <Route path='/Profile' render={() => <Profile state={props.state.profilePage} addNewPost={props.addNewPost} />} />
-                            <Route path='/News' render={() => <News />} />
-                            <Route path='/Chat' render={() => <Chat />} />
-                            <Route path='/Dialogs' render={() => <Dialogs state={props.state.dialogPage} addNewMessage={props.addNewMessage} />} />
+                        <div className={s.content}>
+                            <Route path='/Profile' render={() =>
+                                <Profile state={props.state.profilePage} addNewPost={props.addNewPost} changePostTextarea={props.changePostTextarea} />} />
+                            <Route path='/News' render={() =>
+                                <News />} />
+                            <Route path='/Chat' render={() =>
+                                <Chat />} />
+                            <Route path='/Dialogs' render={() =>
+                                <Dialogs state={props.state.dialogPage} addNewMessage={props.addNewMessage} stateDialogOnChangeTextarea={props.stateDialogOnChangeTextarea} />} />
                         </div>
                     </div>
                 </div>

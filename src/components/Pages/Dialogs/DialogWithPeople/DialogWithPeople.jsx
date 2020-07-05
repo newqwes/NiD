@@ -3,11 +3,14 @@ import s from './DialogWithPeople.module.scss'
 
 const DialogWithPeople = (props) => {
 
-    let textNewMessage = React.createRef();
+    let dialogTextareaValue = React.createRef();
     let addNewMessageText = () => {
-        props.addNewMessage(textNewMessage.current.value, props.id)
-        textNewMessage.current.value = ""
+        props.addNewMessage(props.id)
     }
+    let dialogOnChangeTextarea = () => {
+        props.stateDialogOnChangeTextarea(dialogTextareaValue.current.value, props.id)
+    }
+
     return (
         <div className={s.section}>
             <div className={s.containerEnemy}>
@@ -39,7 +42,7 @@ const DialogWithPeople = (props) => {
 
             </div>
             <div className={s.submit}>
-                <textarea ref={textNewMessage}></textarea>
+                <textarea ref={dialogTextareaValue} value={props.dialogTextarea} onChange={dialogOnChangeTextarea}/>
                 <button onClick={addNewMessageText}>Отправить</button>
             </div>
         </div>
