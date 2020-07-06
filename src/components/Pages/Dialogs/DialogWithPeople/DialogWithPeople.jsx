@@ -1,50 +1,40 @@
 import React from 'react'
 import s from './DialogWithPeople.module.scss'
-import {addNewMessageTextAC, dialogOnChangeTextareaAC} from './../../../../redux/store'
+import DialogOwn from './DialogOwn/DialogOwn'
+import { addNewMessageTextAC, dialogOnChangeTextareaAC } from './../../../../redux/store'
 
 const DialogWithPeople = (props) => {
 
-    let dialogTextareaValue = React.createRef();
-
     let addNewMessageText = () => {
-       props.dispatch(addNewMessageTextAC(props.id)) 
+        props.dispatch(addNewMessageTextAC(props.id))
     }
-    let dialogOnChangeTextarea = () => {
-        props.dispatch(dialogOnChangeTextareaAC(props.id, dialogTextareaValue.current.value))
+    let dialogOnChangeTextarea = (e) => {
+        props.dispatch(dialogOnChangeTextareaAC(props.id, e.target.value))
     }
+
+    let dialogOwn = props.message.textOwn.map
+        (n => <DialogOwn textOwn={n} nameOwn={props.nameOwn} avatarOwn={props.avatarOwn} />);
 
     return (
-        <div className={s.section}>
-            <div className={s.containerEnemy}>
-                <div className={s.imgEnemy}>
-                    <img src={props.avatar} alt="" />
-                </div>
-                <div className={s.containerNameMessage}>
-                    <div className={s.nameEnemy}>
-                        <h3>{props.name}</h3>
+        <div className={s.dialogWithPeople}>
+            <div className={s.section}>
+                <div className={s.containerEnemy}>
+                    <div className={s.imgEnemy}>
+                        <img src={props.avatar} alt={props.name} />
                     </div>
-                    <div className={s.messageEnemy}>
-                        <p>{props.message.textEnemy}</p>
-                    </div>
-                </div>
-            </div>
-
-            <div className={s.containerOwn}>
-                <div className={s.containerNameMessage}>
-                    <div className={s.nameOwn}>
-                        <h3>Назар</h3>
-                    </div>
-                    <div className={s.messageOwn}>
-                        <p>{props.message.textOwn}</p>
+                    <div className={s.containerNameMessage}>
+                        <div className={s.nameEnemy}>
+                            <h3>{props.name}</h3>
+                        </div>
+                        <div className={s.messageEnemy}>
+                            <p>{props.message.textEnemy}</p>
+                        </div>
                     </div>
                 </div>
-                <div className={s.imgOwn}>
-                    <img src="https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png" alt="" />
-                </div>
-
+                {dialogOwn}
             </div>
             <div className={s.submit}>
-                <textarea ref={dialogTextareaValue} value={props.dialogTextarea} onChange={dialogOnChangeTextarea} />
+                <textarea value={props.dialogTextarea} onChange={dialogOnChangeTextarea} />
                 <button onClick={addNewMessageText}>Отправить</button>
             </div>
         </div>

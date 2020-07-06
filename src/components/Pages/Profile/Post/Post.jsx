@@ -15,11 +15,9 @@ const Post = (props) => {
             </div>
         </div>
     ))
-    //считываем что находится в texatea и передаем в функцию которая лежит в BLL под названием addNewPost и там она уже записывает все в стейт и обновляет стейт затем он перерисовывается уже с новыми данными
-    let textareaValue = React.createRef();
 
-    let onChangePostTextarea = () => {
-        props.dispatch(onChangePostTextareaAC(textareaValue.current.value))
+    let onChangePostTextarea = (e) => {
+        props.dispatch(onChangePostTextareaAC(e.target.value))
     }
     let addPost = () => {
         props.dispatch(addPostAC())
@@ -31,7 +29,7 @@ const Post = (props) => {
                 {postDataElements}
                 <div className={s.form__wrapper}>
                     <div className={s.form}>
-                        <textarea ref={textareaValue} value={props.state.postTextarea} onChange={onChangePostTextarea} />
+                        <textarea value={props.state.postTextarea} onChange={onChangePostTextarea} />
                         <button onClick={addPost}>Отправить</button>
                     </div>
                 </div>

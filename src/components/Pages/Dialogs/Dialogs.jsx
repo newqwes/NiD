@@ -5,16 +5,27 @@ import DialogWithPeople from './DialogWithPeople/DialogWithPeople'
 import { BrowserRouter, Route } from 'react-router-dom'
 
 const Dialogs = (props) => {
-    let dialogDataElement = props.state.dialogData.map(n => <DialogsPeople namePerson={n.name} urlAvatarDialog={n.avatar} urlDialog={n.url} />)
-    let messageDataElement = props.state.dialogData.map(n => <Route path={n.url} render={() => <DialogWithPeople message={n.message} avatar={n.avatar} dialogTextarea={n.dialogTextarea} name={n.name} id={n.id} dispatch={props.dispatch}/>} /> )
+    let dialogDataElement = props.state.dialogData.map
+        (n => <DialogsPeople namePerson={n.name} urlAvatarDialog={n.avatar} urlDialog={n.url} />);
+
+    let messageDataElement = props.state.dialogData.map
+        (n => <Route path={n.url} render={() => <DialogWithPeople
+            message={n.message}
+            avatar={n.avatar}
+            dialogTextarea={n.dialogTextarea}
+            name={n.name}
+            id={n.id}
+            dispatch={props.dispatch}
+            nameOwn={n.nameOwn}
+            avatarOwn={n.avatarOwn} />} />)
     return (
         <BrowserRouter>
             <section className={s.section}>
                 <div className={s.dialogsPeople}>
                     {dialogDataElement}
                 </div>
-                    { messageDataElement }
-                    
+                {messageDataElement}
+
             </section>
         </BrowserRouter>
     )

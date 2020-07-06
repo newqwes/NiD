@@ -2,12 +2,14 @@
 
 .section {
     display: grid;
-    grid-template-columns: 2fr 6fr;
+    grid-template-columns: 1fr 5fr;
     grid-gap: 10px;
 }
 .dialogsPeople {
     box-shadow: 0 0 1px $color_text_standart;
     background-color: $color_text_wh;
+    overflow: auto;
+    height: 80vh;
 }
 .dialogsPeople > a:last-child {
     border-bottom: 1px $color_border solid;

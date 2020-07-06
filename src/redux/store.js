@@ -23,35 +23,35 @@ let store = {
         dialogPage: {
             dialogData: [
                 {
-                    id: 0, name: "Аня", dialogTextarea: "",
+                    id: 0, name: "Аня", dialogTextarea: "", nameOwn: "Назар", avatarOwn: "https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png",
                     avatar: "https://cdn.iconscout.com/icon/free/png-64/avatar-373-456325.png", url: "/Dialogs/Anna",
                     message: {
                         textEnemy: "Привет, я Аня как дела?", textOwn: ["Нормально, твои как?"]
                     }
                 },
                 {
-                    id: 1, name: "Майя", dialogTextarea: "",
+                    id: 1, name: "Майя", dialogTextarea: "", nameOwn: "Назар", avatarOwn: "https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png",
                     avatar: "https://cdn3.iconfinder.com/data/icons/avatars-flat/33/woman_9-512.png", url: "/Dialogs/Maya",
                     message: {
                         textEnemy: "Привет, я Майя как дела?", textOwn: ["Привет тетя, нормально, твои как?"]
                     }
                 },
                 {
-                    id: 2, name: "Азим", dialogTextarea: "",
+                    id: 2, name: "Азим", dialogTextarea: "", nameOwn: "Назар", avatarOwn: "https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png",
                     avatar: "https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/avat-01-512.png", url: "/Dialogs/Azim",
                     message: {
                         textEnemy: "Привет, я Азимыч как дела?", textOwn: ["Привет бро, нормально, твои как?"]
                     }
                 },
                 {
-                    id: 3, name: "Бабуля", dialogTextarea: "",
+                    id: 3, name: "Бабуля", dialogTextarea: "", nameOwn: "Назар", avatarOwn: "https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png",
                     avatar: "https://img.favpng.com/10/23/1/computer-icons-user-profile-avatar-png-favpng-ypy9BWih5X28x0zDEBeemwyx8.jpg", url: "/Dialogs/Grandmather",
                     message: {
                         textEnemy: "Привет, я Катя как дела?", textOwn: ["Привет бабуль, нормально, твои как?"]
                     }
                 },
                 {
-                    id: 4, name: "Назар", dialogTextarea: "",
+                    id: 4, name: "Назар", dialogTextarea: "", nameOwn: "Назар", avatarOwn: "https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png",
                     avatar: "https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png", url: "/Dialogs/Nazar",
                     message: {
                         textEnemy: "Привет, я", textOwn: ["Привет!"]
@@ -91,7 +91,7 @@ let store = {
             this._callSubscriber(this._state);
         }
         else if (action.type === ADD_NEW_MESSAGE) {
-            this._state.dialogPage.dialogData[action.idDialog].message.textOwn.splice(0, 1, this._state.dialogPage.dialogData[action.idDialog].dialogTextarea);
+            this._state.dialogPage.dialogData[action.idDialog].message.textOwn.push(" " + this._state.dialogPage.dialogData[action.idDialog].dialogTextarea);
             this._state.dialogPage.dialogData[action.idDialog].dialogTextarea = ""; //заменяем предыдущее сообщение на новое которое ввели и так делаем всегда
             this._callSubscriber(this._state) //вызываем перерисовку так как стейт изменился и что бы отобразилось всё нужно снова создать DOM
         }

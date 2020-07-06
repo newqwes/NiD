@@ -1,13 +1,21 @@
 @import "./../../../../style/style_addictions";
+.dialogWithPeople {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-rows: auto 40px;
+}
 .section {
     display: grid;
-    grid-template-rows: 1fr 1fr 30px;
     box-shadow: 0 0 1px $color_text_standart;
     background-color: $color_text_wh;
     padding: 10px;
+    height: 80vh;
+    @include font(1.2rem, 400, 0.05, 2rem);
+    overflow: auto;
+    align-content: start; 
 }
 .containerOwn {
-    text-align: right; 
+    text-align: right;
 }
 .imgEnemy img, .imgOwn img {
     width: 60px;
@@ -26,5 +34,10 @@
 .submit {
     display: grid;
     grid-template-columns: 6fr 1fr;
+    max-height: 30px;
     grid-gap: 10px;
+}
+.messageOwn {
+    width: 60%;
+    margin: 0 0 0 auto;
 }
