@@ -6,7 +6,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 
 const Dialogs = (props) => {
     let dialogDataElement = props.state.dialogData.map(n => <DialogsPeople namePerson={n.name} urlAvatarDialog={n.avatar} urlDialog={n.url} />)
-    let messageDataElement = props.state.dialogData.map(n => <Route path={n.url} render={() => <DialogWithPeople message={n.message} avatar={n.avatar} dialogTextarea={n.dialogTextarea} name={n.name} id={n.id} addNewMessage={props.addNewMessage} stateDialogOnChangeTextarea={props.stateDialogOnChangeTextarea}/>} /> )
+    let messageDataElement = props.state.dialogData.map(n => <Route path={n.url} render={() => <DialogWithPeople message={n.message} avatar={n.avatar} dialogTextarea={n.dialogTextarea} name={n.name} id={n.id} dispatch={props.dispatch}/>} /> )
     return (
         <BrowserRouter>
             <section className={s.section}>

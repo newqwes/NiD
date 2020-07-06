@@ -19,13 +19,13 @@ function App(props) {
                         <Menu state={props.state.menuSideBar} />
                         <div className={s.content}>
                             <Route path='/Profile' render={() =>
-                                <Profile state={props.state.profilePage} addNewPost={props.addNewPost} changePostTextarea={props.changePostTextarea} />} />
+                                <Profile state={props.state.profilePage} dispatch={props.dispatch}/>} />
                             <Route path='/News' render={() =>
                                 <News />} />
                             <Route path='/Chat' render={() =>
                                 <Chat />} />
                             <Route path='/Dialogs' render={() =>
-                                <Dialogs state={props.state.dialogPage} addNewMessage={props.addNewMessage} stateDialogOnChangeTextarea={props.stateDialogOnChangeTextarea} />} />
+                                <Dialogs state={props.state.dialogPage} dispatch={props.dispatch}/>} />
                         </div>
                     </div>
                 </div>

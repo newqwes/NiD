@@ -1,3 +1,9 @@
+const ADD_NEW_MESSAGE = "ADD-NEW-MESSAGE";
+const STATE_DIALOG_ON_CHANGE_TEXTAREA = "STATE-DIALOG-ON-CHANGE-TEXTAREA";
+const ADD_NEW_POST = "ADD-NEW-POST";
+const CHANGE_POST_TEXTAREA = "CHANGE-POST-TEXTAREA";
+
+
 let store = {
     _state: {
         profilePage: {
@@ -61,39 +67,47 @@ let store = {
             ]
         }
     },
-    setState() {
-        return this._state
-    },
-    addNewPost() {
-        let idNumberAdd = this._state.profilePage.postData[2].id + 1 // меняю id по мере их добавления временно можно удалить и поставить статичный id: 3
-        let postItem = {
-            id: idNumberAdd,
-            avatar: "https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png",
-            name: "Назар",
-            postText: this._state.profilePage.postTextarea
-        }
-        this._state.profilePage.postData.push(postItem);
-        this._state.profilePage.postData.splice(0, 1);// удалить, добавил что бы визуально казалось что сообщения меняются
-        this._state.profilePage.postTextarea = ""
-        this._callSubscriber(this._state) //вызываем перерисовку так как стейт изменился и что бы отобразилось всё нужно снова создать DOM
-    },// Добавляем пост в профиле, вызывается кнопкой "отправить", записывает в стейт новые данные и снова перерисовывает когда вызывает rerender
-    addNewMessage(idDialog) {
-        this._state.dialogPage.dialogData[idDialog].message.textOwn.splice(0, 1, this._state.dialogPage.dialogData[idDialog].dialogTextarea);
-        this._state.dialogPage.dialogData[idDialog].dialogTextarea = ""; //заменяем предыдущее сообщение на новое которое ввели и так делаем всегда
-        this._callSubscriber(this._state) //вызываем перерисовку так как стейт изменился и что бы отобразилось всё нужно снова создать DOM
-    },
-    changePostTextarea(newPostTextareaLetter) {
-        this._state.profilePage.postTextarea = newPostTextareaLetter;
-        this._callSubscriber(this._state)
-    },
-    stateDialogOnChangeTextarea(newDialogTextareaLetter, idDialog) {
-        this._state.dialogPage.dialogData[idDialog].dialogTextarea = newDialogTextareaLetter;
-        this._callSubscriber(this._state)
-    },
     _callSubscriber: "",
     subscribe(observer) {
         this._callSubscriber = observer
-    }
-}
+    },
+    setState() {
+        return this._state
+    },
 
+    dispatch(action) {
+
+        if (action.type === ADD_NEW_POST) {
+            let idNumberAdd = this._state.profilePage.postData[2].id + 1 // меняю id по мере их добавления временно можно удалить и поставить статичный id: 3
+            let postItem = {
+                id: idNumberAdd,
+                avatar: "https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png",
+                name: "Назар",
+                postText: this._state.profilePage.postTextarea
+            }
+            this._state.profilePage.postData.push(postItem);
+            this._state.profilePage.postData.splice(0, 1);
+            this._state.profilePage.postTextarea = "";
+            this._callSubscriber(this._state);
+        }
+        else if (action.type === ADD_NEW_MESSAGE) {
+            this._state.dialogPage.dialogData[action.idDialog].message.textOwn.splice(0, 1, this._state.dialogPage.dialogData[action.idDialog].dialogTextarea);
+            this._state.dialogPage.dialogData[action.idDialog].dialogTextarea = ""; //заменяем предыдущее сообщение на новое которое ввели и так делаем всегда
+            this._callSubscriber(this._state) //вызываем перерисовку так как стейт изменился и что бы отобразилось всё нужно снова создать DOM
+        }
+        else if (action.type === CHANGE_POST_TEXTAREA) {
+            this._state.profilePage.postTextarea = action.newPostTextareaLetter;
+            this._callSubscriber(this._state);
+        }
+        else if (action.type === STATE_DIALOG_ON_CHANGE_TEXTAREA) {
+            this._state.dialogPage.dialogData[action.idDialog].dialogTextarea = action.newDialogTextareaLetter;
+            this._callSubscriber(this._state)
+        }
+    }
+
+}
+export const addNewMessageTextAC = id => ({ type: ADD_NEW_MESSAGE, idDialog: id });
+export const addPostAC = () => ({ type: ADD_NEW_POST });
+export const onChangePostTextareaAC = (textareaValue) => ({ type: CHANGE_POST_TEXTAREA, newPostTextareaLetter: textareaValue });
+export const dialogOnChangeTextareaAC = (id, newLetterTextarea) => ({ type: STATE_DIALOG_ON_CHANGE_TEXTAREA, idDialog: id, newDialogTextareaLetter: newLetterTextarea })
 export default store;

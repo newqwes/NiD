@@ -1,14 +1,16 @@
 import React from 'react'
 import s from './DialogWithPeople.module.scss'
+import {addNewMessageTextAC, dialogOnChangeTextareaAC} from './../../../../redux/store'
 
 const DialogWithPeople = (props) => {
 
     let dialogTextareaValue = React.createRef();
+
     let addNewMessageText = () => {
-        props.addNewMessage(props.id)
+       props.dispatch(addNewMessageTextAC(props.id)) 
     }
     let dialogOnChangeTextarea = () => {
-        props.stateDialogOnChangeTextarea(dialogTextareaValue.current.value, props.id)
+        props.dispatch(dialogOnChangeTextareaAC(props.id, dialogTextareaValue.current.value))
     }
 
     return (
@@ -42,7 +44,7 @@ const DialogWithPeople = (props) => {
 
             </div>
             <div className={s.submit}>
-                <textarea ref={dialogTextareaValue} value={props.dialogTextarea} onChange={dialogOnChangeTextarea}/>
+                <textarea ref={dialogTextareaValue} value={props.dialogTextarea} onChange={dialogOnChangeTextarea} />
                 <button onClick={addNewMessageText}>Отправить</button>
             </div>
         </div>
