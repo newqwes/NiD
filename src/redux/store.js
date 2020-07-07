@@ -1,8 +1,6 @@
-const ADD_NEW_MESSAGE = "ADD-NEW-MESSAGE";
-const STATE_DIALOG_ON_CHANGE_TEXTAREA = "STATE-DIALOG-ON-CHANGE-TEXTAREA";
-const ADD_NEW_POST = "ADD-NEW-POST";
-const CHANGE_POST_TEXTAREA = "CHANGE-POST-TEXTAREA";
-
+import profilePageReducer from "./profile-reducer"
+import dialogPageReducer from "./dialog-reducer"
+import sidebarPageReducer from "./sidebar-reducer"
 
 let store = {
     _state: {
@@ -18,6 +16,9 @@ let store = {
                 { id: 2, urlGalaryPhoto: "https://poster.nicefon.ru/2016_09/26/1080x610/1582397179b17071f8f9f0.jpg" },
                 { id: 3, urlGalaryPhoto: "https://storge.pic2.me/c/1360x800/782/588ef87f91541.jpg" }
             ],
+            ownInformation : {
+                name: "Назар", avatar:"https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png"
+            },
             postTextarea: ""
         },
         dialogPage: {
@@ -67,8 +68,9 @@ let store = {
             ]
         }
     },
-    _callSubscriber: "",
+    _callSubscriber() { },
     subscribe(observer) {
+        // обсерв пришел из индекса это вся страница целиком присваиваем ее коллсубскрайбу
         this._callSubscriber = observer
     },
     setState() {
@@ -76,38 +78,16 @@ let store = {
     },
 
     dispatch(action) {
-
-        if (action.type === ADD_NEW_POST) {
-            let idNumberAdd = this._state.profilePage.postData[2].id + 1 // меняю id по мере их добавления временно можно удалить и поставить статичный id: 3
-            let postItem = {
-                id: idNumberAdd,
-                avatar: "https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png",
-                name: "Назар",
-                postText: this._state.profilePage.postTextarea
-            }
-            this._state.profilePage.postData.push(postItem);
-            this._state.profilePage.postData.splice(0, 1);
-            this._state.profilePage.postTextarea = "";
-            this._callSubscriber(this._state);
-        }
-        else if (action.type === ADD_NEW_MESSAGE) {
-            this._state.dialogPage.dialogData[action.idDialog].message.textOwn.push(" " + this._state.dialogPage.dialogData[action.idDialog].dialogTextarea);
-            this._state.dialogPage.dialogData[action.idDialog].dialogTextarea = ""; //заменяем предыдущее сообщение на новое которое ввели и так делаем всегда
-            this._callSubscriber(this._state) //вызываем перерисовку так как стейт изменился и что бы отобразилось всё нужно снова создать DOM
-        }
-        else if (action.type === CHANGE_POST_TEXTAREA) {
-            this._state.profilePage.postTextarea = action.newPostTextareaLetter;
-            this._callSubscriber(this._state);
-        }
-        else if (action.type === STATE_DIALOG_ON_CHANGE_TEXTAREA) {
-            this._state.dialogPage.dialogData[action.idDialog].dialogTextarea = action.newDialogTextareaLetter;
-            this._callSubscriber(this._state)
-        }
+        /*
+        редьюсер вернет стейт измененный для конкретной страницы при помощи актион и 
+        мы присвоим в настоящий стейт его, передадим его субскрайбу тот в свою 
+        очередь перерисует индекс.хтмл
+        */
+        store._state.profilePage = profilePageReducer(store._state.profilePage, action)
+        store._state.dialogPage = dialogPageReducer(store._state.dialogPage, action)
+        store._state.menuSideBar = sidebarPageReducer(store._state.menuSideBar, action)
+        this._callSubscriber(this._state) // здесь в коллсубскрайб лежит наша индекс и передаю ему новый стейт который уже изменился но не отобразился
     }
 
 }
-export const addNewMessageTextAC = id => ({ type: ADD_NEW_MESSAGE, idDialog: id });
-export const addPostAC = () => ({ type: ADD_NEW_POST });
-export const onChangePostTextareaAC = (textareaValue) => ({ type: CHANGE_POST_TEXTAREA, newPostTextareaLetter: textareaValue });
-export const dialogOnChangeTextareaAC = (id, newLetterTextarea) => ({ type: STATE_DIALOG_ON_CHANGE_TEXTAREA, idDialog: id, newDialogTextareaLetter: newLetterTextarea })
 export default store;

@@ -1,7 +1,7 @@
 import React from 'react'
 import s from './DialogWithPeople.module.scss'
 import DialogOwn from './DialogOwn/DialogOwn'
-import { addNewMessageTextAC, dialogOnChangeTextareaAC } from './../../../../redux/store'
+import { addNewMessageTextAC, dialogOnChangeTextareaAC } from './../../../../redux/dialog-reducer'
 
 const DialogWithPeople = (props) => {
 

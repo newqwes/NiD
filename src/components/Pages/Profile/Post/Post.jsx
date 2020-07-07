@@ -1,6 +1,6 @@
 import React from 'react'
 import s from './Post.module.scss'
-import { addPostAC, onChangePostTextareaAC } from '../../../../redux/store';
+import { addPostAC, onChangePostTextareaAC } from '../../../../redux/profile-reducer';
 
 const Post = (props) => {
 

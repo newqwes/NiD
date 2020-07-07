@@ -20,5 +20,5 @@ let rerenderEntireTree = (state) => {
     );
     serviceWorker.unregister();
 };
-rerenderEntireTree(store.setState());
-store.subscribe(rerenderEntireTree);
+rerenderEntireTree(store.setState()); //вызываем первый рендерин страницы передаем ей стейт который по дефолту стоит
+store.subscribe(rerenderEntireTree); //передаем стору в субскрайб, колбак функцию, что бы она от туда вызывал и по новому ререндорила нашу страницу
