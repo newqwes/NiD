@@ -73,7 +73,7 @@ let store = {
         // обсерв пришел из индекса это вся страница целиком присваиваем ее коллсубскрайбу
         this._callSubscriber = observer
     },
-    setState() {
+    getState() {
         return this._state
     },
 

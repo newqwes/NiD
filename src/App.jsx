@@ -16,16 +16,16 @@ function App(props) {
             <section className={s.section}>
                 <div className={s.wrapper}>
                     <div className={s.row}>
-                        <Menu state={props.state.menuSideBar} />
+                        <Menu state={props.store.getState().menuSideBar} />
                         <div className={s.content}>
                             <Route path='/Profile' render={() =>
-                                <Profile state={props.state.profilePage} dispatch={props.dispatch}/>} />
+                                <Profile store={props.store} />} />
                             <Route path='/News' render={() =>
                                 <News />} />
                             <Route path='/Chat' render={() =>
                                 <Chat />} />
                             <Route path='/Dialogs' render={() =>
-                                <Dialogs state={props.state.dialogPage} dispatch={props.dispatch}/>} />
+                                <Dialogs store={props.store} />} />
                         </div>
                     </div>
                 </div>

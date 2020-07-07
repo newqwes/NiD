@@ -1,15 +1,15 @@
 import React from 'react'
 import s from './Dialogs.module.scss'
 import DialogsPeople from './DialogsPeople/DialogsPeople'
-import DialogWithPeople from './DialogWithPeople/DialogWithPeople'
 import { Route } from 'react-router-dom'
+import DialogWithPeopleContainer from './DialogWithPeople/DialogWithPeopleContainer'
 
 const Dialogs = (props) => {
-    let dialogDataElement = props.state.dialogData.map
-        (n => <DialogsPeople namePerson={n.name} urlAvatarDialog={n.avatar} urlDialog={n.url} />);
+    let dialogData = props.store.getState().dialogPage.dialogData;
 
-    let messageDataElement = props.state.dialogData.map
-        (n => <Route path={n.url} render={() => <DialogWithPeople dispatch={props.dispatch} dialogData={n} />} />)
+    let dialogDataElement = dialogData.map(n => <DialogsPeople namePerson={n.name} urlAvatarDialog={n.avatar} urlDialog={n.url} />);
+
+    let messageDataElement = dialogData.map(n => <Route path={n.url} render={() => <DialogWithPeopleContainer store={props.store} dialogData={n} />} />)
     return (
         <section className={s.section}>
             <div className={s.dialogsPeople}>

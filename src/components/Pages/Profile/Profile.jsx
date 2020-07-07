@@ -1,10 +1,10 @@
 import React from 'react'
 import s from './Profile.module.scss'
-import Post from './Post/Post'
+import PostContainer from './Post/PostContainer';
 
 const Profile = (props) => {
-
-    let galaryPhotosDataElements = props.state.galaryPhotosData.map(g => <img className={s.imgCatalog} src={g.urlGalaryPhoto} alt="" />)
+    let galaryPhotosData = props.store.getState().profilePage.galaryPhotosData;
+    let galaryPhotosDataElements = galaryPhotosData.map(n => <img className={s.imgCatalog} src={n.urlGalaryPhoto} alt="" />)
     return (
         <section className={s.section}>
             <div className={s.wrapper}>
@@ -14,7 +14,7 @@ const Profile = (props) => {
                         {galaryPhotosDataElements}
                     </div>
                     <div className={s.post}>
-                        <Post state={props.state} dispatch={props.dispatch}/>
+                        <PostContainer store={props.store}/>
                     </div>
 
                 </div>

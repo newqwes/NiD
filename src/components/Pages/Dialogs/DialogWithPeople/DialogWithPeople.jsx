@@ -1,19 +1,14 @@
 import React from 'react'
 import s from './DialogWithPeople.module.scss'
 import DialogOwn from './DialogOwn/DialogOwn'
-import { addNewMessageTextAC, dialogOnChangeTextareaAC } from './../../../../redux/dialog-reducer'
 
 const DialogWithPeople = (props) => {
+    let dialogOwn = props.dialogData.message.textOwn
 
-    let addNewMessageText = () => {
-        props.dispatch(addNewMessageTextAC(props.dialogData.id))
-    }
-    let dialogOnChangeTextarea = (e) => {
-        props.dispatch(dialogOnChangeTextareaAC(props.dialogData.id, e.target.value))
-    }
+    let addNewMessageText = () => props.addNewMessageText(props.dialogData.id);
+    let dialogOnChangeTextarea = e => props.dialogOnChangeTextarea(props.dialogData.id, e.target.value)
 
-    let dialogOwn = props.dialogData.message.textOwn.map
-        (n => <DialogOwn textOwn={n} nameOwn={props.dialogData.nameOwn} avatarOwn={props.dialogData.avatarOwn} />);
+    .map(n => <DialogOwn textOwn={n} nameOwn={props.dialogData.nameOwn} avatarOwn={props.dialogData.avatarOwn} />);
 
     return (
         <div className={s.dialogWithPeople}>
