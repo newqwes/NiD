@@ -33,3 +33,7 @@ textarea {
 .nameUser {
     @include font(1.4rem, 600, 0.1, 1.8rem);
 }
+.spanTime {
+    @include font(1rem, 600, 0.1, 1.8rem);
+    color: rgb(126, 126, 126);
+}

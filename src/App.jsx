@@ -7,6 +7,7 @@ import News from './components/Pages/News/News';
 import Chat from './components/Pages/Chat/Chat';
 import Dialogs from './components/Pages/Dialogs/Dialogs';
 import { Route } from 'react-router-dom';
+import MenuContainer from './components/Menu/MenuContainer';
 
 function App(props) {
 
@@ -16,16 +17,16 @@ function App(props) {
             <section className={s.section}>
                 <div className={s.wrapper}>
                     <div className={s.row}>
-                        <Menu state={props.store.getState().menuSideBar} />
+                        <MenuContainer />
                         <div className={s.content}>
                             <Route path='/Profile' render={() =>
-                                <Profile store={props.store} />} />
+                                <Profile />} />
                             <Route path='/News' render={() =>
                                 <News />} />
                             <Route path='/Chat' render={() =>
                                 <Chat />} />
                             <Route path='/Dialogs' render={() =>
-                                <Dialogs store={props.store} />} />
+                                <Dialogs />} />
                         </div>
                     </div>
                 </div>

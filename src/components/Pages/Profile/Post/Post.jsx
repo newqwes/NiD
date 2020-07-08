@@ -9,7 +9,7 @@ const Post = (props) => {
                 <img src={n.avatar} alt="" className={s.avatarImg} />
             </div>
             <div>
-                <div className={s.nameUser}>{n.name}</div>
+                <div className={s.nameUser}>{n.name} <div className={s.spanTime}>{n.dateTime}</div></div>
                 <div>{n.postText}</div>
             </div>
         </div>

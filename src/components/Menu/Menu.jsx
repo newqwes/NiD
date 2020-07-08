@@ -3,7 +3,6 @@ import s from './Menu.module.scss'
 import MenuItem from './MenuItem/MenuItem'
 
 const Menu = (props) => {
-    let menuItemDataElements = props.state.menuItemData.map(m => <MenuItem value={m.value} linkUrl={m.linkUrl} />)
 
     return (
         <nav className={s.menu}>
@@ -51,7 +50,7 @@ const Menu = (props) => {
                 </div>
             </div>
             <ul className={s.ul}>
-                {menuItemDataElements}
+                { props.menuItemData.map(m => <MenuItem value={m.value} linkUrl={m.linkUrl} />) }
             </ul>
         </nav>
     )

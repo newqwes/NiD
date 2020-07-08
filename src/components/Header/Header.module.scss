@@ -11,7 +11,7 @@
 }
 .row {
     display: grid;
-    grid-template-columns: 2fr 9fr;
+    grid-template-columns: 2fr 4fr 4fr;
     padding-top: 6px;
 }
 .logo {
@@ -28,7 +28,7 @@
 }
 
 .title {
-    justify-self: center;
+    justify-self: right;
     align-self: center;
     h2 {
         @include font(1.8rem, bold, 0.1rem, 1.8rem);
@@ -36,7 +36,15 @@
         margin: 0;
     }
 }
-
+.titleMoney {
+    justify-self: right;
+    align-self: center;
+    h2 {
+        @include font(1.6rem, bold, 0.1rem, 1.6rem);
+        color: $color_text_wh;
+        margin: 0;
+    }
+}
 // pulse logo
 @keyframes shadow-pulse {
     0% {
