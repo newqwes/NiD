@@ -1,4 +1,5 @@
 import Menu from './Menu'
+import { connect } from 'react-redux'
 
 
 const mapStateToProps = (state) => {
@@ -7,8 +8,4 @@ const mapStateToProps = (state) => {
     }
   }
   
-  const mapDispatchToProps = () => {
-      return {}
-  }
-  
-  export default connect(mapStateToProps, mapDispatchToProps)(Menu)
+  export default connect(mapStateToProps)(Menu)

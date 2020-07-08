@@ -1,6 +1,6 @@
-import React from 'react'
-import s from './DialogWithPeople.module.scss'
-import DialogOwn from './DialogOwn/DialogOwn'
+import React from 'react';
+import s from './DialogWithPeople.module.scss';
+import DialogOwn from './DialogOwn/DialogOwn';
 
 const DialogWithPeople = (props) => {
     let dialogOwn = props.dialogData.message.textOwn.map(n => <DialogOwn textOwn={n} nameOwn={props.dialogData.nameOwn} avatarOwn={props.dialogData.avatarOwn} />);
