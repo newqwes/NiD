@@ -4,7 +4,7 @@ import s from './Post.module.scss'
 const Post = (props) => {
 
     let postDataElements = props.postData.map(n => (
-        <div className={s.itemPost}>
+        <div key={n.id} className={s.itemPost}>
             <div className={s.avatarContainer}>
                 <img src={n.avatar} alt="" className={s.avatarImg} />
             </div>

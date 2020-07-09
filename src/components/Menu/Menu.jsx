@@ -53,7 +53,7 @@ const Menu = (props) => {
                 </div>
             </div>
             <ul className={s.ul}>
-                {props.menuItemData.map(m => <MenuItem value={m.value} linkUrl={m.linkUrl} />)}
+                {props.menuItemData.map(m => <MenuItem key={m.id} value={m.value} linkUrl={m.linkUrl} />)}
             </ul>
             <div className={s.infoWtapper}>
                 <div className={s.titleTime}>

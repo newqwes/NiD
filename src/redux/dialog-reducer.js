@@ -48,9 +48,13 @@ const dialogPageReducer = (state = initialState, action) => {
                 let stateCopy = {
                     ...state,
                     dialogData: [...state.dialogData]
-                }
-                stateCopy.dialogData[action.idDialog].message.textOwn.push(stateCopy.dialogData[action.idDialog].dialogTextarea);
-                stateCopy.dialogData[action.idDialog].dialogTextarea = ""; //заменяем предыдущее сообщение на новое которое ввели и так делаем всегда
+                };
+                stateCopy.dialogData.map(n => {
+                    if (n.id === action.idDialog) {
+                        n.message.textOwn.push(n.dialogTextarea);
+                        n.dialogTextarea = ""
+                    }
+                })
                 return stateCopy;
             }
 
@@ -60,7 +64,9 @@ const dialogPageReducer = (state = initialState, action) => {
                     ...state,
                     dialogData: [...state.dialogData]
                 }
-                stateCopy.dialogData[action.idDialog].dialogTextarea = action.newDialogTextareaLetter;
+                stateCopy.dialogData.map(n => {
+                    if(n.id === action.idDialog) n.dialogTextarea = action.newDialogTextareaLetter
+                })
                 return stateCopy;
             }
         default:

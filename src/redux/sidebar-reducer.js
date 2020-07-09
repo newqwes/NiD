@@ -1,14 +1,16 @@
 const ADD_NEW_TIME = "ADD-NEW-TIME";
 const ADD_EXCHANGE_RATE = "ADD-EXCHANGE-RATE";
+
 let initialState = {
     menuItemData: [
-        { value: "Новости", linkUrl: "/News" },
-        { value: "Сообщения", linkUrl: "/Dialogs" },
-        { value: "Чат", linkUrl: "/Chat" }
+        { id: 0, value: "Новости", linkUrl: "/News" },
+        { id: 1, value: "Сообщения", linkUrl: "/Dialogs" },
+        { id: 2, value: "Чат", linkUrl: "/Chat" }
     ],
     whatTimeNow: "",
     exchangeRate: ""
 }
+
 const sidebarPageReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_NEW_TIME: return { ...state, whatTimeNow: new Date().toLocaleTimeString() };
