@@ -1,5 +1,3 @@
-import React from 'react'
-import { Route } from 'react-router-dom'
 import { connect } from 'react-redux';
 import Dialogs from './Dialogs';
 import { addNewMessageTextAC, dialogOnChangeTextareaAC } from '../../../redux/dialog-reducer';

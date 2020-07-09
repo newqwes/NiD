@@ -13,37 +13,45 @@ let inicialState = {
         { id: 2, urlGalaryPhoto: "https://poster.nicefon.ru/2016_09/26/1080x610/1582397179b17071f8f9f0.jpg" },
         { id: 3, urlGalaryPhoto: "https://storge.pic2.me/c/1360x800/782/588ef87f91541.jpg" }
     ],
-    ownInformation : {
-        name: "Назар", avatar:"https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png"
+    ownInformation: {
+        name: "Назар", avatar: "https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png"
     },
     postTextarea: ""
 }
 const profilePageReducer = (state = inicialState, action) => {
     switch (action.type) {
         case ADD_NEW_POST:
-            let date = new Date();
-            let options = {
-                month: 'long',
-                day: 'numeric',
-                timezone: 'UTC',
-                hour: 'numeric',
-                minute: 'numeric'
-              };
-            let idNumberAdd = state.postData[2].id + 1 // меняю id по мере их добавления временно можно удалить и поставить статичный id: 3
-            let postItem = {
-                id: idNumberAdd,
-                avatar: state.ownInformation.avatar,
-                name: `${state.ownInformation.name}`,
-                dateTime: `${date.toLocaleString("ru", options)}`, //просто смотрю какое сообщение выводится по количеству можно просто оставить state.ownInformation.name
-                postText: state.postTextarea
+            {
+                let date = new Date();
+                let options = {
+                    month: 'long',
+                    day: 'numeric',
+                    timezone: 'UTC',
+                    hour: 'numeric',
+                    minute: 'numeric'
+                };
+                let idNumberAdd = state.postData[2].id + 1 // меняю id по мере их добавления временно можно удалить и поставить статичный id: 3
+                let postItem = {
+                    id: idNumberAdd,
+                    avatar: state.ownInformation.avatar,
+                    name: `${state.ownInformation.name}`,
+                    dateTime: `${date.toLocaleString("ru", options)}`, //просто смотрю какое сообщение выводится по количеству можно просто оставить state.ownInformation.name
+                    postText: state.postTextarea
+                }
+                let stateCopy = {...state}
+                stateCopy.postData = [...state.postData];
+                stateCopy.postData.push(postItem);
+                stateCopy.postData.splice(0, 1);
+                stateCopy.postTextarea = "";
+                return stateCopy;
             }
-            state.postData.push(postItem);
-            state.postData.splice(0, 1);
-            state.postTextarea = "";
-            return state;
         case CHANGE_POST_TEXTAREA:
-            state.postTextarea = action.newPostTextareaLetter;
-            return state;
+            {
+                let stateCopy = {...state};
+                stateCopy.postTextarea = action.newPostTextareaLetter;
+                return stateCopy;
+            }
+
         default: return state;
     }
 }

@@ -3,6 +3,10 @@ import s from './Menu.module.scss'
 import MenuItem from './MenuItem/MenuItem'
 
 const Menu = (props) => {
+    props.addNewTime();
+    props.addNewExchangeRate();
+    setInterval(() => props.addNewTime(), 1000);
+    setInterval(() => props.addNewExchangeRate(), 1000 * 60 * 60); //раз в час
 
     return (
         <nav className={s.menu}>
@@ -50,8 +54,12 @@ const Menu = (props) => {
                 </div>
             </div>
             <ul className={s.ul}>
-                { props.menuItemData.map(m => <MenuItem value={m.value} linkUrl={m.linkUrl} />) }
+                {props.menuItemData.map(m => <MenuItem value={m.value} linkUrl={m.linkUrl} />)}
             </ul>
+            <h2>{props.whatTimeNow}</h2>
+            <div className={s.titleMoney}>
+                <h2>1$ = {props.exchangeRate}руб.</h2>
+            </div>
         </nav>
     )
 }

@@ -1,4 +1,3 @@
-import React from 'react'
 import { addPostAC, onChangePostTextareaAC } from '../../../redux/profile-reducer';
 import { connect } from 'react-redux';
 import Profile from './Profile';

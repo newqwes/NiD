@@ -44,12 +44,25 @@ let initialState = {
 const dialogPageReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_NEW_MESSAGE:
-            state.dialogData[action.idDialog].message.textOwn.push(" " + state.dialogData[action.idDialog].dialogTextarea);
-            state.dialogData[action.idDialog].dialogTextarea = ""; //заменяем предыдущее сообщение на новое которое ввели и так делаем всегда
-            return state;
+            {
+                let stateCopy = { ...state };
+                stateCopy.dialogData = [...state.dialogData];
+                stateCopy.dialogData[action.idDialog].message = { ...state.dialogData[action.idDialog].message };
+                stateCopy.dialogData[action.idDialog].message.textOwn = [...state.dialogData[action.idDialog].message.textOwn];
+
+                stateCopy.dialogData[action.idDialog].message.textOwn.push(" " + stateCopy.dialogData[action.idDialog].dialogTextarea);
+                stateCopy.dialogData[action.idDialog].dialogTextarea = ""; //заменяем предыдущее сообщение на новое которое ввели и так делаем всегда
+                return stateCopy;
+            }
+
         case STATE_DIALOG_ON_CHANGE_TEXTAREA:
-            state.dialogData[action.idDialog].dialogTextarea = action.newDialogTextareaLetter;
-            return state;
+            {
+                let stateCopy = {...state}
+                stateCopy.dialogData = [...state.dialogData];
+
+                stateCopy.dialogData[action.idDialog].dialogTextarea = action.newDialogTextareaLetter;
+                return stateCopy;
+            }
         default:
             return state;
     }
