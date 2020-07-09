@@ -11,13 +11,8 @@ let initialState = {
 }
 const sidebarPageReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_NEW_TIME: {
-            let stateCopy = { ...state }
-            stateCopy.whatTimeNow = new Date().toLocaleTimeString()
-            return stateCopy
-        };
+        case ADD_NEW_TIME: return { ...state, whatTimeNow: new Date().toLocaleTimeString() };
         case ADD_EXCHANGE_RATE: {
-            let stateCopy = { ...state }
             //-------------------------- получение курса доллара -----------------------
             let xhr = new XMLHttpRequest();
             xhr.open('GET', 'https://www.nbrb.by/api/exrates/rates/145', false); //курс доллара к рублю нацбанк
@@ -25,9 +20,7 @@ const sidebarPageReducer = (state = initialState, action) => {
             let bankData = JSON.parse(xhr.response);
             let USD_BYR = bankData.Cur_OfficialRate
             // ------------------------------------------------------------------------
-            
-            stateCopy.exchangeRate = USD_BYR
-            return stateCopy
+            return { ...state, exchangeRate: USD_BYR }
         }
         default: return state
     }

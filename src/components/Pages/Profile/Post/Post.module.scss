@@ -2,6 +2,7 @@
 
 .wrapper {
     display: grid;
+    grid-template-rows: 40px 1fr;
     grid-gap: 20px;
 }
 textarea {
@@ -19,9 +20,9 @@ textarea {
 }
 .form {
     display: grid;
+    text-align: center;
     grid-template-columns: 4fr 1fr;
     grid-gap: 20px;
-    padding: 10px;
 }
 .avatarContainer {
     text-align: center;
@@ -32,8 +33,4 @@ textarea {
 }
 .nameUser {
     @include font(1.4rem, 600, 0.1, 1.8rem);
-}
-.spanTime {
-    @include font(1rem, 600, 0.1, 1.8rem);
-    color: rgb(126, 126, 126);
 }

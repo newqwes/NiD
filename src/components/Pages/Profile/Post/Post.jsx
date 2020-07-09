@@ -25,13 +25,13 @@ const Post = (props) => {
     return (
         <section className={s.section}>
             <div className={s.wrapper}>
-                {postDataElements}
                 <div className={s.form__wrapper}>
                     <div className={s.form}>
                         <textarea value={props.postTextarea} onChange={onChangePostTextarea} />
                         <button onClick={addPost}>Отправить</button>
                     </div>
                 </div>
+                {postDataElements}
             </div>
         </section>
     )

@@ -50,3 +50,11 @@
 .imgTitle > li > a {
     padding-top: 0;
 }
+.infoWtapper {
+    text-align: center;
+    background-color: $color_text_wh;
+    h2 {
+        @include font(1.4rem, 600, 0.2rem, 1.6rem);
+    }
+    color: $color_text_standart;
+}
