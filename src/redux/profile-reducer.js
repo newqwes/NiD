@@ -5,7 +5,7 @@ let inicialState = {
     postData: [
         { id: 0, dateTime: "16 июня, 09:32", avatar: "https://cdn.iconscout.com/icon/free/png-64/avatar-373-456325.png", name: "Аня", postText: "Привет" },
         { id: 1, dateTime: "19 июня, 10:54", avatar: "https://cdn3.iconfinder.com/data/icons/avatars-flat/33/woman_9-512.png", name: "Майя", postText: "Привет это Майя" },
-        { id: 2, dateTime: "09 июля, 11:50", avatar: "https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/avat-01-512.png", name: "Азим", postText: "Дата последнего обновления, время поста!" }
+        { id: 2, dateTime: "10 июля, 16:47", avatar: "https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/avat-01-512.png", name: "Азим", postText: "Дата последнего обновления, время поста!" }
     ],
     galaryPhotosData: [
         { id: 0, urlGalaryPhoto: "https://cdn.pixabay.com/photo/2020/03/18/19/08/landscape-4945254_960_720.jpg" },

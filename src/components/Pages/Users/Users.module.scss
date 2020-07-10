@@ -79,3 +79,18 @@
     }
 
 }
+
+@media (max-width: 414px) {
+    .statusWrapper {
+        display: none;
+    }
+    .userContainer {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas:
+            "avatar fullName country"
+            "subButton . city";
+    }
+    .subscribeButtonWrapper > button {
+        width: 100%;
+    }
+}

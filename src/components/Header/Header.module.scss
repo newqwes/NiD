@@ -62,3 +62,12 @@
         box-shadow: 0 0 0 30px rgba(255, 0, 0, 0);
     }
 }
+@media (max-width: 414px) {
+    .wrapper {
+        width: auto;
+    }
+    .row {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}

@@ -61,3 +61,26 @@
     }
     color: $color_text_standart;
 }
+
+@media (max-width: 414px) {
+    .infoWtapper, .imgSection {
+        display: none;
+    }
+    .menu {
+        position: fixed;
+        display: grid;
+        grid-template-rows: 60px;
+        bottom: 0px;
+        width: 100%;
+        text-align: center;
+        margin: 0 auto;
+    }
+    .ul {
+        display: grid;
+        grid-template-rows: 60px;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .ul a {
+        @include font(1.4rem, 700, 0.05rem, 1.4rem);
+    }
+}

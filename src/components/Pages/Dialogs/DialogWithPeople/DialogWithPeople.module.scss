@@ -12,12 +12,13 @@
     height: 80vh;
     @include font(1.2rem, 400, 0.05, 2rem);
     overflow: auto;
-    align-content: start; 
+    align-content: start;
 }
 .containerOwn {
     text-align: right;
 }
-.imgEnemy img, .imgOwn img {
+.imgEnemy img,
+.imgOwn img {
     width: 60px;
     border-radius: 50%;
 }
@@ -40,4 +41,23 @@
 .messageOwn {
     width: 60%;
     margin: 0 0 0 auto;
+}
+
+@media (max-width: 414px) {
+    .dialogWithPeople {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-rows: auto 40px;
+        h3 {
+            @include font(1.3rem, 600, 0.1, 2rem);
+            margin: 0;
+            padding: 0;
+        }
+    }
+    .containerNameMessage {
+        padding: 0 10px;
+    }
+    .containerOwn {
+        padding-top: 10px;
+    }
 }

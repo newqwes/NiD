@@ -14,3 +14,10 @@
 .dialogsPeople > a:last-child {
     border-bottom: 1px $color_border solid;
 }
+
+@media (max-width: 414px) {
+    .section {
+        grid-template-columns: 1fr 7fr;
+        padding: 0 5px;
+    }
+}

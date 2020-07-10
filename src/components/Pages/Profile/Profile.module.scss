@@ -37,3 +37,31 @@
     width: 170px;
     border-radius: 5px;
 }
+
+@media (max-width: 414px) {
+    .imgCatalog {
+        width: 70px;
+        border-radius: 5px;
+    }
+    .catalog {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 10px;
+    }
+    .row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        grid-gap: 15px;
+        grid-template-areas:
+            "level level level"
+            "catalog catalog catalog"
+            "post post post";
+        > div {
+            background-color: $color_text_wh;
+            padding: 10px;
+            border-radius: 3px;
+            box-shadow: 0 0 1px #141f2c94;
+        }
+    }
+}
