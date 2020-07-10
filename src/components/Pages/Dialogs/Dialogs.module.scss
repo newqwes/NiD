@@ -17,7 +17,14 @@
 
 @media (max-width: 414px) {
     .section {
-        grid-template-columns: 1fr 7fr;
+        grid-template-columns: 1fr 5fr;
+        grid-gap: 0;
         padding: 0 5px;
+    }
+    .dialogsPeople {
+        height: auto;
+        text-align: center;
+        background-color: $color_bg_content;
+        box-shadow: none;
     }
 }

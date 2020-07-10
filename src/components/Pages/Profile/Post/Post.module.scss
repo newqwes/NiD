@@ -32,14 +32,17 @@ textarea {
     border-radius: 50%;
 }
 .nameUser {
-    @include font(1.4rem, 600, 0.1, 1.8rem);
+    @include font(1.2rem, 600, 0.1, 1.5rem);
 }
 @media (max-width: 414px) {
     .nameUser {
-        @include font(1.2rem, 600, 0.1, 1.5rem);
         margin-bottom: 10px;
     }
     .avatarImg {
         margin-right: 10px;
     }
+}
+.spanTime {
+    padding-bottom: 5px;
+    @include font(1rem, 500, 0.1, 1.8rem);
 }

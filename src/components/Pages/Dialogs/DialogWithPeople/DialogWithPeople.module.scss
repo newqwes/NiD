@@ -44,6 +44,9 @@
 }
 
 @media (max-width: 414px) {
+    .section {
+        height: 65vh;
+    }
     .dialogWithPeople {
         display: grid;
         grid-gap: 10px;
@@ -60,4 +63,23 @@
     .containerOwn {
         padding-top: 10px;
     }
+    .messageOwn {
+        width: 100%;
+        margin: 0 0 0 auto;
+    }
+    .submit {
+        display: grid;
+        position: fixed;
+        grid-template-columns: 1fr 90px;
+        max-height: 30px;  
+        grid-gap: 5px;
+        bottom: 55px;
+        width: 100%;
+        left: 0;
+    }
+    .imgEnemy img,
+.imgOwn img {
+    width: 50px;
+    border-radius: 50%;
+}
 }

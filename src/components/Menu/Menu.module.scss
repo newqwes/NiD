@@ -63,13 +63,14 @@
 }
 
 @media (max-width: 414px) {
-    .infoWtapper, .imgSection {
+    .infoWtapper,
+    .imgSection {
         display: none;
     }
     .menu {
         position: fixed;
         display: grid;
-        grid-template-rows: 60px;
+        grid-template-rows: 50px;
         bottom: 0px;
         width: 100%;
         text-align: center;
@@ -77,8 +78,9 @@
     }
     .ul {
         display: grid;
-        grid-template-rows: 60px;
+        grid-template-rows: 50px;
         grid-template-columns: repeat(3, 1fr);
+        padding: 0;
     }
     .ul a {
         @include font(1.4rem, 700, 0.05rem, 1.4rem);

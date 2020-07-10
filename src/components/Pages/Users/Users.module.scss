@@ -87,10 +87,14 @@
     .userContainer {
         grid-template-columns: repeat(3, 1fr);
         grid-template-areas:
-            "avatar fullName country"
-            "subButton . city";
+            "avatar fullName ."
+            "subButton country city";
     }
     .subscribeButtonWrapper > button {
         width: 100%;
+    }
+    .usersSection {
+        grid-gap: 10px;
+        padding: 0 10px;
     }
 }
