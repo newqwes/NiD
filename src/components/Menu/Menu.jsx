@@ -3,9 +3,9 @@ import s from './Menu.module.scss'
 import MenuItem from './MenuItem/MenuItem'
 
 const Menu = (props) => {
-    // props.addNewTime();
-    // props.addNewExchangeRate();
-    // setInterval(() => props.addNewTime(), 1000);
+    props.addNewTime();
+    props.addNewExchangeRate();
+    setInterval(() => props.addNewTime(), 1000);
 
     return (
         <nav className={s.menu}>
