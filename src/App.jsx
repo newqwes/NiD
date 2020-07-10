@@ -7,6 +7,7 @@ import { Route } from 'react-router-dom';
 import MenuContainer from './components/Menu/MenuContainer';
 import ProfileContainer from './components/Pages/Profile/ProfileContainer';
 import DialogsContainer from './components/Pages/Dialogs/DialogsContainer';
+import UsersContainer from './components/Pages/Users/UsersContainer';
 
 function App(props) {
 
@@ -24,6 +25,8 @@ function App(props) {
                                 <News />} />
                             <Route path='/Chat' render={() =>
                                 <Chat />} />
+                            <Route path='/Users' render={() =>
+                                <UsersContainer />} />
                             <Route path='/Dialogs' render={() =>
                                 <DialogsContainer />} />
                         </div>

@@ -43,38 +43,28 @@ let initialState = {
 }
 const dialogPageReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_NEW_MESSAGE:
-            {
-                let stateCopy = {
-                    ...state,
-                    dialogData: [...state.dialogData]
-                };
-                stateCopy.dialogData.map(n => {
-                    if (n.id === action.idDialog) {
-                        n.message.textOwn.push(n.dialogTextarea);
-                        n.dialogTextarea = ""
-                    }
-                })
-                return stateCopy;
-            }
-
-        case STATE_DIALOG_ON_CHANGE_TEXTAREA:
-            {
-                let stateCopy = {
-                    ...state,
-                    dialogData: [...state.dialogData]
+        case ADD_NEW_MESSAGE: return {
+            ...state,
+            dialogData: state.dialogData.map(n => {
+                if (action.id === n.id) return {
+                    ...n, message: { ...n.message, textOwn: [...n.message.textOwn, n.dialogTextarea] },
+                    dialogTextarea: ""
                 }
-                stateCopy.dialogData.map(n => {
-                    if(n.id === action.idDialog) n.dialogTextarea = action.newDialogTextareaLetter
-                })
-                return stateCopy;
-            }
-        default:
-            return state;
+                return n
+            })
+        };
+
+        case STATE_DIALOG_ON_CHANGE_TEXTAREA: return {
+            ...state,
+            dialogData: state.dialogData.map(n => {
+                if (n.id === action.id) return { ...n, dialogTextarea: action.newLetterTextarea }
+                return n
+            })
+        }
+        default: return state;
     }
 }
 
-export const addNewMessageTextAC = id => ({ type: ADD_NEW_MESSAGE, idDialog: id });
-export const dialogOnChangeTextareaAC = (id, newLetterTextarea) =>
-    ({ type: STATE_DIALOG_ON_CHANGE_TEXTAREA, idDialog: id, newDialogTextareaLetter: newLetterTextarea })
+export const addNewMessageTextAC = id => ({ type: ADD_NEW_MESSAGE, id });
+export const dialogOnChangeTextareaAC = (id, newLetterTextarea) => ({ type: STATE_DIALOG_ON_CHANGE_TEXTAREA, id, newLetterTextarea })
 export default dialogPageReducer;

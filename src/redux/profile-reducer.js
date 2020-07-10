@@ -38,19 +38,18 @@ const profilePageReducer = (state = inicialState, action) => {
                     dateTime: `${date.toLocaleString("ru", options)}`, //просто смотрю какое сообщение выводится по количеству можно просто оставить state.ownInformation.name
                     postText: state.postTextarea
                 }
-                let stateCopy = {
+                return {
                     ...state,
                     postData: [postItem, ...state.postData],
                     postTextarea: ""
                 }
-                return stateCopy;
             }
-        case CHANGE_POST_TEXTAREA: return {...state, postTextarea: action.newPostTextareaLetter};
+        case CHANGE_POST_TEXTAREA: return { ...state, postTextarea: action.textareaValue };
 
         default: return state;
     }
 }
 
 export const addPostAC = () => ({ type: ADD_NEW_POST });
-export const onChangePostTextareaAC = (textareaValue) => ({ type: CHANGE_POST_TEXTAREA, newPostTextareaLetter: textareaValue });
+export const onChangePostTextareaAC = (textareaValue) => ({ type: CHANGE_POST_TEXTAREA, textareaValue });
 export default profilePageReducer;

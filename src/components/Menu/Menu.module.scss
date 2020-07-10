@@ -53,6 +53,9 @@
 .infoWtapper {
     text-align: center;
     background-color: $color_text_wh;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 2px 5px;
     h2 {
         @include font(1.4rem, 600, 0.2rem, 1.6rem);
     }

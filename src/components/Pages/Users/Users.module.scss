@@ -1,0 +1,81 @@
+@import "./../../../style/style_addictions";
+.usersSection {
+    display: grid;
+    text-align: center;
+    grid-gap: 15px;
+    padding: 0 60px;
+}
+.usersWrapper {
+    display: grid;
+    grid-gap: 15px;
+}
+.userContainer {
+    display: grid;
+    background-color: $color_text_wh;
+    padding: 10px;
+    border-radius: 3px;
+    box-shadow: 0 0 1px #141f2c94;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto;
+    text-align-last: right;
+    grid-gap: 5px;
+    grid-template-areas:
+        "avatar fullName fullName . . country"
+        "avatar status status status . city"
+        "subButton status status status . city";
+}
+.imgAvatar {
+    height: 60px;
+    width: 60px;
+}
+.avatarWrapper {
+    grid-area: avatar;
+    text-align-last: center;
+}
+.subscribeButtonWrapper {
+    grid-area: subButton;
+    text-align-last: center;
+}
+.fullNameWrapper {
+    grid-area: fullName;
+    text-align-last: left;
+}
+.statusWrapper {
+    grid-area: status;
+    text-align-last: left;
+}
+.country {
+    grid-area: country;
+    @include font(1.3rem, 600, 0.1, 1.8rem);
+}
+.city {
+    grid-area: city;
+    @include font(1.3rem, 600, 0.1, 1.8rem);
+}
+.subscribeButtonWrapper {
+    button{
+        transition: 0.3s ease;
+        color: $color_text_wh;
+        border: none;
+        @include font(1.2rem, 600, 0.1, 1.8rem);
+        width: 80%;
+        border-radius: 3px;
+        &:active, &:focus {
+            outline: none;
+        }
+
+    }
+    .unSubscribeButton {
+        background-color: rgb(204, 66, 66);
+        &:active, &:hover {
+            background-color: rgba(204, 66, 66, 0.897);
+        }
+    }
+    .subscribeButton {
+        background-color: $color_primary;
+        &:active, &:hover {
+            background-color: #4a8da8e5;
+        }
+    }
+
+}
