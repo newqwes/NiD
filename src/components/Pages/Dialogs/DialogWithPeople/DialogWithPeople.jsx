@@ -3,7 +3,7 @@ import s from './DialogWithPeople.module.scss';
 import DialogOwn from './DialogOwn/DialogOwn';
 
 const DialogWithPeople = (props) => {
-    let dialogOwn = props.dialogData.message.textOwn.map(n => <DialogOwn textOwn={n} nameOwn={props.dialogData.nameOwn} avatarOwn={props.dialogData.avatarOwn} />);
+    let dialogOwn = props.dialogData.message.textOwn.map(n => <DialogOwn key={props.dialogData.id} textOwn={n} nameOwn={props.dialogData.nameOwn} avatarOwn={props.dialogData.avatarOwn} />);
 
     let addNewMessageText = () => props.addNewMessageText(props.dialogData.id);
     let dialogOnChangeTextarea = e => props.dialogOnChangeTextarea(props.dialogData.id, e.target.value)

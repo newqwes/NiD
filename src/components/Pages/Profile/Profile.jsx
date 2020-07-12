@@ -3,7 +3,7 @@ import s from './Profile.module.scss'
 import Post from './Post/Post';
 
 const Profile = (props) => {
-    let galaryPhotosDataElements = props.galaryPhotosData.map(n =><img className={s.imgCatalog} src={n.urlGalaryPhoto} alt="" />)
+    let galaryPhotosDataElements = props.galaryPhotosData.map(n =><img key={n.id} className={s.imgCatalog} src={n.urlGalaryPhoto} alt="" />)
     return (
         <section className={s.section}>
             <div className={s.wrapper}>

@@ -1,11 +1,14 @@
 import React from 'react'
 import s from './Menu.module.scss'
 import MenuItem from './MenuItem/MenuItem'
-
+import * as axios from 'axios'
 const Menu = (props) => {
-    // props.addNewTime();
-    // props.addNewExchangeRate();
-    // setInterval(() => props.addNewTime(), 1000);
+
+    props.addNewTime();
+    axios.get("https://www.nbrb.by/api/exrates/rates/145").then(respons => {
+        props.addNewExchangeRate(respons.data.Cur_OfficialRate);
+    })
+    setInterval(() => props.addNewTime(), 1000);
 
     return (
         <nav className={s.menu}>

@@ -1,22 +1,10 @@
 
 const SUBSCRIBE = "SUBSCRIBE";
 const UNSUBSCRIBE = "UNSUBSCRIBE";
+const SET_USERS = "SET-USERS";
 
 let initialState = {
-    usersData: [
-        {
-            id: 0, fullName: 'Анна', status: 'Профессионально занимаюсь маникюром', avatarUrl: 'https://cdn.iconscout.com/icon/free/png-64/avatar-373-456325.png',
-            location: { country: 'Белерусь', city: 'Гродно' }, isSubscribe: false
-        },
-        {
-            id: 1, fullName: 'Майя', status: 'Домашние задания', avatarUrl: 'https://cdn3.iconfinder.com/data/icons/avatars-flat/33/woman_9-512.png',
-            location: { country: 'Туркменистан', city: 'Ашхабад' }, isSubscribe: true
-        },
-        {
-            id: 2, fullName: 'Азим', status: 'Учусь в школе', avatarUrl: 'https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/avat-01-512.png',
-            location: { country: 'Туркменистан', city: 'Ашхабад' }, isSubscribe: false
-        }
-    ]
+    usersData: []
 }
 
 const usersPageReducer = (state = initialState, action) => {
@@ -35,6 +23,10 @@ const usersPageReducer = (state = initialState, action) => {
                 return n;
             })
         }
+        case SET_USERS: return {
+            ...state,
+            usersData: [...state.usersData, ...action.users]
+        }
 
         default: return state
     }
@@ -42,6 +34,7 @@ const usersPageReducer = (state = initialState, action) => {
 
 export const subscribeAC = id => ({ type: SUBSCRIBE, id });
 export const unsubscribeAC = id => ({ type: UNSUBSCRIBE, id });
+export const setUsersAC = users => ({ type: SET_USERS, users });
 export default usersPageReducer;
 
 

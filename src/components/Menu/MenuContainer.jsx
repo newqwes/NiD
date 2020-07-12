@@ -11,7 +11,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
     return {
-        addNewExchangeRate: () => dispatch(addExchangeRateAC()),
+        addNewExchangeRate: (rate) => dispatch(addExchangeRateAC(rate)),
         addNewTime: () => dispatch(addNewTimeAC())
     }
 }
