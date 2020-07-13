@@ -1,13 +1,8 @@
 @import "./../../../style/style_addictions";
-.usersSection {
-    display: grid;
-    text-align: center;
-    grid-gap: 15px;
-    padding: 0 60px;
-}
+
 .usersWrapper {
     display: grid;
-    grid-gap: 15px;
+    grid-gap: 15px 0;
 }
 .userContainer {
     display: grid;
@@ -15,14 +10,12 @@
     padding: 10px;
     border-radius: 3px;
     box-shadow: 0 0 1px #141f2c94;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: auto;
     text-align-last: right;
-    grid-gap: 5px;
     grid-template-areas:
-        "avatar fullName fullName . . country"
-        "avatar status status status . city"
-        "subButton status status status . city";
+        "avatar fullName fullName . country"
+        "subButton status status . city";
 }
 .imgAvatar {
     height: 60px;
@@ -58,7 +51,7 @@
         color: $color_text_wh;
         border: none;
         @include font(1.2rem, 600, 0.1, 1.8rem);
-        width: 80%;
+        width: 65%;
         border-radius: 3px;
         &:active, &:focus {
             outline: none;

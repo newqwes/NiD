@@ -3,6 +3,8 @@
 .header {
     background-color: $color_primary;
     height: 42px;
+    width: 100%;
+    position: fixed;
 }
 
 .wrapper {
