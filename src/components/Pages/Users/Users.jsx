@@ -1,19 +1,12 @@
 import React from 'react';
 import s from './Users.module.scss';
-import * as axios from 'axios';
 import photoUser from '../../../assets/images/hipster.svg'
 
-class Users extends React.Component {
-    componentDidMount() {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(respons => {
-            this.props.setUsers(respons.data.items)
-        })
-    }
-
-    render() {
-        return (
-            <section className={s.usersWrapper}>{
-                this.props.usersData.map(n => {
+const Users = (props) => {
+    return (
+        <section className={s.usersWrapper}>
+            {
+                props.usersData.map(n => {
                     return (
                         <div key={n.id} className={s.userContainer}>
                             <div className={s.avatarWrapper}>
@@ -21,8 +14,8 @@ class Users extends React.Component {
                             </div>
                             <div className={s.subscribeButtonWrapper}>
                                 {n.isSubscribe
-                                    ? <button className={s.unSubscribeButton} onClick={() => this.props.unsubscribe(n.id)}>Отписаться</button>
-                                    : <button className={s.subscribeButton} onClick={() => this.props.subscribe(n.id)}>Подписаться</button>}
+                                    ? <button className={s.unSubscribeButton} onClick={() => props.unsubscribe(n.id)}>Отписаться</button>
+                                    : <button className={s.subscribeButton} onClick={() => props.subscribe(n.id)}>Подписаться</button>}
 
                             </div>
                             <div className={s.fullNameWrapper}>
@@ -37,10 +30,15 @@ class Users extends React.Component {
                     )
                 })
             }
-            </section>
-        )
-    }
+            <div className={s.usersPageButton_wrapper}>
+                {props.pages.map(n => {
+                    return (
+                        <span className={`${s.usersPageButton} ${props.currentPageUsers === n && s.usersPageButton_active}`} onClick={(e) => props.newSelectedPage(n)}>{n}</span>
+                    )
+                })}
+            </div>
+        </section>
+    )
 }
-
 
 export default Users

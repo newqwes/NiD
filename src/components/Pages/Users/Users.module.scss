@@ -91,3 +91,15 @@
         padding: 0 10px;
     }
 }
+.usersPageButton_wrapper {
+    text-align: center;
+}
+.usersPageButton {
+    @include font(1.8rem, 600, 0.2, 2.5rem);
+    cursor: pointer;
+    padding: 0 10px;
+    color: $color_text_standart;
+}
+.usersPageButton_active {
+    color: $color_primary;
+}
