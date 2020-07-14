@@ -1,6 +1,6 @@
 import Menu from './Menu'
 import { connect } from 'react-redux'
-import { addExchangeRateAC, addNewTimeAC } from '../../redux/sidebar-reducer';
+import { addNewExchangeRate, addNewTime } from '../../redux/sidebar-reducer';
 
 const mapStateToProps = state => {
     return {
@@ -9,11 +9,5 @@ const mapStateToProps = state => {
         whatTimeNow: state.menuSideBar.whatTimeNow
     }
 }
-const mapDispatchToProps = dispatch => {
-    return {
-        addNewExchangeRate: (rate) => dispatch(addExchangeRateAC(rate)),
-        addNewTime: () => dispatch(addNewTimeAC())
-    }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Menu)
+export default connect(mapStateToProps, {addNewExchangeRate, addNewTime})(Menu)

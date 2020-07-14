@@ -50,6 +50,6 @@ const profilePageReducer = (state = inicialState, action) => {
     }
 }
 
-export const addPostAC = () => ({ type: ADD_NEW_POST });
-export const onChangePostTextareaAC = (textareaValue) => ({ type: CHANGE_POST_TEXTAREA, textareaValue });
+export const addPost = () => ({ type: ADD_NEW_POST });
+export const onChangePostTextarea = (textareaValue) => ({ type: CHANGE_POST_TEXTAREA, textareaValue });
 export default profilePageReducer;

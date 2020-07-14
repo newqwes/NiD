@@ -65,6 +65,6 @@ const dialogPageReducer = (state = initialState, action) => {
     }
 }
 
-export const addNewMessageTextAC = id => ({ type: ADD_NEW_MESSAGE, id });
-export const dialogOnChangeTextareaAC = (id, newLetterTextarea) => ({ type: STATE_DIALOG_ON_CHANGE_TEXTAREA, id, newLetterTextarea })
+export const addNewMessageText = id => ({ type: ADD_NEW_MESSAGE, id });
+export const dialogOnChangeTextarea = (id, newLetterTextarea) => ({ type: STATE_DIALOG_ON_CHANGE_TEXTAREA, id, newLetterTextarea })
 export default dialogPageReducer;

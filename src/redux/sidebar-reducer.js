@@ -21,7 +21,7 @@ const sidebarPageReducer = (state = initialState, action) => {
     }
 }
 
-export const addNewTimeAC = () => ({ type: ADD_NEW_TIME });
-export const addExchangeRateAC = (rate) => ({ type: ADD_EXCHANGE_RATE, rate });
+export const addNewTime = () => ({ type: ADD_NEW_TIME });
+export const addNewExchangeRate = (rate) => ({ type: ADD_EXCHANGE_RATE, rate });
 
 export default sidebarPageReducer;
