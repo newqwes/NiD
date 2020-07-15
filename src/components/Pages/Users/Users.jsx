@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './Users.module.scss';
 import photoUser from '../../../assets/images/hipster.svg'
+import { NavLink } from 'react-router-dom';
 
 const Users = (props) => {
     return (
@@ -19,7 +20,9 @@ const Users = (props) => {
 
                             </div>
                             <div className={s.fullNameWrapper}>
-                                <h3>{n.name}</h3>
+                                <NavLink to={'/profile/' + n.id} className={s.nameLink}>
+                                    <h3>{n.name}</h3>
+                                </NavLink>
                             </div>
                             <div className={s.statusWrapper}>
                                 <p className={s.statusP}>{n.status}</p>

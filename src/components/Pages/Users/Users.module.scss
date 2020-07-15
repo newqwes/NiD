@@ -103,3 +103,12 @@
 .usersPageButton_active {
     color: $color_primary;
 }
+
+.nameLink {
+    text-decoration: none;
+    color: $color_text_standart;
+    transition: .2s ease;
+    &:hover {
+        color: $color_primary;
+    }
+}
