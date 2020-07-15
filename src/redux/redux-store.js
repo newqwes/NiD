@@ -12,4 +12,6 @@ let reducers = combineReducers({
 })
 let store = createStore(reducers);
 
+window.store = store;//console call store.GetState() ....
+
 export default store;

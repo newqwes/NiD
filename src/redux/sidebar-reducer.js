@@ -7,8 +7,8 @@ let initialState = {
         { id: 1, value: "Сообщения", linkUrl: "/Dialogs" },
         { id: 2, value: "Пользователи", linkUrl: "/Users" }
     ],
-    whatTimeNow: "",
-    exchangeRate: ""
+    whatTimeNow: null,
+    exchangeRate: null
 }
 
 const sidebarPageReducer = (state = initialState, action) => {
