@@ -8,7 +8,9 @@ import Preloader from '../../common/Preloader/Preloader';
 class UsersContainer extends React.Component {
     componentDidMount() {
         this.props.isUploadedDis(false)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.usersOnPage}&page=${this.props.currentPageUsers}`).then(respons => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.usersOnPage}&page=${this.props.currentPageUsers}`, {
+            withCredentials: true
+        }).then(respons => {
             this.props.setUsers(respons.data.items)
             this.props.setAmountUsers(respons.data.totalCount)
             this.props.isUploadedDis(true) 
@@ -17,7 +19,9 @@ class UsersContainer extends React.Component {
     newSelectedPage = (currentPage) => {
         this.props.setUsersPage(currentPage)
         this.props.isUploadedDis(false)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.usersOnPage}&page=${currentPage}`).then(respons => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.usersOnPage}&page=${currentPage}`, {
+            withCredentials: true
+        }).then(respons => {
             this.props.setUsers(respons.data.items)
             this.props.isUploadedDis(true)
         })
