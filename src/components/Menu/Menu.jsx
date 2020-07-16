@@ -2,7 +2,6 @@ import React from 'react'
 import s from './Menu.module.scss'
 import MenuItem from './MenuItem/MenuItem'
 import * as axios from 'axios'
-import Preloader from '../common/Preloader/Preloader'
 
 class Menu extends React.Component {
     componentDidMount() {

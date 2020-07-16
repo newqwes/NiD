@@ -1,5 +1,4 @@
-import React from 'react'
-import imgPreloader from '../../../assets/images/preloader.svg'
+import React from 'react';
 import imgPreloader2 from '../../../assets/images/preloader2.svg'
 import s from './Preloader.module.scss'
 

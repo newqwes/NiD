@@ -19,7 +19,7 @@ function App(props) {
                     <div className={s.row}>
                         <MenuContainer />
                         <div className={s.content}>
-                            <Route path='/Profile' render={() =>
+                            <Route path='/Profile/:userId?' render={() =>
                                 <ProfileContainer />} />
                             <Route path='/News' render={() =>
                                 <News />} />

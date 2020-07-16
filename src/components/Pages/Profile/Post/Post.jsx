@@ -27,8 +27,8 @@ const Post = (props) => {
             <div className={s.wrapper}>
                 <div className={s.form__wrapper}>
                     <div className={s.form}>
-                        <textarea value={props.postTextarea} onChange={onChangePostTextarea} />
-                        <button onClick={addPost}>Отправить</button>
+                        <textarea className={s.textarea} value={props.postTextarea} onChange={onChangePostTextarea} />
+                        <button className={s.button} onClick={addPost}>Отправить</button>
                     </div>
                 </div>
                 {postDataElements}

@@ -3,8 +3,8 @@
 .wrapper {
     background-color: $color_bg_content;
 }
-.level {
-    grid-area: level;
+.userProfileWrapper {
+    grid-area: userProfileWrapper;
 }
 .catalog {
     grid-area: catalog;
@@ -16,16 +16,12 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
-    grid-gap: 15px;
     grid-template-areas:
-        "level level level level"
+        "userProfileWrapper userProfileWrapper userProfileWrapper userProfileWrapper"
         "catalog catalog catalog catalog"
         "post post post post";
     > div {
-        background-color: $color_text_wh;
         padding: 10px;
-        border-radius: 3px;
-        box-shadow: 0 0 1px #141f2c94;
     }
 }
 .catalog {
@@ -54,14 +50,60 @@
         grid-template-rows: auto;
         grid-gap: 15px;
         grid-template-areas:
-            "level level level"
+            "userProfileWrapper userProfileWrapper userProfileWrapper"
             "catalog catalog catalog"
             "post post post";
         > div {
-            background-color: $color_text_wh;
             padding: 10px;
             border-radius: 3px;
-            box-shadow: 0 0 1px #141f2c94;
         }
+    }
+}
+
+.userProfileWrapper {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 15px;
+    grid-template-areas:
+        "photoWrapper aboutWrapper aboutWrapper aboutWrapper aboutWrapper"
+        "photoWrapper isLookJobWrapper isLookJobWrapper isLookJobWrapper isLookJobWrapper"
+        "photoWrapper contactWrapper contactWrapper contactWrapper contactWrapper";
+    > div {
+        background-color: $color_text_wh;
+        padding: 10px;
+        border-radius: 3px;
+        box-shadow: 0 0 1px #141f2c94;
+    }
+}
+.photoWrapper {
+    grid-area: photoWrapper;
+    img {
+        max-width: 200px;
+        border-radius: 5px;
+    }
+}
+.aboutWrapper {
+    grid-area: aboutWrapper;
+}
+.isLookJobWrapper {
+    grid-area: isLookJobWrapper;
+}
+.contactWrapper {
+    grid-area: contactWrapper;
+}
+.aboutWrapper__userName {
+    @include font(1.6rem, 600, 0.1, 1.8rem);
+    padding-bottom: 10px;
+}
+.span {
+    color: #828282;
+    padding: 10px;
+    @include font(1.2rem, 400, 0.1, 1.8rem);
+}
+.contactWrapper {
+    div {
+        @include font(1.2rem, 400, 0.1, 1.8rem);
     }
 }

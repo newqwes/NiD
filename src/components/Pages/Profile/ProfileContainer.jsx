@@ -3,12 +3,20 @@ import { connect } from 'react-redux';
 import Profile from './Profile';
 import React from 'react'
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`).then(respons => {
+        let userUrlId = this.props.match.params.userId;
+        if(!userUrlId) {
+            userUrlId = 2
+        }
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/`+userUrlId).then(respons => {
             this.props.setUserProfile(respons.data)
         })
+    }
+    componentWillUnmount() {
+        this.props.setUserProfile(null)
     }
     
     render() {
@@ -18,7 +26,6 @@ class ProfileContainer extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        galaryPhotosData: state.profilePage.galaryPhotosData,
         postData: state.profilePage.postData,
         postTextarea: state.profilePage.postTextarea,
         userProfile: state.profilePage.userProfile,
@@ -26,4 +33,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {onChangePostTextarea, addPost, setUserProfile})(ProfileContainer);
+export default connect(mapStateToProps, {onChangePostTextarea, addPost, setUserProfile})(withRouter(ProfileContainer));
