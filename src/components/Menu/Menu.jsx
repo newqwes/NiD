@@ -1,14 +1,11 @@
 import React from 'react'
 import s from './Menu.module.scss'
 import MenuItem from './MenuItem/MenuItem'
-import * as axios from 'axios'
-
+import { userAPI } from '../../api/api';
 class Menu extends React.Component {
     componentDidMount() {
-        this.props.addNewTime()
-        axios.get("https://www.nbrb.by/api/exrates/rates/145").then(respons => {
-            this.props.addNewExchangeRate(respons.data.Cur_OfficialRate);
-        })
+        this.props.addNewTime();
+        userAPI.getRates(this.props.addNewExchangeRate);
         setInterval(() => this.props.addNewTime(), 1000);
     }
     render() {

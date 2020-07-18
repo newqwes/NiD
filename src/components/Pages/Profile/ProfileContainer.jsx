@@ -2,25 +2,23 @@ import { addPost, onChangePostTextarea, setUserProfile } from '../../../redux/pr
 import { connect } from 'react-redux';
 import Profile from './Profile';
 import React from 'react'
-import axios from 'axios';
 import { withRouter } from 'react-router-dom';
+import { userAPI } from '../../../api/api';
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
         let userUrlId = this.props.match.params.userId;
-        if(!userUrlId) {
+        if (!userUrlId) {
             userUrlId = 5632
         }
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/`+userUrlId, {
-            withCredentials: true
-        }).then(respons => {
-            this.props.setUserProfile(respons.data)
+        userAPI.getUserProfile(userUrlId).then(data => {
+            this.props.setUserProfile(data)
         })
     }
     componentWillUnmount() {
         this.props.setUserProfile(null)
     }
-    
+
     render() {
         return <Profile {...this.props} />
     }
@@ -31,8 +29,8 @@ const mapStateToProps = state => {
         postData: state.profilePage.postData,
         postTextarea: state.profilePage.postTextarea,
         userProfile: state.profilePage.userProfile,
-        
+
     }
 }
 
-export default connect(mapStateToProps, {onChangePostTextarea, addPost, setUserProfile})(withRouter(ProfileContainer));
+export default connect(mapStateToProps, { onChangePostTextarea, addPost, setUserProfile })(withRouter(ProfileContainer));

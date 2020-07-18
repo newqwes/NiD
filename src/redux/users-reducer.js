@@ -5,13 +5,15 @@ const SET_USERS = "SET-USERS";
 const TOTAL_AMOUNT_USERS = "TOTAL_AMOUNT_USERS";
 const SET_USERS_PAGE = "SET_USERS_PAGE";
 const IS_UPLOADED = "IS_UPLOADED";
+const IS_ANSVER_GONE = 'IS_ANSVER_GONE';
 
 let initialState = {
     usersData: [],
     totalAmountUsers: 0,
     usersOnPage: 6,
     currentPageUsers: 1,
-    isUploaded: true
+    isUploaded: true,
+    isAnswerGone: []
 }
 
 const usersPageReducer = (state = initialState, action) => {
@@ -19,14 +21,14 @@ const usersPageReducer = (state = initialState, action) => {
         case SUBSCRIBE: return {
             ...state,
             usersData: state.usersData.map(n => {
-                if (n.id === action.id) return { ...n, isSubscribe: true }
+                if (n.id === action.id) return { ...n, followed: true }
                 return n;
             })
         }
         case UNSUBSCRIBE: return {
             ...state,
             usersData: state.usersData.map(n => {
-                if (n.id === action.id) return { ...n, isSubscribe: false }
+                if (n.id === action.id) return { ...n, followed: false }
                 return n;
             })
         }
@@ -46,6 +48,12 @@ const usersPageReducer = (state = initialState, action) => {
             ...state,
             isUploaded: action.isUploadedValue
         }
+        case IS_ANSVER_GONE: return {
+            ...state,
+            isAnswerGone: action.booleanValue // если запрос пошел тогда
+            ? [...state.isAnswerGone, action.id] // записываем пользователя в массив
+            : state.isAnswerGone.filter(id => id != action.id) // иначе удаляем id которая пришла (значит загрузилась). П,С, вот тут я уж точно не вспомню что делал)) 
+        }
         default: return state
     }
 }
@@ -56,6 +64,7 @@ export const setUsers = users => ({ type: SET_USERS, users });
 export const setAmountUsers = count => ({ type: TOTAL_AMOUNT_USERS, count });
 export const setUsersPage = pageNumber => ({ type: SET_USERS_PAGE, pageNumber });
 export const isUploadedDis = isUploadedValue => ({ type: IS_UPLOADED, isUploadedValue });
+export const isAnsverGoneAC = (booleanValue, id) => ({ type: IS_ANSVER_GONE, booleanValue, id });
 export default usersPageReducer;
 
 

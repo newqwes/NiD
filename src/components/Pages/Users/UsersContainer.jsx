@@ -1,29 +1,27 @@
-import { subscribe, unsubscribe, setUsers, setAmountUsers, setUsersPage, isUploadedDis } from '../../../redux/users-reducer';
+import { subscribe, unsubscribe, setUsers, setAmountUsers, setUsersPage, isUploadedDis, isAnsverGoneAC } from '../../../redux/users-reducer';
 import { connect } from 'react-redux'
 import Users from './Users'
 import React from 'react';
-import * as axios from 'axios';
 import Preloader from '../../common/Preloader/Preloader';
+import { userAPI } from '../../../api/api';
 
 class UsersContainer extends React.Component {
     componentDidMount() {
-        this.props.isUploadedDis(false)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.usersOnPage}&page=${this.props.currentPageUsers}`, {
-            withCredentials: true
-        }).then(respons => {
-            this.props.setUsers(respons.data.items)
-            this.props.setAmountUsers(respons.data.totalCount)
-            this.props.isUploadedDis(true) 
+        this.props.isUploadedDis(false);
+        userAPI.getUsers(this.props.usersOnPage, this.props.currentPageUsers)
+        .then(data => {
+            this.props.setUsers(data.items);
+            this.props.setAmountUsers(data.totalCount);
+            this.props.isUploadedDis(true);
         })
     }
     newSelectedPage = (currentPage) => {
-        this.props.setUsersPage(currentPage)
-        this.props.isUploadedDis(false)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.usersOnPage}&page=${currentPage}`, {
-            withCredentials: true
-        }).then(respons => {
-            this.props.setUsers(respons.data.items)
-            this.props.isUploadedDis(true)
+        this.props.setUsersPage(currentPage);
+        this.props.isUploadedDis(false);
+        userAPI.getUsers(this.props.usersOnPage, currentPage)
+        .then(data => {
+            this.props.setUsers(data.items);
+            this.props.isUploadedDis(true);
         })
     }
 
@@ -37,12 +35,8 @@ class UsersContainer extends React.Component {
         }
         return <>
             {this.props.isUploaded
-                ? <Users
-                    usersData={this.props.usersData}
-                    unsubscribe={this.props.unsubscribe}
-                    subscribe={this.props.subscribe}
-                    pages={pages}
-                    currentPageUsers={this.props.currentPageUsers}
+                ? <Users {...this.props}
+                     pages={pages}
                     newSelectedPage={this.newSelectedPage}
                 />
                 : <Preloader />}
@@ -56,7 +50,8 @@ const mapStateToProps = state => {
         usersOnPage: state.usersPage.usersOnPage,
         currentPageUsers: state.usersPage.currentPageUsers,
         totalAmountUsers: state.usersPage.totalAmountUsers,
-        isUploaded: state.usersPage.isUploaded
+        isUploaded: state.usersPage.isUploaded,
+        isAnswerGone: state.usersPage.isAnswerGone
     }
 }
-export default connect(mapStateToProps, {subscribe, unsubscribe, setUsers, isUploadedDis, setAmountUsers, setUsersPage})(UsersContainer)
+export default connect(mapStateToProps, { subscribe, unsubscribe, setUsers, isUploadedDis, setAmountUsers, setUsersPage, isAnsverGoneAC })(UsersContainer)

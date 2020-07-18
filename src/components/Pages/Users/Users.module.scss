@@ -53,8 +53,13 @@
         @include font(1.2rem, 600, 0.1, 1.8rem);
         width: 65%;
         border-radius: 3px;
+        cursor: pointer;
         &:active, &:focus {
             outline: none;
+        }
+        &:disabled {
+            opacity: 0.5;
+            cursor: wait;
         }
 
     }
