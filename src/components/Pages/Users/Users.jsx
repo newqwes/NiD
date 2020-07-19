@@ -2,7 +2,6 @@ import React from 'react';
 import s from './Users.module.scss';
 import photoUser from '../../../assets/images/hipster.svg'
 import { NavLink } from 'react-router-dom';
-import { userAPI } from '../../../api/api';
 
 const Users = (props) => {
     return (
@@ -17,22 +16,11 @@ const Users = (props) => {
                             <div className={s.subscribeButtonWrapper}>
                                 {n.followed
                                     ? <button disabled={props.isAnswerGone.some(id => id === n.id)} className={s.unSubscribeButton} onClick={() => {
-                                        props.isAnsverGoneAC(true, n.id)
-                                        userAPI.deleteUserFollow(n.id).then(data => {
-                                            if (data.resultCode === 0) {
-                                                props.unsubscribe(n.id);
-                                            }
-                                            props.isAnsverGoneAC(false, n.id)
-                                        })
+                                        props.unfollow(n.id)
+
                                     }}>Отписаться</button>
                                     : <button disabled={props.isAnswerGone.some(id => id === n.id)} className={s.subscribeButton} onClick={() => {
-                                        props.isAnsverGoneAC(true, n.id)
-                                        userAPI.postUserFollow(n.id).then(data => {
-                                            if (data.resultCode === 0) {
-                                                props.subscribe(n.id);
-                                            }
-                                            props.isAnsverGoneAC(false, n.id)
-                                        })
+                                        props.follow(n.id)
                                     }}>Подписаться</button>}
 
                             </div>

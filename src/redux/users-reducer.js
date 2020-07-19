@@ -1,3 +1,4 @@
+import { userAPI } from "../api/api";
 
 const SUBSCRIBE = "SUBSCRIBE";
 const UNSUBSCRIBE = "UNSUBSCRIBE";
@@ -51,8 +52,8 @@ const usersPageReducer = (state = initialState, action) => {
         case IS_ANSVER_GONE: return {
             ...state,
             isAnswerGone: action.booleanValue // если запрос пошел тогда
-            ? [...state.isAnswerGone, action.id] // записываем пользователя в массив
-            : state.isAnswerGone.filter(id => id != action.id) // иначе удаляем id которая пришла (значит загрузилась). П,С, вот тут я уж точно не вспомню что делал)) 
+                ? [...state.isAnswerGone, action.id] // записываем пользователя в массив
+                : state.isAnswerGone.filter(id => id !== action.id) // иначе удаляем id которая пришла (значит загрузилась). П,С, вот тут я уж точно не вспомню что делал)) 
         }
         default: return state
     }
@@ -65,6 +66,33 @@ export const setAmountUsers = count => ({ type: TOTAL_AMOUNT_USERS, count });
 export const setUsersPage = pageNumber => ({ type: SET_USERS_PAGE, pageNumber });
 export const isUploadedDis = isUploadedValue => ({ type: IS_UPLOADED, isUploadedValue });
 export const isAnsverGoneAC = (booleanValue, id) => ({ type: IS_ANSVER_GONE, booleanValue, id });
+
+export const getUsers = (usersOnPage, currentPageUsers) => (dispatch) => {
+    dispatch(isUploadedDis(false));
+    userAPI.getUsers(usersOnPage, currentPageUsers)
+        .then(data => {
+            dispatch(setUsers(data.items));
+            dispatch(setAmountUsers(data.totalCount));
+            dispatch(isUploadedDis(true));
+        })
+}
+
+export const follow = (id) => (dispatch) => {
+    dispatch(isAnsverGoneAC(true, id))
+    userAPI.postUserFollow(id).then(data => {
+        if (data.resultCode === 0) {
+            dispatch(subscribe(id));
+        }
+        dispatch(isAnsverGoneAC(false, id));
+    })
+}
+export const unfollow = (id) => (dispatch) => {
+    dispatch(isAnsverGoneAC(true, id))
+    userAPI.deleteUserFollow(id).then(data => {
+        if (data.resultCode === 0) {
+            dispatch(unsubscribe(id));
+        }
+        dispatch(isAnsverGoneAC(false, id));
+    })
+}
 export default usersPageReducer;
-
-

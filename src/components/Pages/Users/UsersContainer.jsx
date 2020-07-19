@@ -1,28 +1,17 @@
-import { subscribe, unsubscribe, setUsers, setAmountUsers, setUsersPage, isUploadedDis, isAnsverGoneAC } from '../../../redux/users-reducer';
+import { getUsers, follow, unfollow, setUsersPage } from '../../../redux/users-reducer';
 import { connect } from 'react-redux'
 import Users from './Users'
 import React from 'react';
 import Preloader from '../../common/Preloader/Preloader';
-import { userAPI } from '../../../api/api';
+import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 
 class UsersContainer extends React.Component {
     componentDidMount() {
-        this.props.isUploadedDis(false);
-        userAPI.getUsers(this.props.usersOnPage, this.props.currentPageUsers)
-        .then(data => {
-            this.props.setUsers(data.items);
-            this.props.setAmountUsers(data.totalCount);
-            this.props.isUploadedDis(true);
-        })
+        this.props.getUsers(this.props.usersOnPage, this.props.currentPageUsers);
     }
     newSelectedPage = (currentPage) => {
+        this.props.getUsers(this.props.usersOnPage, currentPage);
         this.props.setUsersPage(currentPage);
-        this.props.isUploadedDis(false);
-        userAPI.getUsers(this.props.usersOnPage, currentPage)
-        .then(data => {
-            this.props.setUsers(data.items);
-            this.props.isUploadedDis(true);
-        })
     }
 
     render() {
@@ -54,4 +43,6 @@ const mapStateToProps = state => {
         isAnswerGone: state.usersPage.isAnswerGone
     }
 }
-export default connect(mapStateToProps, { subscribe, unsubscribe, setUsers, isUploadedDis, setAmountUsers, setUsersPage, isAnsverGoneAC })(UsersContainer)
+
+let withRedirect = withAuthRedirect(UsersContainer)
+export default connect(mapStateToProps, { setUsersPage, getUsers, follow, unfollow })(withRedirect)

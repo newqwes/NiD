@@ -1,3 +1,5 @@
+import { userAPI } from "../api/api";
+
 const ADD_NEW_POST = "ADD-NEW-POST";
 const CHANGE_POST_TEXTAREA = "CHANGE-POST-TEXTAREA";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
@@ -50,4 +52,14 @@ const profilePageReducer = (state = inicialState, action) => {
 export const addPost = () => ({ type: ADD_NEW_POST });
 export const onChangePostTextarea = (textareaValue) => ({ type: CHANGE_POST_TEXTAREA, textareaValue });
 export const setUserProfile = (userProfileData) => ({ type: SET_USER_PROFILE, userProfileData });
+
+export const getUserProfile = (userUrlId) => (dispatch) => {
+        if (!userUrlId) {
+            userUrlId = 5632
+        }
+        userAPI.getUserProfile(userUrlId).then(data => {
+            dispatch(setUserProfile(data))
+        })
+}
+
 export default profilePageReducer;

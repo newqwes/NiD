@@ -1,3 +1,5 @@
+import { userAPI } from "../api/api";
+
 const ADD_NEW_TIME = "ADD-NEW-TIME";
 const ADD_EXCHANGE_RATE = "ADD-EXCHANGE-RATE";
 
@@ -23,5 +25,9 @@ const sidebarPageReducer = (state = initialState, action) => {
 
 export const addNewTime = () => ({ type: ADD_NEW_TIME });
 export const addNewExchangeRate = (rate) => ({ type: ADD_EXCHANGE_RATE, rate });
+
+export const getRates = (addNewExchangeRate) => (dispatch) => {
+    userAPI.getRates(addNewExchangeRate);
+}
 
 export default sidebarPageReducer;

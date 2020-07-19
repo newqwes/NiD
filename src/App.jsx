@@ -8,6 +8,7 @@ import ProfileContainer from './components/Pages/Profile/ProfileContainer';
 import DialogsContainer from './components/Pages/Dialogs/DialogsContainer';
 import UsersContainer from './components/Pages/Users/UsersContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
+import Login from './components/Pages/Login/Login';
 
 function App(props) {
 
@@ -29,6 +30,8 @@ function App(props) {
                                 <UsersContainer />} />
                             <Route path='/Dialogs' render={() =>
                                 <DialogsContainer />} />
+                            <Route path='/login' render={() =>
+                                <Login />} />
                         </div>
                     </div>
                 </div>
