@@ -107,3 +107,16 @@
         @include font(1.2rem, 400, 0.1, 1.8rem);
     }
 }
+
+.inputContainerStatus {
+    display: inline-grid;
+    grid-template-columns: 1fr 80px;
+    grid-gap: 20px;
+    transition: 0.3s ease;
+}
+.spanContainerStatus:hover {
+    color: #535353;
+}
+.spanContainerStatus {
+    transition: 0.3s ease;
+}
