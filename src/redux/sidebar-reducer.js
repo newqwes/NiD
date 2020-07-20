@@ -9,7 +9,7 @@ let initialState = {
         { id: 1, value: "Сообщения", linkUrl: "/Dialogs" },
         { id: 2, value: "Пользователи", linkUrl: "/Users" }
     ],
-    whatTimeNow: null,
+    whatTimeNow: '00:00:00',
     exchangeRate: null
 }
 
@@ -24,10 +24,12 @@ const sidebarPageReducer = (state = initialState, action) => {
 }
 
 export const addNewTime = () => ({ type: ADD_NEW_TIME });
-export const addNewExchangeRate = (rate) => ({ type: ADD_EXCHANGE_RATE, rate });
+const addNewExchangeRate = (rate) => ({ type: ADD_EXCHANGE_RATE, rate });
 
-export const getRates = (addNewExchangeRate) => (dispatch) => {
-    userAPI.getRates(addNewExchangeRate);
+export const getRates = () => (dispatch) => {
+    userAPI.getRates().then(rate => {
+        dispatch(addNewExchangeRate(rate));
+    })
 }
 
 export default sidebarPageReducer;

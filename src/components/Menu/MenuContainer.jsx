@@ -1,7 +1,8 @@
 import Menu from './Menu'
 import { connect } from 'react-redux'
-import { addNewExchangeRate, addNewTime, getRates } from '../../redux/sidebar-reducer';
+import { addNewTime, getRates } from '../../redux/sidebar-reducer';
 import React from 'react';
+import { compose } from 'redux';
 
 const mapStateToProps = state => {
     return {
@@ -14,13 +15,12 @@ const mapStateToProps = state => {
 
 class MenuContainer extends React.Component {
     componentDidMount() {
-        this.props.addNewTime();
+        this.props.getRates();
         setInterval(() => this.props.addNewTime() , 1000);
-        this.props.getRates(this.props.addNewExchangeRate);
     }
     render() {
         return <Menu {...this.props} />
     }
 }
 
-export default connect(mapStateToProps, {addNewTime, addNewExchangeRate, getRates})(MenuContainer)
+export default compose(connect(mapStateToProps, {addNewTime, getRates}))(MenuContainer)

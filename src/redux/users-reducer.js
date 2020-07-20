@@ -11,7 +11,7 @@ const IS_ANSVER_GONE = 'IS_ANSVER_GONE';
 let initialState = {
     usersData: [],
     totalAmountUsers: 0,
-    usersOnPage: 6,
+    usersOnPage: 7,
     currentPageUsers: 1,
     isUploaded: true,
     isAnswerGone: []

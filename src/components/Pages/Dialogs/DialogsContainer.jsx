@@ -2,11 +2,14 @@ import { connect } from 'react-redux';
 import Dialogs from './Dialogs';
 import { addNewMessageText, dialogOnChangeTextarea } from '../../../redux/dialog-reducer';
 import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 const mapStateToProps = (state) => {
     return {
         dialogData: state.dialogPage.dialogData
     }
 }
-let withRedirect = withAuthRedirect(Dialogs)
-export default connect(mapStateToProps, {addNewMessageText, dialogOnChangeTextarea})(withRedirect);
+export default compose (
+    connect(mapStateToProps, {addNewMessageText, dialogOnChangeTextarea}),
+    withAuthRedirect
+)(Dialogs);

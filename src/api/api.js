@@ -9,9 +9,9 @@ const instance = Axios.create({
 })
 
 export const userAPI = {
-    getRates(addNewExchangeRate) {
+    getRates() {
         return Axios.get("https://www.nbrb.by/api/exrates/rates/145").then(respons => {
-            addNewExchangeRate(respons.data.Cur_OfficialRate);
+            return respons.data.Cur_OfficialRate;
         })
     },
     getUsers(usersOnPage, currentPageUsers) {

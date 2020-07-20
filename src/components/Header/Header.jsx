@@ -1,5 +1,6 @@
 import React from 'react'
 import s from './Header.module.scss'
+import { NavLink } from 'react-router-dom';
 
 const Header = (props) => {
     return (
@@ -7,7 +8,7 @@ const Header = (props) => {
             <div className={s.wrapper}>
                 <div className={s.row}>
                     <div className={s.logo}>Night Dream</div>
-                    <div>{props.auth.data.login} {props.auth.data.id}</div>
+                    <NavLink className={s.login} to='/login'>{props.auth.data.login} ID:{props.auth.data.id}</NavLink>
                 </div>
             </div>
         </header>

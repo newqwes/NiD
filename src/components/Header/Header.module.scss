@@ -16,7 +16,6 @@
     grid-template-columns: 300px 300px;
     justify-content: space-between;
     padding-top: 6px;
-    @include font(1.8rem, bold, 0.1rem, 2.2rem);
     color: $color_text_wh;
 }
 .logo {
@@ -74,5 +73,16 @@
     .row {
         display: grid;
         grid-template-columns: 1fr;
+    }
+}
+
+.login {
+    transition: .3s ease;
+    align-self: center;
+    justify-self: center;
+    @include font(2rem, 400, 0.1rem, 2.4rem);
+    color: $color_text_wh;
+    &:hover {
+    color: rgb(227, 240, 255);
     }
 }
