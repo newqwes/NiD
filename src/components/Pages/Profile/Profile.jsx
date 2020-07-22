@@ -20,7 +20,8 @@ const Profile = (props) => {
                         </div>
                         <div className={s.aboutWrapper}>
                             <div className={s.aboutWrapper__userName}>{props.userProfile.fullName}</div>
-                            <div className={s.aboutWrapper__description}><span className={s.span}>Обо мне: </span><Status status={'props.userProfile.aboutMe'}/> </div>
+                            <div className={s.aboutWrapper__description}><span className={s.span}>Обо мне: </span>{props.userProfile.aboutMe}</div>
+                            <div className={s.aboutWrapper__description}><span className={s.span}>Статус: </span><Status userStatus={props.userStatus}/> </div>
                         </div>
                         <div className={s.isLookJobWrapper}>
                             <div className={s.isLookJobWrapper__bool}><span className={s.span}>Ищу работу: </span>{props.userProfile.lookingForAJob ? 'Да' : 'Нет'}</div>

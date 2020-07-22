@@ -1,4 +1,4 @@
-import { addPost, onChangePostTextarea, setUserProfile, getUserProfile } from '../../../redux/profile-reducer';
+import { addPost, onChangePostTextarea, getUserProfile } from '../../../redux/profile-reducer';
 import { connect } from 'react-redux';
 import Profile from './Profile';
 import React from 'react'
@@ -10,9 +10,6 @@ class ProfileContainer extends React.Component {
     componentDidMount() {
         this.props.getUserProfile(this.props.match.params.userId);
     }
-    componentWillUnmount() {
-        this.props.setUserProfile(null)
-    }
 
     render() {
         return <Profile {...this.props} />
@@ -23,12 +20,13 @@ const mapStateToProps = state => {
     return {
         postData: state.profilePage.postData,
         postTextarea: state.profilePage.postTextarea,
-        userProfile: state.profilePage.userProfile
+        userProfile: state.profilePage.userProfile,
+        userStatus: state.profilePage.userStatus
 
     }
 }
 
 export default compose(
-    connect(mapStateToProps, { onChangePostTextarea, addPost, setUserProfile, getUserProfile }),
+    connect(mapStateToProps, { onChangePostTextarea, addPost, getUserProfile }),
     withRouter,
     withAuthRedirect)(ProfileContainer)

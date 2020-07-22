@@ -19,16 +19,6 @@ export const userAPI = {
             return respons.data
         })
     },
-    getOwnProfile() {
-        return instance.get(`auth/me`).then(respons => {
-            return respons.data
-        })
-    },
-    getUserProfile(userUrlId) {
-        return instance.get(`profile/` + userUrlId).then(respons => {
-            return respons.data
-        })
-    },
     deleteUserFollow(id) {
         return instance.delete(`follow/${id}`).then(respons => {
             return respons.data
@@ -41,3 +31,20 @@ export const userAPI = {
     }
 }
 
+export const profileAPI = {
+    getOwnProfile() {
+        return instance.get(`auth/me`).then(respons => {
+            return respons.data
+        })
+    },
+    getUserProfile(userUrlId) {
+        return instance.get(`profile/` + userUrlId).then(respons => {
+            return respons.data
+        })
+    },
+    getUserStatus(userUrlId) {
+        return instance.get(`profile/status/` + userUrlId).then(respons => {
+            return respons.data
+        })
+    }
+}

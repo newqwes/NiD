@@ -1,8 +1,7 @@
-import { userAPI } from "../api/api";
+import { profileAPI } from "../api/api";
 
 const ADD_NEW_POST = "ADD-NEW-POST";
 const CHANGE_POST_TEXTAREA = "CHANGE-POST-TEXTAREA";
-const SET_USER_PROFILE = "SET_USER_PROFILE";
 
 let inicialState = {
     postData: [
@@ -14,7 +13,8 @@ let inicialState = {
         name: "Назар", avatar: "https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png"
     },
     postTextarea: "",
-    userProfile: null
+    userProfile: null,
+    userStatus: null
 }
 const profilePageReducer = (state = inicialState, action) => {
     switch (action.type) {
@@ -33,7 +33,7 @@ const profilePageReducer = (state = inicialState, action) => {
                     id: idNumberAdd,
                     avatar: state.ownInformation.avatar,
                     name: `${state.ownInformation.name}`,
-                    dateTime: `${date.toLocaleString("ru", options)}`, //просто смотрю какое сообщение выводится по количеству можно просто оставить state.ownInformation.name
+                    dateTime: `${date.toLocaleString("ru", options)}`,
                     postText: state.postTextarea
                 }
                 return {
@@ -43,7 +43,6 @@ const profilePageReducer = (state = inicialState, action) => {
                 }
             }
         case CHANGE_POST_TEXTAREA: return { ...state, postTextarea: action.textareaValue };
-        case SET_USER_PROFILE: return { ...state, userProfile: action.userProfileData };
 
         default: return state;
     }
@@ -51,14 +50,16 @@ const profilePageReducer = (state = inicialState, action) => {
 
 export const addPost = () => ({ type: ADD_NEW_POST });
 export const onChangePostTextarea = (textareaValue) => ({ type: CHANGE_POST_TEXTAREA, textareaValue });
-export const setUserProfile = (userProfileData) => ({ type: SET_USER_PROFILE, userProfileData });
 
 export const getUserProfile = (userUrlId) => (dispatch) => {
         if (!userUrlId) {
             userUrlId = 5632
         }
-        userAPI.getUserProfile(userUrlId).then(data => {
-            dispatch(setUserProfile(data))
+        profileAPI.getUserProfile(userUrlId).then(data => {
+            inicialState.userProfile = data
+        })
+        profileAPI.getUserStatus(userUrlId).then(data => {
+            inicialState.userStatus = data
         })
 }
 
