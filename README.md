@@ -24,7 +24,7 @@ User Interface (UI, React):
                                 <ProfileContainer />} />)
 - components -> ...otherFiles
 
--- otherFiles : XXXContainer.jsx (
+- otherFiles : XXXContainer.jsx (
     class, ----
     componentDidMount(), -----
     render() {JSX ...this.props}, -----
