@@ -4,8 +4,8 @@ import sidebarPageReducer from "./sidebar-reducer";
 import usersPageReducer from "./users-reducer";
 import authReducer from "./auth";
 import thunk from "redux-thunk";
-const { createStore, combineReducers, applyMiddleware } = require("redux");
 
+const { createStore, combineReducers, applyMiddleware } = require("redux");
 let reducers = combineReducers({
     profilePage: profilePageReducer,
     dialogPage: dialogPageReducer,
@@ -16,5 +16,4 @@ let reducers = combineReducers({
 let store = createStore(reducers, applyMiddleware(thunk));
 
 window.store = store;  //console call store.GetState() ....
-
 export default store;
