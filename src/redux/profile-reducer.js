@@ -2,6 +2,8 @@ import { profileAPI } from "../api/api";
 
 const ADD_NEW_POST = "ADD-NEW-POST";
 const CHANGE_POST_TEXTAREA = "CHANGE-POST-TEXTAREA";
+const SET_USER_STATUS = "SET_USER_STATUS";
+const SET_USER_PROFILE = "SET_USER_PROFILE";
 
 let inicialState = {
     postData: [
@@ -14,7 +16,7 @@ let inicialState = {
     },
     postTextarea: "",
     userProfile: null,
-    userStatus: null
+    status: ""
 }
 const profilePageReducer = (state = inicialState, action) => {
     switch (action.type) {
@@ -43,24 +45,35 @@ const profilePageReducer = (state = inicialState, action) => {
                 }
             }
         case CHANGE_POST_TEXTAREA: return { ...state, postTextarea: action.textareaValue };
+        case SET_USER_PROFILE: return { ...state, userProfile: action.userProfile };
+        case SET_USER_STATUS: return { ...state, status: action.status };
 
         default: return state;
     }
 }
 
 export const addPost = () => ({ type: ADD_NEW_POST });
+const setUserStatus = (status) => ({ type: SET_USER_STATUS, status });
+export const setUserProfile = (userProfile) => ({ type: SET_USER_PROFILE, userProfile });
 export const onChangePostTextarea = (textareaValue) => ({ type: CHANGE_POST_TEXTAREA, textareaValue });
 
 export const getUserProfile = (userUrlId) => (dispatch) => {
-        if (!userUrlId) {
-            userUrlId = 5632
-        }
         profileAPI.getUserProfile(userUrlId).then(data => {
-            inicialState.userProfile = data
+            dispatch(setUserProfile(data))
         })
-        profileAPI.getUserStatus(userUrlId).then(data => {
-            inicialState.userStatus = data
-        })
+}
+export const getUserStatus = (userUrlId) => (dispatch) => {
+    profileAPI.getUserStatus(userUrlId).then(data => {
+        dispatch(setUserStatus(data))
+    })
+}
+export const updateUserStatus = (status) => (dispatch) => {
+    profileAPI.updateUserStatus(status).then(respons => {
+        if (respons.data.resultCode === 0) {
+            dispatch(setUserStatus(status))
+        }
+    })
 }
 
 export default profilePageReducer;
+
