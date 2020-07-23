@@ -25,14 +25,14 @@ User Interface (UI, React):
 - components -> ...otherFiles
 
 - otherFiles : XXXContainer.jsx (
-    class, ----
-    componentDidMount(), -----
-    render() {JSX ...this.props}, -----
-    mapStateToProps = state => {
+    1. class, ----
+    2. componentDidMount(), -----
+    3. render() {JSX ...this.props}, -----
+    4. mapStateToProps = state => {
     return {
         usersData: state.usersPage.usersData
     }, -----
-    compose(connect(mapStateToProps, { setUsersPage, getUsers, follow, unfollow }),withAuthRedirect)(UsersContainer), ------
+    5. compose(connect(mapStateToProps, { setUsersPage, getUsers, follow, unfollow }),withAuthRedirect)(UsersContainer), ------
 ),
 XXX.jsx (
     const Users = (props) => {
