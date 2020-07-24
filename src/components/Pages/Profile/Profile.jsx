@@ -2,7 +2,7 @@ import React from 'react'
 import s from './Profile.module.scss'
 import Post from './Post/Post';
 import Preloader from '../../common/Preloader/Preloader';
-import photoUser from '../../../assets/images/hipster.svg';
+import photoUser from '../../../assets/images/hipster.webp';
 import Status from './Status';
 
 const Profile = (props) => {

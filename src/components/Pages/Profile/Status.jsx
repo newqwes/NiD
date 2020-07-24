@@ -13,6 +13,7 @@ export default class Status extends Component {
             isFucus: true
         })
     }
+    
     sendStatus = () => {
         this.setState({
             isFucus: false
