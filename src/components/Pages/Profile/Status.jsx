@@ -13,7 +13,6 @@ export default class Status extends Component {
             isFucus: true
         })
     }
-    
     sendStatus = () => {
         this.setState({
             isFucus: false
@@ -24,6 +23,13 @@ export default class Status extends Component {
         this.setState({
             status: e.currentTarget.value
         })
+    }
+    componentDidUpdate(prevProps, prevState) { // что бы засинхронизировать локал стейт с тем что приходит
+        if(this.state.status !== this.props.status) {
+            this.setState({
+                status: this.props.status
+            })
+        }
     }
     render() {
         return (
