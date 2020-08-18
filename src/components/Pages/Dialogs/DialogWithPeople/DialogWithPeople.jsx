@@ -2,6 +2,13 @@ import React from "react";
 import s from "./DialogWithPeople.module.scss";
 import DialogOwn from "./DialogOwn/DialogOwn";
 import { Field, reduxForm } from "redux-form";
+import { TextareaCostom } from "../../../common/FormsControl/FormsControl";
+import {
+  required,
+  maxLengthCreator,
+} from "../../../../utils/validators/validators";
+
+const maxLength1000 = maxLengthCreator(1000);
 
 const DialogWithPeople = (props) => {
   let dialogOwn = props.dialogData.message.textOwn.map((n) => (
@@ -43,7 +50,8 @@ const AddMessageForm = (props) => {
   return (
     <form className={s.submit} onSubmit={props.handleSubmit}>
       <Field
-        component="textarea"
+        component={TextareaCostom}
+        validate={[required, maxLength1000]}
         name="dialogTextarea"
         placeholder="Введите текст"
       />

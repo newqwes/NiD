@@ -1,6 +1,13 @@
 import React from "react";
 import s from "./Post.module.scss";
 import { reduxForm, Field } from "redux-form";
+import {
+  required,
+  maxLengthCreator,
+} from "../../../../utils/validators/validators";
+import { TextareaCostom } from "../../../common/FormsControl/FormsControl";
+
+const maxLength200 = maxLengthCreator(200);
 
 const Post = (props) => {
   let postDataElements = props.postData.map((n) => (
@@ -38,9 +45,10 @@ const PostForm = (props) => {
     <form className={s.form} onSubmit={props.handleSubmit}>
       <Field
         name="postTextarea"
-        component="textarea"
+        component={TextareaCostom}
+        placeholder="Что у Вас нового?"
         type="text"
-        className={s.textarea}
+        validate={[required, maxLength200]}
       />
       <button className={s.button}>Отправить</button>
     </form>
