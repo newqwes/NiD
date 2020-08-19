@@ -15,7 +15,7 @@ class ProfileContainer extends React.Component {
   componentDidMount() {
     let userId = this.props.match.params.userId; // this.props.match.params.userId получили при помощи withRouter
     if (!userId) {
-      userId = 5632;
+      userId = this.props.authUserId;
     }
     this.props.getUserProfile(userId);
     this.props.getUserStatus(userId);
@@ -38,6 +38,8 @@ const mapStateToProps = (state) => {
     postTextarea: state.profilePage.postTextarea,
     userProfile: state.profilePage.userProfile,
     status: state.profilePage.status,
+    authUserId: state.auth.id,
+    isAuth: state.auth.isAuth,
   };
 };
 

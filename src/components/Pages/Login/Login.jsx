@@ -5,13 +5,19 @@ import {
   required,
   maxLengthCreator,
 } from "../../../utils/validators/validators";
+import { connect } from "react-redux";
+import { login } from "../../../redux/auth";
+import { Redirect } from "react-router-dom";
 
 const maxLength20 = maxLengthCreator(20);
 
 const Login = (props) => {
   const onSubmit = (formData) => {
-    console.log(formData);
+    props.login(formData.email, formData.password, formData.remembeMe);
   };
+  if (props.isAuth) {
+    return <Redirect to={"/profile"} />;
+  }
   return (
     <>
       <h1>Страница авторизации</h1>
@@ -26,9 +32,9 @@ const LoginForm = (props) => {
         <Field
           component={InputCostom}
           validate={[required, maxLength20]}
-          name={"login"}
+          name={"email"}
           type="text"
-          placeholder={"login"}
+          placeholder={"email"}
         />
       </div>
       <div>
@@ -44,6 +50,7 @@ const LoginForm = (props) => {
         <Field name={"remembeMe"} component={"input"} type={"checkbox"} />
         Remembe me
       </div>
+      {props.error && <div>{props.error}</div>}
       <div>
         <button>Login</button>
       </div>
@@ -51,4 +58,9 @@ const LoginForm = (props) => {
   );
 };
 const LoginReduxForm = reduxForm({ form: "login" })(LoginForm);
-export default Login;
+
+const mapStateToProps = (state) => ({
+  isAuth: state.auth.isAuth,
+});
+
+export default connect(mapStateToProps, { login })(Login);
