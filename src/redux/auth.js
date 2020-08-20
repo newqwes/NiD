@@ -27,7 +27,7 @@ const takeOwnAuth = (id, email, login, isAuth) => ({
 });
 
 export const getOwnProfile = () => (dispatch) => {
-  profileAPI.getOwnProfile().then((data) => {
+  return profileAPI.getOwnProfile().then((data) => {
     if (data.resultCode === 0) {
       let { id, email, login } = data.data;
       dispatch(takeOwnAuth(id, email, login, true));
