@@ -94,12 +94,11 @@
     grid-area: contactWrapper;
 }
 .aboutWrapper__userName {
-    @include font(1.6rem, 600, 0.1, 1.8rem);
-    padding-bottom: 10px;
+    @include font(2.4rem, 500, 0.1, 3rem);
+    text-transform: uppercase;
 }
 .span {
     color: #828282;
-    padding: 10px;
     @include font(1.2rem, 400, 0.1, 1.8rem);
 }
 .contactWrapper {
@@ -119,6 +118,9 @@
 }
 .spanContainerStatus {
     transition: 0.3s ease;
+    cursor: pointer;
+    color: #1a1919;
+    margin: 15px 0;
 }
 .aboutWrapper__description {
     padding-bottom: 10px;

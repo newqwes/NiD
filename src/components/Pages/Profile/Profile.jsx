@@ -3,7 +3,7 @@ import s from "./Profile.module.scss";
 import Post from "./Post/Post";
 import Preloader from "../../common/Preloader/Preloader";
 import photoUser from "../../../assets/images/hipster.webp";
-import Status from "./Status";
+import { Status } from "./Status";
 
 const Profile = (props) => {
   if (!props.userProfile) {
@@ -30,15 +30,14 @@ const Profile = (props) => {
                 {props.userProfile.fullName}
               </div>
               <div className={s.aboutWrapper__description}>
-                <span className={s.span}>Обо мне: </span>
-                {props.userProfile.aboutMe}
-              </div>
-              <div className={s.aboutWrapper__description}>
-                <span className={s.span}>Статус: </span>
                 <Status
                   status={props.status}
                   updateUserStatus={props.updateUserStatus}
                 />
+              </div>
+              <div className={s.aboutWrapper__description}>
+                <span className={s.span}>Обо мне: </span>
+                {props.userProfile.aboutMe}
               </div>
             </div>
             <div className={s.isLookJobWrapper}>

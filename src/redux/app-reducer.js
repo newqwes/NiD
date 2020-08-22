@@ -1,4 +1,3 @@
-import { profileAPI } from "../api/api";
 import { getOwnProfile } from "./auth";
 
 const INITIALIZED_SUCCESS = "INITIALIZED_SUCCESS";
