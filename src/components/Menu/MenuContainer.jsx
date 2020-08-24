@@ -1,26 +1,22 @@
-import Menu from './Menu'
-import { connect } from 'react-redux'
-import { addNewTime, getRates } from '../../redux/sidebar-reducer';
-import React from 'react';
-import { compose } from 'redux';
-
-const mapStateToProps = state => {
-    return {
-        menuItemData: state.menuSideBar.menuItemData,
-        exchangeRate: state.menuSideBar.exchangeRate,
-        whatTimeNow: state.menuSideBar.whatTimeNow,
-        isAuth: state.auth.isAuth
-    }
-}
+import Menu from "./Menu";
+import { connect } from "react-redux";
+import { getRates } from "../../redux/sidebar-reducer";
+import React from "react";
+import { compose } from "redux";
 
 class MenuContainer extends React.Component {
-    componentDidMount() {
-        this.props.getRates();
-        setInterval(() => this.props.addNewTime() , 1000);
-    }
-    render() {
-        return <Menu {...this.props} />
-    }
+  componentDidMount() {
+    this.props.getRates();
+  }
+  render() {
+    return <Menu {...this.props} />;
+  }
 }
-
-export default compose(connect(mapStateToProps, {addNewTime, getRates}))(MenuContainer)
+const mapStateToProps = (state) => {
+  return {
+    menuItemData: state.menuSideBar.menuItemData,
+    exchangeRate: state.menuSideBar.exchangeRate,
+    isAuth: state.auth.isAuth,
+  };
+};
+export default compose(connect(mapStateToProps, { getRates }))(MenuContainer);

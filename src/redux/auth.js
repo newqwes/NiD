@@ -26,32 +26,30 @@ const takeOwnAuth = (id, email, login, isAuth) => ({
   payload: { id, email, login, isAuth },
 });
 
-export const getOwnProfile = () => (dispatch) => {
-  return profileAPI.getOwnProfile().then((data) => {
-    if (data.resultCode === 0) {
-      let { id, email, login } = data.data;
-      dispatch(takeOwnAuth(id, email, login, true));
-    }
-  });
+export const getOwnProfile = () => async (dispatch) => {
+  // !!!здесь был return но убрал нужен скорее всего что бы возвращал ответ от диспатч, пока тещу
+  let data = await profileAPI.getOwnProfile();
+  if (data.resultCode === 0) {
+    let { id, email, login } = data.data;
+    dispatch(takeOwnAuth(id, email, login, true));
+  }
 };
-export const login = (email, password, rememberMe) => (dispatch) => {
-  authAPI.login(email, password, rememberMe).then((data) => {
-    if (data.resultCode === 0) {
-      dispatch(getOwnProfile());
-    } else {
-      dispatch(
-        stopSubmit("login", {
-          _error: data.messages[0] || "Some Error",
-        })
-      );
-    }
-  });
+export const login = (email, password, rememberMe) => async (dispatch) => {
+  let data = await authAPI.login(email, password, rememberMe);
+  if (data.resultCode === 0) {
+    dispatch(getOwnProfile());
+  } else {
+    dispatch(
+      stopSubmit("login", {
+        _error: data.messages[0] || "Some Error",
+      })
+    );
+  }
 };
-export const logout = () => (dispatch) => {
-  authAPI.logout().then((data) => {
-    if (data.resultCode === 0) {
-      dispatch(takeOwnAuth(null, null, null, false));
-    }
-  });
+export const logout = () => async (dispatch) => {
+  let data = await authAPI.logout();
+  if (data.resultCode === 0) {
+    dispatch(takeOwnAuth(null, null, null, false));
+  }
 };
 export default authReducer;
