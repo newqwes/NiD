@@ -4,6 +4,7 @@
     display: grid;
     grid-gap: 15px 0;
 }
+
 .userContainer {
     display: grid;
     background-color: $color_text_wh;
@@ -17,36 +18,44 @@
         "avatar fullName fullName . country"
         "subButton status status . city";
 }
+
 .imgAvatar {
     height: 60px;
     width: 60px;
 }
+
 .avatarWrapper {
     grid-area: avatar;
     text-align-last: center;
 }
+
 .subscribeButtonWrapper {
     grid-area: subButton;
     text-align-last: center;
 }
+
 .fullNameWrapper {
     grid-area: fullName;
     text-align-last: left;
 }
+
 .statusWrapper {
     grid-area: status;
     text-align-last: left;
 }
+
 .country {
     grid-area: country;
     @include font(1.3rem, 600, 0.1, 1.8rem);
 }
+
 .city {
     grid-area: city;
     @include font(1.3rem, 600, 0.1, 1.8rem);
 }
+
 .subscribeButtonWrapper {
-    button{
+    button {
         transition: 0.3s ease;
         color: $color_text_wh;
         border: none;
@@ -54,24 +63,33 @@
         width: 65%;
         border-radius: 3px;
         cursor: pointer;
-        &:active, &:focus {
+
+        &:active,
+        &:focus {
             outline: none;
         }
+
         &:disabled {
             opacity: 0.5;
             cursor: wait;
         }
 
     }
+
     .unSubscribeButton {
         background-color: rgb(204, 66, 66);
-        &:active, &:hover {
+
+        &:active,
+        &:hover {
             background-color: rgba(204, 66, 66, 0.897);
         }
     }
+
     .subscribeButton {
         background-color: $color_primary;
-        &:active, &:hover {
+
+        &:active,
+        &:hover {
             background-color: #4a8da8e5;
         }
     }
@@ -82,37 +100,29 @@
     .statusWrapper {
         display: none;
     }
+
     .userContainer {
         grid-template-columns: repeat(3, 1fr);
         grid-template-areas:
             "avatar fullName ."
             "subButton country city";
     }
-    .subscribeButtonWrapper > button {
+
+    .subscribeButtonWrapper>button {
         width: 100%;
     }
+
     .usersSection {
         grid-gap: 10px;
         padding: 0 10px;
     }
-}
-.usersPageButton_wrapper {
-    text-align: center;
-}
-.usersPageButton {
-    @include font(1.8rem, 600, 0.2, 2.5rem);
-    cursor: pointer;
-    padding: 0 10px;
-    color: $color_text_standart;
-}
-.usersPageButton_active {
-    color: $color_primary;
 }
 
 .nameLink {
     text-decoration: none;
     color: $color_text_standart;
     transition: .2s ease;
+
     &:hover {
         color: $color_primary;
     }

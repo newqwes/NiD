@@ -21,21 +21,10 @@ class UsersContainer extends React.Component {
   };
 
   render() {
-    let buttonsUsersPage = this.props.totalAmountUsers / this.props.usersOnPage;
-    let pages = [];
-    for (let i = 1; i <= buttonsUsersPage; i++) {
-      if (pages.length < 21) {
-        pages.push(i);
-      }
-    }
     return (
       <>
         {this.props.isUploaded ? (
-          <Users
-            {...this.props}
-            pages={pages}
-            newSelectedPage={this.newSelectedPage}
-          />
+          <Users {...this.props} newSelectedPage={this.newSelectedPage} />
         ) : (
           <Preloader />
         )}

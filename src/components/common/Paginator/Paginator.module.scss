@@ -1,0 +1,16 @@
+.paginator {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(12, 1fr);
+}
+.pageNumber {
+  text-align: center;
+  cursor: pointer;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.pageNumber.selectedPage {
+  font-weight: bold;
+  border-color: black;
+}

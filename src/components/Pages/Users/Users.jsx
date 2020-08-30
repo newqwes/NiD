@@ -2,6 +2,7 @@ import React from "react";
 import s from "./Users.module.scss";
 import photoUser from "../../../assets/images/hipster.webp";
 import { NavLink } from "react-router-dom";
+import Paginator from "../../common/Paginator/Paginator";
 
 const Users = (props) => {
   return (
@@ -52,20 +53,12 @@ const Users = (props) => {
           </div>
         );
       })}
-      <div className={s.usersPageButton_wrapper}>
-        {props.pages.map((n) => {
-          return (
-            <span
-              className={`${s.usersPageButton} ${
-                props.currentPageUsers === n && s.usersPageButton_active
-              }`}
-              onClick={(e) => props.newSelectedPage(n)}
-            >
-              {n}
-            </span>
-          );
-        })}
-      </div>
+      <Paginator
+        totalAmountItems={props.totalAmountUsers}
+        itemsOnPage={props.usersOnPage}
+        currentPageItems={props.currentPageUsers}
+        newSelectedPage={props.newSelectedPage}
+      />
     </section>
   );
 };
