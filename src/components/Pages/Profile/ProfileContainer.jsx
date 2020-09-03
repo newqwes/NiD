@@ -10,27 +10,26 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { withAuthRedirect } from "../../../hoc/withAuthRedirect";
 import { compose } from "redux";
+import { useEffect } from "react";
 
-class ProfileContainer extends React.Component {
-  componentDidMount() {
-    let userId = this.props.match.params.userId; // this.props.match.params.userId получили при помощи withRouter
+const ProfileContainer = (props) => {
+  useEffect(() => {
+    let userId = props.match.params.userId; // props.match.params.userId получили при помощи withRouter
     if (!userId) {
-      userId = this.props.authUserId;
+      userId = props.authUserId;
     }
-    this.props.getUserProfile(userId);
-    this.props.getUserStatus(userId);
-  }
-
-  render() {
-    return (
-      <Profile
-        {...this.props}
-        updateUserStatus={this.props.updateUserStatus}
-        status={this.props.status}
-      />
-    );
-  }
-}
+    props.getUserProfile(userId);
+    props.getUserStatus(userId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.match.params.userId]);
+  return (
+    <Profile
+      {...props}
+      updateUserStatus={props.updateUserStatus}
+      status={props.status}
+    />
+  );
+};
 
 const mapStateToProps = (state) => {
   return {
