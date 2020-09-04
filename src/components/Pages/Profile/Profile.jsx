@@ -22,8 +22,14 @@ const Profile = (props) => {
                     ? props.userProfile.photos.large
                     : photoUser
                 }
-                alt=""
+                alt={props.userProfile.fullName}
               />
+              {props.isYourProfile && (
+                <div className={s.photoWrapper__input}>
+                  <input type="file" name="file" id="file" />
+                  <label for="file">Загрузить фото</label>
+                </div>
+              )}
             </div>
             <div className={s.aboutWrapper}>
               <div className={s.aboutWrapper__userName}>

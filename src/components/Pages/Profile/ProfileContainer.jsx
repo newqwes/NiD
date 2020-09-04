@@ -27,6 +27,7 @@ const ProfileContainer = (props) => {
       {...props}
       updateUserStatus={props.updateUserStatus}
       status={props.status}
+      isYourProfile={!props.match.params.userId}
     />
   );
 };
