@@ -1,17 +1,16 @@
 import Menu from "./Menu";
 import { connect } from "react-redux";
 import { getRates } from "../../redux/sidebar-reducer";
-import React from "react";
+import React, { useEffect } from "react";
 import { compose } from "redux";
 
-class MenuContainer extends React.Component {
-  componentDidMount() {
-    this.props.getRates();
-  }
-  render() {
-    return <Menu {...this.props} />;
-  }
-}
+const MenuContainer = (props) => {
+  useEffect(() => {
+    props.getRates();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  return <Menu {...props} />;
+};
 const mapStateToProps = (state) => {
   return {
     menuItemData: state.menuSideBar.menuItemData,

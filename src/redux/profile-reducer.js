@@ -1,32 +1,30 @@
-import { profileAPI } from "../api/api";
+import {
+  profileAPI
+} from "../api/api";
 
 const ADD_NEW_POST = "ADD-NEW-POST";
 const SET_USER_STATUS = "SET_USER_STATUS";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 
 let inicialState = {
-  postData: [
-    {
+  postData: [{
       id: 0,
       dateTime: "16 июня, 09:32",
-      avatar:
-        "https://cdn.iconscout.com/icon/free/png-64/avatar-373-456325.png",
+      avatar: "https://cdn.iconscout.com/icon/free/png-64/avatar-373-456325.png",
       name: "Аня",
       postText: "Привет",
     },
     {
       id: 1,
       dateTime: "19 июня, 10:54",
-      avatar:
-        "https://cdn3.iconfinder.com/data/icons/avatars-flat/33/woman_9-512.png",
+      avatar: "https://cdn3.iconfinder.com/data/icons/avatars-flat/33/woman_9-512.png",
       name: "Майя",
       postText: "Привет это Майя",
     },
     {
       id: 2,
-      dateTime: "19 июля, 00:56",
-      avatar:
-        "https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/avat-01-512.png",
+      dateTime: "04 сентябрь, 21:04",
+      avatar: "https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/avat-01-512.png",
       name: "Назар",
       postText: "Дата последнего обновления, время поста!",
     },
@@ -63,17 +61,27 @@ const profilePageReducer = (state = inicialState, action) => {
       };
     }
     case SET_USER_PROFILE:
-      return { ...state, userProfile: action.userProfile };
+      return {
+        ...state, userProfile: action.userProfile
+      };
     case SET_USER_STATUS:
-      return { ...state, status: action.status };
+      return {
+        ...state, status: action.status
+      };
 
     default:
       return state;
   }
 };
 
-export const addPost = (postTextarea) => ({ type: ADD_NEW_POST, postTextarea });
-const setUserStatus = (status) => ({ type: SET_USER_STATUS, status });
+export const addPost = (postTextarea) => ({
+  type: ADD_NEW_POST,
+  postTextarea
+});
+const setUserStatus = (status) => ({
+  type: SET_USER_STATUS,
+  status
+});
 export const setUserProfile = (userProfile) => ({
   type: SET_USER_PROFILE,
   userProfile,
