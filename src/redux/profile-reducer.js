@@ -5,6 +5,7 @@ import {
 const ADD_NEW_POST = "ADD-NEW-POST";
 const SET_USER_STATUS = "SET_USER_STATUS";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
+const CHANGE_PHOTO_SUCCESS = "CHANGE_PHOTO_SUCCESS";
 
 let inicialState = {
   postData: [{
@@ -68,6 +69,13 @@ const profilePageReducer = (state = inicialState, action) => {
       return {
         ...state, status: action.status
       };
+    case CHANGE_PHOTO_SUCCESS:
+      return {
+        ...state, userProfile: {
+          ...state.userProfile,
+          photos: action.photos
+        }
+      };
 
     default:
       return state;
@@ -86,6 +94,10 @@ export const setUserProfile = (userProfile) => ({
   type: SET_USER_PROFILE,
   userProfile,
 });
+const changePhotoSuccess = (photos) => ({
+  type: CHANGE_PHOTO_SUCCESS,
+  photos,
+});
 
 export const getUserProfile = (userUrlId) => async (dispatch) => {
   let data = await profileAPI.getUserProfile(userUrlId);
@@ -99,6 +111,12 @@ export const updateUserStatus = (status) => async (dispatch) => {
   let respons = await profileAPI.updateUserStatus(status);
   if (respons.data.resultCode === 0) {
     dispatch(setUserStatus(status));
+  }
+};
+export const changePhoto = (photo) => async (dispatch) => {
+  let respons = await profileAPI.changePhoto(photo);
+  if (respons.data.resultCode === 0) {
+    dispatch(changePhotoSuccess(respons.data.data.photos));
   }
 };
 

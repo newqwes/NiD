@@ -1,4 +1,6 @@
-const { default: Axios } = require("axios");
+const {
+  default: Axios
+} = require("axios");
 
 const instance = Axios.create({
   withCredentials: true,
@@ -17,6 +19,8 @@ export const userAPI = {
     );
   },
   getUsers(usersOnPage, currentPageUsers) {
+
+    debugger;
     return instance
       .get(`users?count=${usersOnPage}&page=${currentPageUsers}`)
       .then((respons) => {
@@ -52,14 +56,25 @@ export const profileAPI = {
     });
   },
   updateUserStatus(status) {
-    return instance.put(`profile/status`, { status });
+    return instance.put(`profile/status`, {
+      status
+    });
+  },
+  changePhoto(photo) {
+    const formatData = new FormData();
+    formatData.append("image", photo)
+    return instance.put(`profile/photo`, formatData);
   },
 };
 
 export const authAPI = {
   login(email, password, rememberMe) {
     return instance
-      .post(`auth/login`, { email, password, rememberMe })
+      .post(`auth/login`, {
+        email,
+        password,
+        rememberMe
+      })
       .then((respons) => {
         return respons.data;
       });

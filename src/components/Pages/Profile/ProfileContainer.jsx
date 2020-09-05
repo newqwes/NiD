@@ -3,6 +3,7 @@ import {
   getUserProfile,
   getUserStatus,
   updateUserStatus,
+  changePhoto,
 } from "../../../redux/profile-reducer";
 import { connect } from "react-redux";
 import Profile from "./Profile";
@@ -28,6 +29,7 @@ const ProfileContainer = (props) => {
       updateUserStatus={props.updateUserStatus}
       status={props.status}
       isYourProfile={!props.match.params.userId}
+      changePhoto={props.changePhoto}
     />
   );
 };
@@ -49,6 +51,7 @@ export default compose(
     getUserProfile,
     getUserStatus,
     updateUserStatus,
+    changePhoto,
   }),
   withRouter,
   withAuthRedirect

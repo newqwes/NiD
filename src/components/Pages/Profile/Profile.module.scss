@@ -3,15 +3,19 @@
 .wrapper {
     background-color: $color_bg_content;
 }
+
 .userProfileWrapper {
     grid-area: userProfileWrapper;
 }
+
 .catalog {
     grid-area: catalog;
 }
+
 .post {
     grid-area: post;
 }
+
 .row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -20,15 +24,18 @@
         "userProfileWrapper userProfileWrapper userProfileWrapper userProfileWrapper"
         "catalog catalog catalog catalog"
         "post post post post";
-    > div {
+
+    >div {
         padding: 10px;
     }
 }
+
 .catalog {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
 }
+
 .imgCatalog {
     width: 170px;
     border-radius: 5px;
@@ -39,11 +46,13 @@
         width: 70px;
         border-radius: 5px;
     }
+
     .catalog {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-gap: 10px;
     }
+
     .row {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -53,7 +62,8 @@
             "userProfileWrapper userProfileWrapper userProfileWrapper"
             "catalog catalog catalog"
             "post post post";
-        > div {
+
+        >div {
             padding: 10px;
             border-radius: 3px;
         }
@@ -70,21 +80,25 @@
         "photoWrapper aboutWrapper aboutWrapper aboutWrapper aboutWrapper"
         "photoWrapper isLookJobWrapper isLookJobWrapper isLookJobWrapper isLookJobWrapper"
         "photoWrapper contactWrapper contactWrapper contactWrapper contactWrapper";
-    > div {
+
+    >div {
         background-color: $color_text_wh;
         padding: 10px;
         border-radius: 3px;
         box-shadow: 0 0 1px #141f2c94;
     }
 }
+
 .photoWrapper {
     grid-area: photoWrapper;
     text-align: center;
+
     img {
         max-width: 200px;
         border-radius: 5px;
     }
 }
+
 .photoWrapper__input {
     input {
         width: 0.1px;
@@ -94,6 +108,7 @@
         position: absolute;
         z-index: -1;
     }
+
     label {
         font-size: 1.25em;
         font-weight: 700;
@@ -101,34 +116,42 @@
         background-color: $color_primary;
         display: inline-block;
         padding: 5px 15px;
-        margin: 10px 0 0 0;
+        margin: 40% 0 0 0;
         border-radius: 10px;
         transition: 0.2s ease;
+
         &:hover {
             background-color: $color_text_standart;
         }
     }
-    input + label {
+
+    input+label {
         cursor: pointer;
     }
 }
+
 .aboutWrapper {
     grid-area: aboutWrapper;
 }
+
 .isLookJobWrapper {
     grid-area: isLookJobWrapper;
 }
+
 .contactWrapper {
     grid-area: contactWrapper;
 }
+
 .aboutWrapper__userName {
     @include font(2.4rem, 500, 0.1, 3rem);
     text-transform: uppercase;
 }
+
 .span {
     color: #828282;
     @include font(1.2rem, 400, 0.1, 1.8rem);
 }
+
 .contactWrapper {
     div {
         @include font(1.2rem, 400, 0.1, 1.8rem);
@@ -141,15 +164,23 @@
     grid-gap: 20px;
     transition: 0.3s ease;
 }
+
 .spanContainerStatus:hover {
     color: #535353;
 }
+
 .spanContainerStatus {
     transition: 0.3s ease;
     cursor: pointer;
     color: #1a1919;
     margin: 15px 0;
 }
+
 .aboutWrapper__description {
     padding-bottom: 10px;
+}
+
+.aboutWrapper__title {
+    display: grid;
+    grid-template-columns: 7fr 1fr;
 }

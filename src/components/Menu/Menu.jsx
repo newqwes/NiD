@@ -8,10 +8,7 @@ const Menu = (props) => {
     <nav className={s.menu}>
       <div className={s.imgSection}>
         <div className={s.imgContainer}>
-          <img
-            src="https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png"
-            alt=""
-          />
+          <img src={props.avatar} alt="" />
         </div>
         <div className={s.imgTitle}>
           {props.isAuth ? (
