@@ -1,6 +1,9 @@
 import {
   profileAPI
 } from "../api/api";
+import {
+  stopSubmit
+} from "redux-form";
 
 const ADD_NEW_POST = "ADD-NEW-POST";
 const SET_USER_STATUS = "SET_USER_STATUS";
@@ -119,5 +122,16 @@ export const changePhoto = (photo) => async (dispatch) => {
     dispatch(changePhotoSuccess(respons.data.data.photos));
   }
 };
-
+export const changeInfo = (formData) => async (dispatch, getState) => {
+  const userID = getState().auth.id;
+  let respons = await profileAPI.changeInfo(formData);
+  if (respons.data.resultCode === 0) {
+    dispatch(getUserProfile(userID));
+  } else {
+    dispatch(stopSubmit('profile-form', {
+      _error: respons.data.messages[0]
+    }));
+    return Promise.reject(respons.data.messages[0])
+  }
+};
 export default profilePageReducer;

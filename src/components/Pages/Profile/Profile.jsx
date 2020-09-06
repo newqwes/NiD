@@ -12,8 +12,9 @@ const Profile = (props) => {
     return <Preloader />;
   }
   const onSubmit = (formData) => {
-    console.log(formData);
-    setEditMode(false);
+    props.changeInfo(formData).then(() => {
+      setEditMode(false);
+    });
   };
   const onChangePhoto = (e) => {
     if (e.target.files.length) {
@@ -28,9 +29,9 @@ const Profile = (props) => {
             <ProfileInfoForm
               onSubmit={onSubmit}
               {...props}
-              editMode={editMode}
               setEditMode={setEditMode}
               onChangePhoto={onChangePhoto}
+              initialValues={props.userProfile}
             />
           ) : (
             <ProfileInfo {...props} editMode={editMode} setEditMode={setEditMode} onChangePhoto={onChangePhoto} />

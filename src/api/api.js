@@ -64,6 +64,9 @@ export const profileAPI = {
     formatData.append("image", photo)
     return instance.put(`profile/photo`, formatData);
   },
+  changeInfo(formData) {
+    return instance.put(`profile`, formData);
+  },
 };
 
 export const authAPI = {

@@ -1,7 +1,6 @@
 import React from "react";
 import s from "./Profile.module.scss";
 import photoUser from "../../../assets/images/hipster.webp";
-import { Status } from "./Status";
 import { InputCostom, TextareaCostom } from "../../common/FormsControl/FormsControl";
 import { reduxForm, Field } from "redux-form";
 
@@ -19,30 +18,30 @@ const InfoForm = (props) => {
       </div>
       <div className={s.aboutWrapper}>
         <div className={s.aboutWrapper__title}>
-          <Field component={InputCostom} name={"userName"} type="text" placeholder={""} />
-          <button className={s.aboutWrapper__title}>Сохранить</button>
-        </div>
-
-        <div className={s.aboutWrapper__description}>
-          <Status status={props.status} updateUserStatus={props.updateUserStatus} />
+          <span className={s.span}>Изменить имя: </span>
+          <Field component={InputCostom} name="fullName" type="text" />
+          <span className={s.span}>О себе: </span>
+          <Field component={TextareaCostom} name="aboutMe" type="text" />
+          <button className={s.aboutWrapper__button}>Сохранить</button>
+          {!!props.error && props.error}
         </div>
       </div>
       <div className={s.isLookJobWrapper}>
         <div className={s.isLookJobWrapper__bool}>
           <span className={s.span}>Ищу работу: </span>
-          <Field component={InputCostom} name={"lookingForAJob"} type="checkbox" />
-          <Field component={TextareaCostom} name={"lookingForAJobDescription"} type="text" placeholder={""} />
+          <Field component={InputCostom} name="lookingForAJob" type="checkbox" />
         </div>
         <div className={s.isLookJobWrapper__description}>
           <span className={s.span}>Описания поиска работы: </span>
-          {props.userProfile.lookingForAJobDescription}
+          <Field component={TextareaCostom} name="lookingForAJobDescription" type="text" />
         </div>
       </div>
       <div className={s.contactWrapper}>
         {Object.keys(props.userProfile.contacts).map((key) => {
           return (
             <div>
-              {key}: {props.userProfile.contacts[key]}
+              <span className={s.span}>{key}: </span>
+              <Field component={InputCostom} name={"contacts." + key} placeholder={key} type="text" />
             </div>
           );
         })}

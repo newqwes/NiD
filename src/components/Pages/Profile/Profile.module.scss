@@ -4,10 +4,6 @@
     background-color: $color_bg_content;
 }
 
-.userProfileWrapper {
-    grid-area: userProfileWrapper;
-}
-
 .catalog {
     grid-area: catalog;
 }
@@ -25,7 +21,7 @@
         "catalog catalog catalog catalog"
         "post post post post";
 
-    >div {
+    > div {
         padding: 0 10px 10px 10px;
     }
 }
@@ -63,7 +59,7 @@
             "catalog catalog catalog"
             "post post post";
 
-        >div {
+        > div {
             padding: 10px;
             border-radius: 3px;
         }
@@ -71,6 +67,8 @@
 }
 
 .userProfileWrapper {
+    padding: 0 10px 10px;
+    grid-area: userProfileWrapper;
     display: grid;
     width: 100%;
     grid-template-columns: repeat(5, 1fr);
@@ -81,7 +79,7 @@
         "photoWrapper isLookJobWrapper isLookJobWrapper isLookJobWrapper isLookJobWrapper"
         "photoWrapper contactWrapper contactWrapper contactWrapper contactWrapper";
 
-    >div {
+    > div {
         background-color: $color_text_wh;
         padding: 10px;
         border-radius: 3px;
@@ -125,7 +123,7 @@
         }
     }
 
-    input+label {
+    input + label {
         cursor: pointer;
     }
 }
@@ -149,6 +147,7 @@
 
 .span {
     color: #828282;
+    margin-right: 10px;
     @include font(1.2rem, 400, 0.1, 1.8rem);
 }
 
@@ -176,8 +175,14 @@
     margin: 15px 0;
 }
 
-
 .aboutWrapper__title {
     display: grid;
-    grid-template-columns: 7fr 1fr;
+    justify-content: space-between;
+    grid-auto-flow: column dense;
+}
+.aboutWrapper__description {
+    margin-top: 20px;
+}
+.aboutWrapper__button {
+    max-width: 120px;
 }
