@@ -1,26 +1,30 @@
 @import "./style/style_addictions.scss";
+
 .section {
     background-color: $color_bg_content;
     padding-top: 50px;
 }
+
 .wrapper {
     width: $page__width;
     margin: 0 auto;
 }
+
 .content {
     grid-area: content;
 }
+
 .row {
     display: grid;
-    grid-template-columns: 1fr 4fr;
-    grid-template-areas:
-        ". content content content content";
+    grid-template-columns: 1fr 7fr;
+    grid-template-areas: ". content content content content";
 }
 
 @media (max-width: 414px) {
     .wrapper {
         width: auto;
     }
+
     .row {
         display: grid;
         grid-template-columns: 1fr;

@@ -19,7 +19,6 @@ const App = (props) => {
     props.initializeApp();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   if (!props.isInitialized) {
     return <Preloader />;
   }
@@ -35,6 +34,7 @@ const App = (props) => {
                 path="/Profile/:userId?"
                 render={() => <ProfileContainer />}
               />
+              <Route path="/" exact render={() => <ProfileContainer />} />
               <Route path="/News" render={() => <News />} />
               <Route path="/Chat" render={() => <Chat />} />
               <Route path="/Users" render={() => <UsersContainer />} />

@@ -24,11 +24,12 @@ const Paginator = ({
     <div className={styles.paginator}>
       {portionNumber > 1 && (
         <button
+          className={styles.buttonLeft}
           onClick={() => {
             setPortionNumber(portionNumber - 1);
           }}
         >
-          PREV
+          Предыдущиее
         </button>
       )}
 
@@ -56,11 +57,12 @@ const Paginator = ({
         })}
       {portionCount > portionNumber && (
         <button
+          className={styles.buttonRight}
           onClick={() => {
             setPortionNumber(portionNumber + 1);
           }}
         >
-          NEXT
+          Следующие
         </button>
       )}
     </div>

@@ -20,7 +20,6 @@ export const userAPI = {
   },
   getUsers(usersOnPage, currentPageUsers) {
 
-    debugger;
     return instance
       .get(`users?count=${usersOnPage}&page=${currentPageUsers}`)
       .then((respons) => {
