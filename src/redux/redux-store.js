@@ -4,15 +4,18 @@ import sidebarPageReducer from "./sidebar-reducer";
 import usersPageReducer from "./users-reducer";
 import authReducer from "./auth";
 import thunk from "redux-thunk";
-import { reducer as formReducer } from "redux-form";
+import {
+  reducer as formReducer
+} from "redux-form";
 import appReducer from "./app-reducer";
-
 const {
   createStore,
   combineReducers,
   applyMiddleware,
   compose,
 } = require("redux");
+
+
 let reducers = combineReducers({
   profilePage: profilePageReducer,
   dialogPage: dialogPageReducer,
