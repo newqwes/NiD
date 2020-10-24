@@ -1,7 +1,7 @@
-import React from "react";
-import s from "./Profile.module.scss";
-import { useState } from "react";
-import { useEffect } from "react";
+import React from 'react';
+import s from './Profile.module.scss';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 export const Status = (props) => {
   const [focus, setFocus] = useState(false);
@@ -34,7 +34,7 @@ export const Status = (props) => {
         </div>
       ) : (
         <span onClick={focusStatus} className={s.spanContainerStatus}>
-          {props.status || "Нет статуса"}
+          {props.status || 'Нет статуса'}
         </span>
       )}
     </span>
