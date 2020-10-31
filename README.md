@@ -1,6 +1,6 @@
 # NiD
 ## Sicial-network!
-### Open [site.refit.by](http://site.refit.by/)
+### Open [NiD](https://nid.ashyrov.ru/)
 
 Create with react & redux.
 ________________
