@@ -1,4 +1,4 @@
-@import "./../../style/style_addictions";
+@import './../../style/style_addictions';
 
 .header {
     background-color: $color_primary;
@@ -13,15 +13,18 @@
 }
 .row {
     display: grid;
-    grid-template-columns: 300px 300px;
+    grid-template-columns: 1fr 1fr;
     justify-content: space-between;
     padding-top: 6px;
     color: $color_text_wh;
+    &:last-child {
+        text-align: right;
+    }
 }
 .logo {
     align-self: center;
     justify-self: center;
-    font-family: "MuseoModerno", cursive;
+    font-family: 'MuseoModerno', cursive;
     @include font(2.6rem, 400, 0.1rem, 3rem);
     color: $color_text_wh;
     border-radius: 50%;
@@ -29,6 +32,7 @@
     &:hover {
         animation: shadow-pulse 1s infinite;
     }
+    margin-right: auto;
 }
 
 .title {
@@ -77,12 +81,13 @@
 }
 
 .login {
-    transition: .3s ease;
+    margin-right: 5%;
+    transition: 0.3s ease;
     align-self: center;
     justify-self: center;
-    @include font(2rem, 400, 0.1rem, 2.4rem);
+    @include font(1.6rem, 400, 0.1rem, 2.4rem);
     color: $color_text_wh;
     &:hover {
-    color: rgb(227, 240, 255);
+        color: rgb(227, 240, 255);
     }
 }
