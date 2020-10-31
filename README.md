@@ -1,6 +1,6 @@
 # NiD
 ## Sicial-network!
-### Open [http://nid.ashyrov.ru/](http://nid.ashyrov.ru/)
+### Open [NiD](https://nid.ashyrov.ru/)
 
 Create with react & redux.
 ________________
