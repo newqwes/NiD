@@ -1,18 +1,21 @@
-import React from "react";
-import s from "./Profile.module.scss";
-import photoUser from "../../../assets/images/hipster.webp";
-import { Status } from "./Status";
-import { Link } from "react-router-dom";
+import React from 'react';
+import s from './Profile.module.scss';
+import photoUser from '../../../assets/images/hipster.webp';
+import { Status } from './Status';
+import { Link } from 'react-router-dom';
 
 const ProfileInfo = (props) => {
   return (
     <div className={s.userProfileWrapper}>
       <div className={s.photoWrapper}>
-        <img src={props.userProfile.photos.large ? props.userProfile.photos.large : photoUser} alt={props.userProfile.fullName} />
+        <img
+          src={props.userProfile.photos.large ? props.userProfile.photos.large : photoUser}
+          alt={props.userProfile.fullName}
+        />
         {props.isYourProfile && (
           <div className={s.photoWrapper__input}>
-            <input type="file" name="file" id="file" onChange={props.onChangePhoto} />
-            <label for="file">Загрузить фото</label>
+            <input type='file' name='file' id='file' onChange={props.onChangePhoto} />
+            <label for='file'>Загрузить фото</label>
           </div>
         )}
       </div>
@@ -34,7 +37,7 @@ const ProfileInfo = (props) => {
       <div className={s.isLookJobWrapper}>
         <div className={s.isLookJobWrapper__bool}>
           <span className={s.span}>Ищу работу: </span>
-          {props.userProfile.lookingForAJob ? "Да" : "Нет"}
+          {props.userProfile.lookingForAJob ? 'Да' : 'Нет'}
         </div>
         {!!props.userProfile.lookingForAJob && (
           <div className={s.isLookJobWrapper__description}>
@@ -48,7 +51,7 @@ const ProfileInfo = (props) => {
           return (
             <div key={key}>
               <span className={s.span}>{key}: </span>
-              <Link href={props.userProfile.contacts[key]} target="_blank">
+              <Link href={props.userProfile.contacts[key]} target='_blank'>
                 {props.userProfile.contacts[key]}
               </Link>
             </div>
