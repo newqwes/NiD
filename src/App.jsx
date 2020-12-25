@@ -16,40 +16,40 @@ import Preloader from './components/common/Preloader/Preloader';
 import { useEffect } from 'react';
 
 const App = (props) => {
-    useEffect(() => {
-        props.initializeApp();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-    if (!props.isInitialized) {
-        return <Preloader />;
-    }
-    return (
-        <>
-            <HeaderContainer />
-            <section className={s.section}>
-                <div className={s.wrapper}>
-                    <div className={s.row}>
-                        <MenuContainer />
-                        <div className={s.content}>
-                            <Route path="/Profile/:userId?" render={() => <ProfileContainer />} />
-                            <Route path="/" exact render={() => <ProfileContainer />} />
-                            <Route path="/News" render={() => <News />} />
-                            <Route path="/Chat" render={() => <Chat />} />
-                            <Route path="/Users" render={() => <UsersContainer />} />
-                            <Route path="/Dialogs" render={() => <DialogsContainer />} />
-                            <Route path="/login" render={() => <Login />} />
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </>
-    );
+  useEffect(() => {
+    props.initializeApp();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  if (!props.isInitialized) {
+    return <Preloader />;
+  }
+  return (
+    <>
+      <HeaderContainer />
+      <section className={s.section}>
+        <div className={s.wrapper}>
+          <div className={s.row}>
+            <MenuContainer />
+            <div className={s.content}>
+              <Route path='/Profile/:userId?' render={() => <ProfileContainer />} />
+              <Route path='/' exact render={() => <ProfileContainer />} />
+              <Route path='/News' render={() => <News />} />
+              <Route path='/Chat' render={() => <Chat />} />
+              <Route path='/Users' render={() => <UsersContainer />} />
+              <Route path='/Dialogs' render={() => <DialogsContainer />} />
+              <Route path='/login' render={() => <Login />} />
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
 };
 
 const mapStateToProps = (state) => {
-    return {
-        isInitialized: state.app.isInitialized,
-    };
+  return {
+    isInitialized: state.app.isInitialized,
+  };
 };
 
 export default compose(withRouter, connect(mapStateToProps, { initializeApp }))(App);
