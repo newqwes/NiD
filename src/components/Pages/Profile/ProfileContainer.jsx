@@ -5,21 +5,23 @@ import {
   updateUserStatus,
   changePhoto,
   changeInfo,
-} from "../../../redux/profile-reducer";
-import { connect } from "react-redux";
-import Profile from "./Profile";
-import React from "react";
-import { withRouter } from "react-router-dom";
-import { withAuthRedirect } from "../../../hoc/withAuthRedirect";
-import { compose } from "redux";
-import { useEffect } from "react";
+} from '../../../redux/profile-reducer';
+import { connect } from 'react-redux';
+import Profile from './Profile';
+import React from 'react';
+import { withRouter } from 'react-router-dom';
+import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
+import { compose } from 'redux';
+import { useEffect } from 'react';
 
 const ProfileContainer = (props) => {
   useEffect(() => {
-    let userId = props.match.params.userId; // props.match.params.userId получили при помощи withRouter
+    let userId = props.match.params.userId;
+
     if (!userId) {
       userId = props.authUserId;
     }
+
     props.getUserProfile(userId);
     props.getUserStatus(userId);
     // eslint-disable-next-line react-hooks/exhaustive-deps

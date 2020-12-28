@@ -1,63 +1,58 @@
 import Axios from 'axios';
+import instance from './instance';
 
-const instance = Axios.create({
-  withCredentials: true,
-  headers: {
-    'api-key': 'fa681ade-6815-4f8e-ba9c-b16a714d0eb1',
-  },
-  baseURL: 'https://social-network.samuraijs.com/api/1.0/',
-});
+const extractData = (respons) => respons.data;
 
 export const userAPI = {
-  getRates() {
-    return Axios.get('https://www.nbrb.by/api/exrates/rates/145').then((respons) => {
-      return respons.data.Cur_OfficialRate;
-    });
+  getRates: async () => {
+    const respons = await Axios.get('https://www.nbrb.by/api/exrates/rates/145');
+    const rates = respons.data.Cur_OfficialRate;
+
+    return rates;
   },
 
-  getUsers(usersOnPage, currentPageUsers) {
-    return instance.get(`users?count=${usersOnPage}&page=${currentPageUsers}`).then((respons) => {
-      return respons.data;
-    });
+  getUsers: async (usersOnPage, currentPageUsers) => {
+    const respons = await instance.get(`users?count=${usersOnPage}&page=${currentPageUsers}`);
+
+    return extractData(respons);
   },
 
-  deleteUserFollow(id) {
-    return instance.delete(`follow/${id}`).then((respons) => {
-      return respons.data;
-    });
+  deleteUserFollow: async (id) => {
+    const respons = await instance.delete(`follow/${id}`);
+
+    return extractData(respons);
   },
 
-  postUserFollow(id) {
-    return instance.post(`follow/${id}`).then((respons) => {
-      return respons.data;
-    });
+  postUserFollow: async (id) => {
+    const respons = await instance.post(`follow/${id}`);
+
+    return extractData(respons);
   },
 };
 
 export const profileAPI = {
-  getOwnProfile() {
-    return instance.get(`auth/me`).then((respons) => {
-      return respons.data;
-    });
+  getOwnProfile: async () => {
+    const respons = await instance.get(`auth/me`);
+
+    return extractData(respons);
   },
 
-  getUserProfile(userUrlId) {
-    return instance.get(`profile/` + userUrlId).then((respons) => {
-      return respons.data;
-    });
+  getUserProfile: async (userUrlId) => {
+    const respons = await instance.get(`profile/` + userUrlId);
+
+    return extractData(respons);
   },
 
-  getUserStatus(userUrlId) {
-    return instance.get(`profile/status/` + userUrlId).then((respons) => {
-      return respons.data;
-    });
+  getUserStatus: async (userUrlId) => {
+    const respons = await instance.get(`profile/status/` + userUrlId);
+
+    return extractData(respons);
   },
 
-  updateUserStatus(status) {
-    return instance.put(`profile/status`, {
+  updateUserStatus: (status) =>
+    instance.put(`profile/status`, {
       status,
-    });
-  },
+    }),
 
   changePhoto(photo) {
     const formatData = new FormData();
@@ -66,33 +61,33 @@ export const profileAPI = {
     return instance.put(`profile/photo`, formatData);
   },
 
-  changeInfo(formData) {
-    return instance.put(`profile`, formData);
-  },
+  changeInfo: (formData) => instance.put(`profile`, formData),
 };
 
 export const authAPI = {
-  login(email, password, rememberMe) {
-    return instance
-      .post(`auth/login`, {
-        email,
-        password,
-        rememberMe,
-      })
-      .then((respons) => {
-        return respons.data;
-      });
+  login: async (email, password, rememberMe, captcha = null) => {
+    const respons = await instance.post(`auth/login`, {
+      email,
+      password,
+      rememberMe,
+      captcha,
+    });
+
+    return extractData(respons);
   },
 
-  logout() {
-    return instance.delete(`auth/login`).then((respons) => {
-      return respons.data;
-    });
+  logout: async () => {
+    const respons = await instance.delete(`auth/login`);
+
+    return extractData(respons);
   },
 };
 
 export const securityAPI = {
-  getCaptchUrl() {
-    return instance.get('security/get-captcha-url');
+  getCaptchaUrl: async () => {
+    const respons = await instance.get('security/get-captcha-url');
+    const url = respons.data.url;
+    debugger;
+    return url;
   },
 };

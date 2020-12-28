@@ -1,19 +1,16 @@
-import React from "react";
-import s from "./Post.module.scss";
-import { reduxForm, Field } from "redux-form";
-import {
-  required,
-  maxLengthCreator,
-} from "../../../../utils/validators/validators";
-import { TextareaCostom } from "../../../common/FormsControl/FormsControl";
+import React from 'react';
+import s from './Post.module.scss';
+import { reduxForm, Field } from 'redux-form';
+import { required, maxLengthCreator } from '../../../../utils/validators/validators';
+import { TextareaCostom } from '../../../common/FormsControl/FormsControl';
 
 const maxLength200 = maxLengthCreator(200);
 
 const Post = (props) => {
-  let postDataElements = props.postData.map((n) => (
+  const postDataElements = props.postData.map((n) => (
     <div key={n.id} className={s.itemPost}>
       <div className={s.avatarContainer}>
-        <img src={n.avatar} alt="" className={s.avatarImg} />
+        <img src={n.avatar} alt='' className={s.avatarImg} />
       </div>
       <div>
         <div className={s.nameUser}>
@@ -24,7 +21,7 @@ const Post = (props) => {
     </div>
   ));
 
-  let addPost = (values) => {
+  const addPost = (values) => {
     props.addPost(values.postTextarea);
   };
 
@@ -40,19 +37,19 @@ const Post = (props) => {
   );
 };
 
-const PostForm = (props) => {
+const PostForm = ({ handleSubmit }) => {
   return (
-    <form className={s.form} onSubmit={props.handleSubmit}>
+    <form className={s.form} onSubmit={handleSubmit}>
       <Field
-        name="postTextarea"
+        name='postTextarea'
         component={TextareaCostom}
-        placeholder="Что у Вас нового?"
-        type="text"
+        placeholder='Что у Вас нового?'
+        type='text'
         validate={[required, maxLength200]}
       />
       <button className={s.button}>Отправить</button>
     </form>
   );
 };
-const PostReduxForm = reduxForm({ form: "postProfile" })(PostForm);
+const PostReduxForm = reduxForm({ form: 'postProfile' })(PostForm);
 export default Post;

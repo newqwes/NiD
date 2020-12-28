@@ -15,7 +15,7 @@ const ProfileInfo = (props) => {
         {props.isYourProfile && (
           <div className={s.photoWrapper__input}>
             <input type='file' name='file' id='file' onChange={props.onChangePhoto} />
-            <label for='file'>Загрузить фото</label>
+            <label htmlFor='file'>Загрузить фото</label>
           </div>
         )}
       </div>
@@ -51,7 +51,7 @@ const ProfileInfo = (props) => {
           return (
             <div key={key}>
               <span className={s.span}>{key}: </span>
-              <Link href={props.userProfile.contacts[key]} target='_blank'>
+              <Link to={props.userProfile.contacts[key] || ''} target='_blank'>
                 {props.userProfile.contacts[key]}
               </Link>
             </div>
