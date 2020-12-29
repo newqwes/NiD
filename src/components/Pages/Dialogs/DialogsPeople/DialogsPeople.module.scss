@@ -1,54 +1,55 @@
-@import "./../../../../style/style_addictions";
+@import './../../../../style/style_addictions';
+
 .a {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    border-top: 1px $color_border solid;
-    padding: 5px;
-    @include font(1.2rem, bold, 0.05rem, 1.4rem);
-    &:hover {
-        background-color: $color_border;
-    }
-    text-decoration: none;
-    color: $color_text_standart;
-    transition: 0.1s ease;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  border-top: 1px $color_border solid;
+  padding: 5px;
+  @include font(1.2rem, bold, 0.05rem, 1.4rem);
+  &:hover {
+    background-color: $color_border;
+  }
+  text-decoration: none;
+  color: $color_text_standart;
+  transition: 0.1s ease;
 }
 .a:first-child {
-    border-top: none;
+  border-top: none;
 }
 .active {
-    color: $color_text_wh;
+  color: $color_text_wh;
+  background-color: $color_primary;
+  &:hover {
     background-color: $color_primary;
-    &:hover {
-        background-color: $color_primary;
-    }
+  }
 }
 
 .a > img {
-    height: 45px;
-    border-radius: 50%;
-    margin-right: 5px;
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 5px;
 }
 
 @media (max-width: 414px) {
-    .nameDialog {
-        display: none;
-    }
-    .menu {
-        position: fixed;
-        display: grid;
-        grid-template-rows: 50px;
-        bottom: 0px;
-        width: 100%;
-        text-align: center;
-        margin: 0 auto;
-    }
-    .ul {
-        display: grid;
-        grid-template-rows: 50px;
-        grid-template-columns: repeat(3, 1fr);
-        padding: 0;
-    }
-    .ul a {
-        @include font(1.4rem, 700, 0.05rem, 1.4rem);
-    }
+  .nameDialog {
+    display: none;
+  }
+  .menu {
+    position: fixed;
+    display: grid;
+    grid-template-rows: 50px;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .ul {
+    display: grid;
+    grid-template-rows: 50px;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0;
+  }
+  .ul a {
+    @include font(1.4rem, 700, 0.05rem, 1.4rem);
+  }
 }

@@ -1,8 +1,8 @@
-import React from "react";
-import s from "./Users.module.scss";
-import photoUser from "../../../assets/images/hipster.webp";
-import { NavLink } from "react-router-dom";
-import Paginator from "../../common/Paginator/Paginator";
+import React from 'react';
+import s from './Users.module.scss';
+import photoUser from '../../../assets/images/hipster.webp';
+import { NavLink } from 'react-router-dom';
+import Paginator from '../../common/Paginator';
 
 const Users = (props) => {
   return (
@@ -14,7 +14,7 @@ const Users = (props) => {
               <img
                 className={s.imgAvatar}
                 src={n.photos.small != null ? n.photos.small : photoUser}
-                alt=""
+                alt=''
               />
             </div>
             <div className={s.subscribeButtonWrapper}>
@@ -41,15 +41,15 @@ const Users = (props) => {
               )}
             </div>
             <div className={s.fullNameWrapper}>
-              <NavLink to={"/profile/" + n.id} className={s.nameLink}>
+              <NavLink to={'/profile/' + n.id} className={s.nameLink}>
                 <h3>{n.name}</h3>
               </NavLink>
             </div>
             <div className={s.statusWrapper}>
               <p className={s.statusP}>{n.status}</p>
             </div>
-            <div className={s.country}>{"n.location.country"}</div>
-            <div className={s.city}>{"n.location.city"}</div>
+            <div className={s.country}>{'n.location.country'}</div>
+            <div className={s.city}>{'n.location.city'}</div>
           </div>
         );
       })}

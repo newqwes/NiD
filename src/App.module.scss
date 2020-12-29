@@ -1,33 +1,33 @@
-@import "./style/style_addictions.scss";
+@import './style/style_addictions.scss';
 
 .section {
-    background-color: $color_bg_content;
-    padding-top: 50px;
+  background-color: $color_bg_content;
+  padding-top: 50px;
 }
 
 .wrapper {
-    width: $page__width;
-    margin: 0 auto;
+  width: $page__width;
+  margin: 0 auto;
 }
 
 .content {
-    grid-area: content;
+  grid-area: content;
 }
 
 .row {
-    display: grid;
-    grid-template-columns: 1fr 7fr;
-    grid-template-areas: ". content content content content";
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+  grid-template-areas: '. content content content content';
 }
 
 @media (max-width: 414px) {
-    .wrapper {
-        width: auto;
-    }
+  .wrapper {
+    width: auto;
+  }
 
-    .row {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-gap: 10px;
-    }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+  }
 }

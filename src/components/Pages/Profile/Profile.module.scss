@@ -1,188 +1,188 @@
-@import "./../../../style/style_addictions";
+@import './../../../style/style_addictions';
 
 .wrapper {
-    background-color: $color_bg_content;
+  background-color: $color_bg_content;
 }
 
 .catalog {
-    grid-area: catalog;
+  grid-area: catalog;
 }
 
 .post {
-    grid-area: post;
+  grid-area: post;
 }
 
 .row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto;
-    grid-template-areas:
-        "userProfileWrapper userProfileWrapper userProfileWrapper userProfileWrapper"
-        "catalog catalog catalog catalog"
-        "post post post post";
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  grid-template-areas:
+    'userProfileWrapper userProfileWrapper userProfileWrapper userProfileWrapper'
+    'catalog catalog catalog catalog'
+    'post post post post';
 
-    > div {
-        padding: 0 10px 10px 10px;
-    }
+  > div {
+    padding: 0 10px 10px 10px;
+  }
 }
 
 .catalog {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    justify-items: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
 }
 
 .imgCatalog {
-    width: 170px;
-    border-radius: 5px;
+  width: 170px;
+  border-radius: 5px;
 }
 
 @media (max-width: 414px) {
-    .imgCatalog {
-        width: 70px;
-        border-radius: 5px;
-    }
+  .imgCatalog {
+    width: 70px;
+    border-radius: 5px;
+  }
 
-    .catalog {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-gap: 10px;
-    }
-
-    .row {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: auto;
-        grid-gap: 15px;
-        grid-template-areas:
-            "userProfileWrapper userProfileWrapper userProfileWrapper"
-            "catalog catalog catalog"
-            "post post post";
-
-        > div {
-            padding: 10px;
-            border-radius: 3px;
-        }
-    }
-}
-
-.userProfileWrapper {
-    padding: 0 10px 10px;
-    grid-area: userProfileWrapper;
+  .catalog {
     display: grid;
-    width: 100%;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
     grid-gap: 15px;
     grid-template-areas:
-        "photoWrapper aboutWrapper aboutWrapper aboutWrapper aboutWrapper"
-        "photoWrapper isLookJobWrapper isLookJobWrapper isLookJobWrapper isLookJobWrapper"
-        "photoWrapper contactWrapper contactWrapper contactWrapper contactWrapper";
+      'userProfileWrapper userProfileWrapper userProfileWrapper'
+      'catalog catalog catalog'
+      'post post post';
 
     > div {
-        background-color: $color_text_wh;
-        padding: 10px;
-        border-radius: 3px;
-        box-shadow: 0 0 1px #141f2c94;
+      padding: 10px;
+      border-radius: 3px;
     }
+  }
+}
+
+.userProfileWrapper {
+  padding: 0 10px 10px;
+  grid-area: userProfileWrapper;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 15px;
+  grid-template-areas:
+    'photoWrapper aboutWrapper aboutWrapper aboutWrapper aboutWrapper'
+    'photoWrapper isLookJobWrapper isLookJobWrapper isLookJobWrapper isLookJobWrapper'
+    'photoWrapper contactWrapper contactWrapper contactWrapper contactWrapper';
+
+  > div {
+    background-color: $color_text_wh;
+    padding: 10px;
+    border-radius: 3px;
+    box-shadow: 0 0 1px #141f2c94;
+  }
 }
 
 .photoWrapper {
-    grid-area: photoWrapper;
-    text-align: center;
+  grid-area: photoWrapper;
+  text-align: center;
 
-    img {
-        width: 300px;
-        border-radius: 5px;
-    }
+  img {
+    width: 300px;
+    border-radius: 5px;
+  }
 }
 
 .photoWrapper__input {
-    input {
-        width: 0.1px;
-        height: 0.1px;
-        opacity: 0;
-        overflow: hidden;
-        position: absolute;
-        z-index: -1;
-    }
+  input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
 
-    label {
-        font-size: 1.25em;
-        font-weight: 700;
-        color: white;
-        background-color: $color_primary;
-        display: inline-block;
-        padding: 5px 15px;
-        margin: 10% 0 0 0;
-        border-radius: 10px;
-        transition: 0.2s ease;
+  label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    background-color: $color_primary;
+    display: inline-block;
+    padding: 5px 15px;
+    margin: 10% 0 0 0;
+    border-radius: 10px;
+    transition: 0.2s ease;
 
-        &:hover {
-            background-color: $color_text_standart;
-        }
+    &:hover {
+      background-color: $color_text_standart;
     }
+  }
 
-    input + label {
-        cursor: pointer;
-    }
+  input + label {
+    cursor: pointer;
+  }
 }
 
 .aboutWrapper {
-    grid-area: aboutWrapper;
+  grid-area: aboutWrapper;
 }
 
 .isLookJobWrapper {
-    grid-area: isLookJobWrapper;
+  grid-area: isLookJobWrapper;
 }
 
 .contactWrapper {
-    grid-area: contactWrapper;
+  grid-area: contactWrapper;
 }
 
 .aboutWrapper__userName {
-    @include font(2.4rem, 500, 0.1, 3rem);
-    text-transform: uppercase;
+  @include font(2.4rem, 500, 0.1, 3rem);
+  text-transform: uppercase;
 }
 
 .span {
-    color: #828282;
-    margin-right: 10px;
-    @include font(1.2rem, 400, 0.1, 1.8rem);
+  color: #828282;
+  margin-right: 10px;
+  @include font(1.2rem, 400, 0.1, 1.8rem);
 }
 
 .contactWrapper {
-    div {
-        @include font(1.2rem, 400, 0.1, 1.8rem);
-    }
+  div {
+    @include font(1.2rem, 400, 0.1, 1.8rem);
+  }
 }
 
 .inputContainerStatus {
-    display: inline-grid;
-    grid-template-columns: 1fr 80px;
-    grid-gap: 20px;
-    transition: 0.3s ease;
+  display: inline-grid;
+  grid-template-columns: 1fr 80px;
+  grid-gap: 20px;
+  transition: 0.3s ease;
 }
 
 .spanContainerStatus:hover {
-    color: #535353;
+  color: #535353;
 }
 
 .spanContainerStatus {
-    transition: 0.3s ease;
-    cursor: pointer;
-    color: #1a1919;
-    margin: 15px 0;
+  transition: 0.3s ease;
+  cursor: pointer;
+  color: #1a1919;
+  margin: 15px 0;
 }
 
 .aboutWrapper__title {
-    display: grid;
-    justify-content: space-between;
-    grid-auto-flow: column dense;
+  display: grid;
+  justify-content: space-between;
+  grid-auto-flow: column dense;
 }
 .aboutWrapper__description {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 .aboutWrapper__button {
-    max-width: 120px;
+  max-width: 120px;
 }

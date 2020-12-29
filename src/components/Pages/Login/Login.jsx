@@ -1,6 +1,6 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
-import { InputCostom } from '../../common/FormsControl/FormsControl';
+import { InputCustom } from '../../common/FormsControl/FormsControl';
 import { required, maxLengthCreator } from '../../../utils/validators/validators';
 import { connect } from 'react-redux';
 import { login } from '../../../redux/auth';
@@ -31,7 +31,7 @@ const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
     <form onSubmit={handleSubmit} className={s.login__form}>
       <div className={s.form__inputText}>
         <Field
-          component={InputCostom}
+          component={InputCustom}
           validate={[required, maxLength20]}
           name={'email'}
           type='text'
@@ -40,7 +40,7 @@ const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
       </div>
       <div className={s.form__inputText}>
         <Field
-          component={InputCostom}
+          component={InputCustom}
           validate={[required, maxLength20]}
           name={'password'}
           type='password'
@@ -57,7 +57,7 @@ const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
 
       {captchaUrl && (
         <Field
-          component={InputCostom}
+          component={InputCustom}
           validate={[required, maxLength20]}
           name={'captcha'}
           type='text'

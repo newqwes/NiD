@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Profile.module.scss';
 import photoUser from '../../../assets/images/hipster.webp';
-import { InputCostom, TextareaCostom } from '../../common/FormsControl/FormsControl';
+import { InputCustom, TextareaCustom } from '../../common/FormsControl/FormsControl';
 import { reduxForm, Field } from 'redux-form';
 
 const InfoForm = (props) => {
@@ -22,9 +22,9 @@ const InfoForm = (props) => {
       <div className={s.aboutWrapper}>
         <div className={s.aboutWrapper__title}>
           <span className={s.span}>Изменить имя: </span>
-          <Field component={InputCostom} name='fullName' type='text' />
+          <Field component={InputCustom} name='fullName' type='text' />
           <span className={s.span}>О себе: </span>
-          <Field component={TextareaCostom} name='aboutMe' type='text' />
+          <Field component={TextareaCustom} name='aboutMe' type='text' />
           <button className={s.aboutWrapper__button}>Сохранить</button>
           {!!props.error && props.error}
         </div>
@@ -32,11 +32,11 @@ const InfoForm = (props) => {
       <div className={s.isLookJobWrapper}>
         <div className={s.isLookJobWrapper__bool}>
           <span className={s.span}>Ищу работу: </span>
-          <Field component={InputCostom} name='lookingForAJob' type='checkbox' />
+          <Field component={InputCustom} name='lookingForAJob' type='checkbox' />
         </div>
         <div className={s.isLookJobWrapper__description}>
           <span className={s.span}>Описания поиска работы: </span>
-          <Field component={TextareaCostom} name='lookingForAJobDescription' type='text' />
+          <Field component={TextareaCustom} name='lookingForAJobDescription' type='text' />
         </div>
       </div>
       <div className={s.contactWrapper}>
@@ -45,7 +45,7 @@ const InfoForm = (props) => {
             <div key={key}>
               <span className={s.span}>{key}: </span>
               <Field
-                component={InputCostom}
+                component={InputCustom}
                 name={'contacts.' + key}
                 placeholder={key}
                 type='text'

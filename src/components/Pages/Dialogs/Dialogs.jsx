@@ -1,17 +1,12 @@
-import React from "react";
-import s from "./Dialogs.module.scss";
-import DialogsPeople from "./DialogsPeople/DialogsPeople";
-import { Route } from "react-router-dom";
-import DialogWithPeople from "./DialogWithPeople/DialogWithPeople";
+import React from 'react';
+import s from './Dialogs.module.scss';
+import DialogsPeople from './DialogsPeople';
+import { Route } from 'react-router-dom';
+import DialogWithPeople from './DialogWithPeople/DialogWithPeople';
 
 const Dialogs = (props) => {
   let dialogDataElement = props.dialogData.map((n) => (
-    <DialogsPeople
-      key={n.id}
-      namePerson={n.name}
-      urlAvatarDialog={n.avatar}
-      urlDialog={n.url}
-    />
+    <DialogsPeople key={n.id} namePerson={n.name} urlAvatarDialog={n.avatar} urlDialog={n.url} />
   ));
 
   let messageDataElement = props.dialogData.map((n) => (

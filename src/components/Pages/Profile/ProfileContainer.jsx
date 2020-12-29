@@ -15,8 +15,10 @@ import { compose } from 'redux';
 import { useEffect } from 'react';
 
 const ProfileContainer = (props) => {
+  const propUserId = props.match.params.userId;
+
   useEffect(() => {
-    let userId = props.match.params.userId;
+    let userId = propUserId;
 
     if (!userId) {
       userId = props.authUserId;
@@ -24,18 +26,9 @@ const ProfileContainer = (props) => {
 
     props.getUserProfile(userId);
     props.getUserStatus(userId);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.match.params.userId]);
-  return (
-    <Profile
-      {...props}
-      updateUserStatus={props.updateUserStatus}
-      status={props.status}
-      isYourProfile={!props.match.params.userId}
-      changePhoto={props.changePhoto}
-      changeInfo={props.changeInfo}
-    />
-  );
+  }, [propUserId]);
+
+  return <Profile {...props} isYourProfile={!propUserId} />;
 };
 
 const mapStateToProps = (state) => {

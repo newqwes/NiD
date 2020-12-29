@@ -1,12 +1,12 @@
-import { userAPI } from "../api/api";
+import { userAPI } from '../api/api';
 
-const SUBSCRIBE = "SUBSCRIBE";
-const UNSUBSCRIBE = "UNSUBSCRIBE";
-const SET_USERS = "SET-USERS";
-const TOTAL_AMOUNT_USERS = "TOTAL_AMOUNT_USERS";
-const SET_USERS_PAGE = "SET_USERS_PAGE";
-const IS_UPLOADED = "IS_UPLOADED";
-const IS_ANSVER_GONE = "IS_ANSVER_GONE";
+const SUBSCRIBE = 'SUBSCRIBE';
+const UNSUBSCRIBE = 'UNSUBSCRIBE';
+const SET_USERS = 'SET-USERS';
+const TOTAL_AMOUNT_USERS = 'TOTAL_AMOUNT_USERS';
+const SET_USERS_PAGE = 'SET_USERS_PAGE';
+const IS_UPLOADED = 'IS_UPLOADED';
+const IS_ANSVER_GONE = 'IS_ANSVER_GONE';
 
 let initialState = {
   usersData: [],

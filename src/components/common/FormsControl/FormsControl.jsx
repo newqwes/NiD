@@ -1,26 +1,29 @@
-import React from "react";
-import s from "./FormsControl.module.scss";
+import React from 'react';
+import style from './FormsControl.module.scss';
 
-export const TextareaCostom = ({ input, meta, ...props }) => {
+const ErrorMessage = ({ meta }) => {
+  return meta.touched && meta.error ? <span>{meta.error}</span> : ' ';
+};
+
+export const TextareaCustom = ({ input, meta, ...props }) => {
   return (
-    <div className={s.wrapperTextarea}>
-      {meta.touched && meta.error ? <span>{meta.error}</span> : " "}
+    <div className={style.wrapperTextarea}>
+      <ErrorMessage meta={meta} />
       <textarea
-        className={
-          s.textarea + " " + (meta.touched && meta.error ? s.error : " ")
-        }
+        className={style.textarea + ' ' + (meta.touched && meta.error ? style.error : ' ')}
         {...props}
         {...input}
       />
     </div>
   );
 };
-export const InputCostom = ({ input, meta, ...props }) => {
+
+export const InputCustom = ({ input, meta, ...props }) => {
   return (
-    <div className={s.wrapperInput}>
-      {meta.touched && meta.error ? <span>{meta.error}</span> : " "}
+    <div className={style.wrapperInput}>
+      <ErrorMessage meta={meta} />
       <input
-        className={s.input + " " + (meta.touched && meta.error ? s.error : " ")}
+        className={style.input + ' ' + (meta.touched && meta.error ? style.error : ' ')}
         {...props}
         {...input}
       />

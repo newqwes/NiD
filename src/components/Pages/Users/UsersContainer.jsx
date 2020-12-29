@@ -1,15 +1,10 @@
-import {
-  getUsers,
-  follow,
-  unfollow,
-  setUsersPage,
-} from "../../../redux/users-reducer";
-import { connect } from "react-redux";
-import Users from "./Users";
-import React from "react";
-import Preloader from "../../common/Preloader/Preloader";
-import { withAuthRedirect } from "../../../hoc/withAuthRedirect";
-import { compose } from "redux";
+import { getUsers, follow, unfollow, setUsersPage } from '../../../redux/users-reducer';
+import { connect } from 'react-redux';
+import Users from './Users';
+import React from 'react';
+import Preloader from '../../common/Preloader';
+import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 class UsersContainer extends React.Component {
   componentDidMount() {

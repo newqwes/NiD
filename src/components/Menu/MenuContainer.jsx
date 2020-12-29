@@ -1,22 +1,20 @@
-import Menu from "./Menu";
-import { connect } from "react-redux";
-import { getRates } from "../../redux/sidebar-reducer";
-import React, { useEffect } from "react";
-import { compose } from "redux";
+import { connect } from 'react-redux';
+import { getRates } from '../../redux/sidebar-reducer';
+import React, { useEffect } from 'react';
+import { compose } from 'redux';
+import Menu from './Menu';
 
-const MenuContainer = (props) => {
+const MenuContainer = ({ getRates, ...props }) => {
   useEffect(() => {
-    props.getRates();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.getRates]);
+    getRates();
+  }, [getRates]);
 
   return <Menu {...props} />;
 };
-const mapStateToProps = (state) => {
-  return {
-    menuItemData: state.menuSideBar.menuItemData,
-    exchangeRate: state.menuSideBar.exchangeRate,
-    isAuth: state.auth.isAuth,
-  };
-};
+
+const mapStateToProps = (state) => ({
+  menuItemData: state.menuSideBar.menuItemData,
+  exchangeRate: state.menuSideBar.exchangeRate,
+});
+
 export default compose(connect(mapStateToProps, { getRates }))(MenuContainer);

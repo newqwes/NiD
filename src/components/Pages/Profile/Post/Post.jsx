@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Post.module.scss';
 import { reduxForm, Field } from 'redux-form';
 import { required, maxLengthCreator } from '../../../../utils/validators/validators';
-import { TextareaCostom } from '../../../common/FormsControl/FormsControl';
+import { TextareaCustom } from '../../../common/FormsControl/FormsControl';
 
 const maxLength200 = maxLengthCreator(200);
 
@@ -42,7 +42,7 @@ const PostForm = ({ handleSubmit }) => {
     <form className={s.form} onSubmit={handleSubmit}>
       <Field
         name='postTextarea'
-        component={TextareaCostom}
+        component={TextareaCustom}
         placeholder='Что у Вас нового?'
         type='text'
         validate={[required, maxLength200]}
@@ -51,5 +51,7 @@ const PostForm = ({ handleSubmit }) => {
     </form>
   );
 };
+
 const PostReduxForm = reduxForm({ form: 'postProfile' })(PostForm);
+
 export default Post;

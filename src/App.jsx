@@ -1,18 +1,18 @@
 import React from 'react';
 import s from './App.module.scss';
 import News from './components/Pages/News/News';
-import Chat from './components/Pages/Chat/Chat';
-import { Route, withRouter } from 'react-router-dom';
-import MenuContainer from './components/Menu/MenuContainer';
+import Chat from './components/Pages/Chat';
+import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import Menu from './components/Menu';
 import ProfileContainer from './components/Pages/Profile/ProfileContainer';
 import DialogsContainer from './components/Pages/Dialogs/DialogsContainer';
 import UsersContainer from './components/Pages/Users/UsersContainer';
-import HeaderContainer from './components/Header/HeaderContainer';
+import HeaderContainer from './components/Header';
 import Login from './components/Pages/Login/Login';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { initializeApp } from './redux/app-reducer';
-import Preloader from './components/common/Preloader/Preloader';
+import Preloader from './components/common/Preloader';
 import { useEffect } from 'react';
 
 const App = (props) => {
@@ -20,24 +20,27 @@ const App = (props) => {
     props.initializeApp();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  if (!props.isInitialized) {
-    return <Preloader />;
-  }
+
+  if (!props.isInitialized) <Preloader />;
+
   return (
     <>
       <HeaderContainer />
       <section className={s.section}>
         <div className={s.wrapper}>
           <div className={s.row}>
-            <MenuContainer />
+            <Menu />
             <div className={s.content}>
-              <Route path='/Profile/:userId?' render={() => <ProfileContainer />} />
-              <Route path='/' exact render={() => <ProfileContainer />} />
-              <Route path='/News' render={() => <News />} />
-              <Route path='/Chat' render={() => <Chat />} />
-              <Route path='/Users' render={() => <UsersContainer />} />
-              <Route path='/Dialogs' render={() => <DialogsContainer />} />
-              <Route path='/login' render={() => <Login />} />
+              <Switch>
+                <Route path='/Profile/:userId?' render={() => <ProfileContainer />} />
+                <Route path='/News' render={() => <News />} />
+                <Route path='/Chat' render={() => <Chat />} />
+                <Route path='/Users' render={() => <UsersContainer />} />
+                <Route path='/Dialogs' render={() => <DialogsContainer />} />
+                <Route path='/login' render={() => <Login />} />
+                <Route path='/' exact render={() => <Redirect to='/Profile' />} />
+                <Route path='*' render={() => <h1>404 не найдена 404</h1>} />
+              </Switch>
             </div>
           </div>
         </div>

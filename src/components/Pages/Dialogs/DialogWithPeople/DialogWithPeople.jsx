@@ -1,12 +1,9 @@
-import React from "react";
-import s from "./DialogWithPeople.module.scss";
-import DialogOwn from "./DialogOwn/DialogOwn";
-import { Field, reduxForm } from "redux-form";
-import { TextareaCostom } from "../../../common/FormsControl/FormsControl";
-import {
-  required,
-  maxLengthCreator,
-} from "../../../../utils/validators/validators";
+import React from 'react';
+import s from './DialogWithPeople.module.scss';
+import DialogOwn from './DialogOwn/DialogOwn';
+import { Field, reduxForm } from 'redux-form';
+import { TextareaCustom } from '../../../common/FormsControl/FormsControl';
+import { required, maxLengthCreator } from '../../../../utils/validators/validators';
 
 const maxLength1000 = maxLengthCreator(1000);
 
@@ -23,6 +20,7 @@ const DialogWithPeople = (props) => {
   let addNewMessage = (values) => {
     props.addNewMessageText(props.dialogData.id, values.dialogTextarea);
   };
+  
   return (
     <div className={s.dialogWithPeople}>
       <div className={s.section}>
@@ -50,18 +48,16 @@ const AddMessageForm = (props) => {
   return (
     <form className={s.submit} onSubmit={props.handleSubmit}>
       <Field
-        component={TextareaCostom}
+        component={TextareaCustom}
         validate={[required, maxLength1000]}
-        name="dialogTextarea"
-        placeholder="Введите текст"
+        name='dialogTextarea'
+        placeholder='Введите текст'
       />
       <button>Отправить</button>
     </form>
   );
 };
 
-const AddMessageFormRedux = reduxForm({ form: "dialogAddMessageForm" })(
-  AddMessageForm
-);
+const AddMessageFormRedux = reduxForm({ form: 'dialogAddMessageForm' })(AddMessageForm);
 
 export default DialogWithPeople;

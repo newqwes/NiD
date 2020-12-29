@@ -1,12 +1,6 @@
-import React from 'react'
-import s from './Chat.module.scss'
+import React from 'react';
+import style from './Chat.module.scss';
 
-const Chat = () => {
-    return (
-        <section className={s.section}>
-            Chat chat
-        </section>
-    )
-}
+const Chat = () => <section className={style.section}>Chat chat</section>;
 
 export default Chat;

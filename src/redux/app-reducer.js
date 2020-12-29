@@ -1,6 +1,6 @@
-import { getOwnProfile } from "./auth";
+import { getOwnProfile } from './auth';
 
-const INITIALIZED_SUCCESS = "INITIALIZED_SUCCESS";
+const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
 
 let initialState = {
   isInitialized: false,
@@ -23,7 +23,6 @@ const initializedSuccess = () => ({
 
 export const initializeApp = () => (dispatch) => {
   let propmise = dispatch(getOwnProfile());
-  //Когда все промисы придут тогда выполнится следуещее. dispatch возвращает когда тогда всё готово
   Promise.all([propmise]).then(() => {
     dispatch(initializedSuccess());
   });
