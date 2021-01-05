@@ -1,6 +1,6 @@
-const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
+import { ADD_NEW_MESSAGE } from './types';
 
-let initialState = {
+const initialState = {
   dialogData: [
     {
       id: 0,
@@ -65,6 +65,7 @@ let initialState = {
     },
   ],
 };
+
 const dialogPageReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_NEW_MESSAGE:
@@ -93,4 +94,5 @@ export const addNewMessageText = (id, value) => ({
   id,
   value,
 });
+
 export default dialogPageReducer;

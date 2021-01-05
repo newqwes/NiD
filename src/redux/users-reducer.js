@@ -1,12 +1,13 @@
 import { userAPI } from '../api/api';
-
-const SUBSCRIBE = 'SUBSCRIBE';
-const UNSUBSCRIBE = 'UNSUBSCRIBE';
-const SET_USERS = 'SET-USERS';
-const TOTAL_AMOUNT_USERS = 'TOTAL_AMOUNT_USERS';
-const SET_USERS_PAGE = 'SET_USERS_PAGE';
-const IS_UPLOADED = 'IS_UPLOADED';
-const IS_ANSVER_GONE = 'IS_ANSVER_GONE';
+import {
+  IS_ANSVER_GONE,
+  IS_UPLOADED,
+  SET_USERS,
+  SET_USERS_PAGE,
+  SUBSCRIBE,
+  TOTAL_AMOUNT_USERS,
+  UNSUBSCRIBE,
+} from './types';
 
 let initialState = {
   usersData: [],
@@ -75,10 +76,12 @@ export const setUsersPage = (pageNumber) => ({
   type: SET_USERS_PAGE,
   pageNumber,
 });
+
 export const isUploadedDis = (isUploadedValue) => ({
   type: IS_UPLOADED,
   isUploadedValue,
 });
+
 export const isAnsverGoneAC = (booleanValue, id) => ({
   type: IS_ANSVER_GONE,
   booleanValue,
@@ -101,6 +104,7 @@ export const follow = (id) => async (dispatch) => {
   }
   dispatch(isAnsverGoneAC(false, id));
 };
+
 export const unfollow = (id) => async (dispatch) => {
   dispatch(isAnsverGoneAC(true, id));
   let data = await userAPI.deleteUserFollow(id);
@@ -109,4 +113,5 @@ export const unfollow = (id) => async (dispatch) => {
   }
   dispatch(isAnsverGoneAC(false, id));
 };
+
 export default usersPageReducer;

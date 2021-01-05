@@ -1,12 +1,9 @@
 import { profileAPI } from '../api/api';
 import { stopSubmit } from 'redux-form';
+import { ADD_NEW_POST, CHANGE_PHOTO_SUCCESS, SET_USER_PROFILE, SET_USER_STATUS } from './types';
 
-const ADD_NEW_POST = 'ADD-NEW-POST';
-const SET_USER_STATUS = 'SET_USER_STATUS';
-const SET_USER_PROFILE = 'SET_USER_PROFILE';
-const CHANGE_PHOTO_SUCCESS = 'CHANGE_PHOTO_SUCCESS';
 
-let inicialState = {
+const inicialState = {
   postData: [
     {
       id: 0,
@@ -37,6 +34,7 @@ let inicialState = {
   userProfile: null,
   status: '',
 };
+
 const profilePageReducer = (state = inicialState, action) => {
   switch (action.type) {
     case ADD_NEW_POST: {

@@ -49,10 +49,12 @@ const App = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    isInitialized: state.app.isInitialized,
-  };
+const mapStateToProps = (state) => ({
+  isInitialized: state.app.isInitialized,
+});
+
+const mapDispatchToProps = {
+  initializeApp,
 };
 
-export default compose(withRouter, connect(mapStateToProps, { initializeApp }))(App);
+export default compose(withRouter, connect(mapStateToProps, mapDispatchToProps))(App);

@@ -87,7 +87,7 @@ export const securityAPI = {
   getCaptchaUrl: async () => {
     const respons = await instance.get('security/get-captcha-url');
     const url = respons.data.url;
-    debugger;
+    
     return url;
   },
 };

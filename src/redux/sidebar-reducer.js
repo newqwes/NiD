@@ -1,6 +1,5 @@
 import { userAPI } from '../api/api';
-
-const ADD_EXCHANGE_RATE = 'ADD-EXCHANGE-RATE';
+import { ADD_EXCHANGE_RATE } from './types';
 
 let initialState = {
   menuItemData: [

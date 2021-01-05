@@ -1,10 +1,10 @@
 import { getOwnProfile } from './auth';
+import { INITIALIZED_SUCCESS } from './types';
 
-const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
-
-let initialState = {
+const initialState = {
   isInitialized: false,
 };
+
 const appReducer = (state = initialState, action) => {
   switch (action.type) {
     case INITIALIZED_SUCCESS:
@@ -27,4 +27,5 @@ export const initializeApp = () => (dispatch) => {
     dispatch(initializedSuccess());
   });
 };
+
 export default appReducer;

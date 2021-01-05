@@ -1,8 +1,6 @@
 import { stopSubmit } from 'redux-form';
 import { profileAPI, authAPI, securityAPI } from '../api/api';
-
-const TAKE_OWN_AUTH = 'TAKE_USER_AUTH';
-const GET_CAPTCHA = 'GET_CAPTCHA';
+import { GET_CAPTCHA, TAKE_OWN_AUTH } from './types';
 
 const isRequestOK = (result) => result === 0;
 
