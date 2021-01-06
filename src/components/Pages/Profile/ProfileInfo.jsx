@@ -2,7 +2,6 @@ import React from 'react';
 import s from './Profile.module.scss';
 import photoUser from '../../../assets/images/hipster.webp';
 import { Status } from './Status';
-import { Link } from 'react-router-dom';
 
 const ProfileInfo = (props) => {
   return (
@@ -51,9 +50,7 @@ const ProfileInfo = (props) => {
           return (
             <div key={key}>
               <span className={s.span}>{key}: </span>
-              <Link to={props.userProfile.contacts[key] || ''} target='_blank'>
-                {props.userProfile.contacts[key]}
-              </Link>
+              <a href={props.userProfile.contacts[key] || ''}>{props.userProfile.contacts[key]}</a>
             </div>
           );
         })}
