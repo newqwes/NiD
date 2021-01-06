@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getRates } from '../../redux/sidebar-reducer';
+import { getRates } from '../../redux/sidebar/actions';
 import React, { useEffect } from 'react';
 import { compose } from 'redux';
 import Menu from './Menu';

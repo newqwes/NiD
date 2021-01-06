@@ -1,14 +1,20 @@
-import profilePageReducer from './profile-reducer';
-import dialogPageReducer from './dialog-reducer';
-import sidebarPageReducer from './sidebar-reducer';
-import usersPageReducer from './users-reducer';
-import authReducer from './auth';
-import thunk from 'redux-thunk';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { reducer as formReducer } from 'redux-form';
-import appReducer from './app-reducer';
-const { createStore, combineReducers, applyMiddleware, compose } = require('redux');
+import thunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
 
-let reducers = combineReducers({
+import profilePageReducer from './profile/profile-reducer';
+import dialogPageReducer from './dialog/dialog-reducer';
+import sidebarPageReducer from './sidebar/sidebar-reducer';
+import usersPageReducer from './users/users-reducer';
+import authReducer from './auth/auth';
+import appReducer from './app/app-reducer';
+
+import rootSaga from './rootSaga';
+
+const sagaMiddleware = createSagaMiddleware();
+
+const rootReducer = combineReducers({
   profilePage: profilePageReducer,
   dialogPage: dialogPageReducer,
   menuSideBar: sidebarPageReducer,
@@ -19,7 +25,9 @@ let reducers = combineReducers({
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, sagaMiddleware)));
+
+sagaMiddleware.run(rootSaga);
 
 window.store = store;
 export default store;

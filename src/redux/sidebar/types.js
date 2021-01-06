@@ -1,0 +1,1 @@
+export const ADD_EXCHANGE_RATE = 'ADD-EXCHANGE-RATE';

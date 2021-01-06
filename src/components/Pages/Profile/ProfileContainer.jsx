@@ -5,7 +5,7 @@ import {
   updateUserStatus,
   changePhoto,
   changeInfo,
-} from '../../../redux/profile-reducer';
+} from '../../../redux/profile/actions';
 import { connect } from 'react-redux';
 import Profile from './Profile';
 import React from 'react';

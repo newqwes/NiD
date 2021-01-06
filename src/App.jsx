@@ -11,13 +11,13 @@ import HeaderContainer from './components/Header';
 import Login from './components/Pages/Login/Login';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { initializeApp } from './redux/app-reducer';
+import { getInitialized } from './redux/app/actions';
 import Preloader from './components/common/Preloader';
 import { useEffect } from 'react';
 
 const App = (props) => {
   useEffect(() => {
-    props.initializeApp();
+    props.getInitialized();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -54,7 +54,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  initializeApp,
+  getInitialized,
 };
 
 export default compose(withRouter, connect(mapStateToProps, mapDispatchToProps))(App);

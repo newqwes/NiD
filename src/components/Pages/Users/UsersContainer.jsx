@@ -1,4 +1,4 @@
-import { getUsers, follow, unfollow, setUsersPage } from '../../../redux/users-reducer';
+import { getUsers, follow, unfollow, setUsersPage } from '../../../redux/users/actions';
 import { connect } from 'react-redux';
 import Users from './Users';
 import React from 'react';
