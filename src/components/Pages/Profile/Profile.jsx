@@ -12,9 +12,8 @@ const Profile = (props) => {
     return <Preloader />;
   }
   const onSubmit = (formData) => {
-    props.changeInfo(formData).then(() => {
-      setEditMode(false);
-    });
+    props.changeInfo(formData);
+    setEditMode(false);
   };
   const onChangePhoto = (e) => {
     if (e.target.files.length) {

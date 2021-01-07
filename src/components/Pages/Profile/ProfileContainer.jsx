@@ -26,6 +26,7 @@ const ProfileContainer = (props) => {
 
     props.getUserProfile(userId);
     props.getUserStatus(userId);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [propUserId]);
 
   return <Profile {...props} isYourProfile={!propUserId} />;

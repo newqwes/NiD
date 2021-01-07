@@ -1,14 +1,39 @@
-import { ADD_NEW_POST, CHANGE_PHOTO_SUCCESS, SET_USER_PROFILE, SET_USER_STATUS } from './types';
-import { profileAPI } from '../../api/api';
-import { stopSubmit } from 'redux-form';
+import {
+  ADD_NEW_POST,
+  CHANGE_PHOTO_SUCCESS,
+  SET_USER_PROFILE,
+  SET_USER_STATUS,
+  GET_USER_PROFILE,
+  GET_USER_STATUS,
+  UPDATE_USER_STATUS,
+  CHANGE_PHOTO,
+  CHANGE_INFO,
+} from './types';
 
-export const addPost = (postTextarea) => ({
-  type: ADD_NEW_POST,
-  postTextarea,
+// For Watchers
+export const getUserProfile = (userUrlId) => ({
+  type: GET_USER_PROFILE,
+  userUrlId,
 });
 
-const setUserStatus = (status) => ({
-  type: SET_USER_STATUS,
+export const getUserStatus = (userUrlId) => ({
+  type: GET_USER_STATUS,
+  userUrlId,
+});
+
+export const changePhoto = (photo) => ({
+  type: CHANGE_PHOTO,
+  photo,
+});
+
+export const changeInfo = (formData) => ({
+  type: CHANGE_INFO,
+  formData,
+});
+
+// For Workers
+export const updateUserStatus = (status) => ({
+  type: UPDATE_USER_STATUS,
   status,
 });
 
@@ -17,49 +42,17 @@ export const setUserProfile = (userProfile) => ({
   userProfile,
 });
 
-const changePhotoSuccess = (photos) => ({
+export const setUserStatus = (status) => ({
+  type: SET_USER_STATUS,
+  status,
+});
+
+export const changePhotoSuccess = (photos) => ({
   type: CHANGE_PHOTO_SUCCESS,
   photos,
 });
 
-export const getUserProfile = (userUrlId) => async (dispatch) => {
-  const data = await profileAPI.getUserProfile(userUrlId);
-  dispatch(setUserProfile(data));
-};
-
-export const getUserStatus = (userUrlId) => async (dispatch) => {
-  const data = await profileAPI.getUserStatus(userUrlId);
-  dispatch(setUserStatus(data));
-};
-
-export const updateUserStatus = (status) => async (dispatch) => {
-  const respons = await profileAPI.updateUserStatus(status);
-  
-  if (respons.data.resultCode === 0) {
-    dispatch(setUserStatus(status));
-  }
-};
-
-export const changePhoto = (photo) => async (dispatch) => {
-  const respons = await profileAPI.changePhoto(photo);
-
-  if (respons.data.resultCode === 0) {
-    dispatch(changePhotoSuccess(respons.data.data.photos));
-  }
-};
-
-export const changeInfo = (formData) => async (dispatch, getState) => {
-  const userID = getState().auth.id;
-  const respons = await profileAPI.changeInfo(formData);
-
-  if (respons.data.resultCode === 0) {
-    dispatch(getUserProfile(userID));
-  } else {
-    dispatch(
-      stopSubmit('profile-form', {
-        _error: respons.data.messages[0],
-      })
-    );
-    return Promise.reject(respons.data.messages[0]);
-  }
-};
+export const addPost = (postTextarea) => ({
+  type: ADD_NEW_POST,
+  postTextarea,
+});
