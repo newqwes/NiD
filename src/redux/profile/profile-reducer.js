@@ -1,9 +1,9 @@
-import { ADD_NEW_POST, CHANGE_PHOTO_SUCCESS, SET_USER_PROFILE, SET_USER_STATUS } from './types';
+import { PROFILES } from '../constants';
 import initialState from './initialState';
 
 const profilePageReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_NEW_POST: {
+    case PROFILES.SET_NEW_POST_SUCCESS: {
       const date = new Date();
       const options = {
         month: 'long',
@@ -26,17 +26,17 @@ const profilePageReducer = (state = initialState, action) => {
         postData: [postItem, ...state.postData],
       };
     }
-    case SET_USER_PROFILE:
+    case PROFILES.SET_USER_PROFILE_SUCCESS:
       return {
         ...state,
         userProfile: action.userProfile,
       };
-    case SET_USER_STATUS:
+    case PROFILES.SET_USER_STATUS_SUCCESS:
       return {
         ...state,
         status: action.status,
       };
-    case CHANGE_PHOTO_SUCCESS:
+    case PROFILES.UPDATE_PHOTO_SUCCESS:
       return {
         ...state,
         userProfile: {

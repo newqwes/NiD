@@ -14,7 +14,7 @@ const InfoForm = (props) => {
         />
         {props.isYourProfile && (
           <div className={s.photoWrapper__input}>
-            <input type='file' name='file' id='file' onChange={props.onChangePhoto} />
+            <input type='file' name='file' id='file' onChange={props.onUpdatePhoto} />
             <label htmlFor='file'>Загрузить фото</label>
           </div>
         )}

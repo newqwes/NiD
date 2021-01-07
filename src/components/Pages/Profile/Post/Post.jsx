@@ -21,15 +21,15 @@ const Post = (props) => {
     </div>
   ));
 
-  const addPost = (values) => {
-    props.addPost(values.postTextarea);
+  const setPost = (values) => {
+    props.setPost(values.postTextarea);
   };
 
   return (
     <section className={s.section}>
       <div className={s.wrapper}>
         <div className={s.form__wrapper}>
-          <PostReduxForm onSubmit={addPost} />
+          <PostReduxForm onSubmit={setPost} />
         </div>
         {postDataElements}
       </div>

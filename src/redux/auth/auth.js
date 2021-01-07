@@ -1,9 +1,9 @@
-import { GET_CAPTCHA, TAKE_OWN_AUTH } from './types';
+import { AUTHS } from '../constants';
 import initialState from './initialState';
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case TAKE_OWN_AUTH:
+    case AUTHS.OWN_AUTH_SUCCESS:
       return action.payload
         ? {
             ...state,
@@ -12,7 +12,7 @@ const authReducer = (state = initialState, action) => {
         : {
             ...initialState,
           };
-    case GET_CAPTCHA:
+    case AUTHS.CAPTCHA_SUCCESS:
       return action.payload
         ? {
             ...state,

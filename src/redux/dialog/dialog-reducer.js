@@ -1,9 +1,9 @@
+import { DIALOGS } from '../constants';
 import initialState from './initialState';
-import { ADD_NEW_MESSAGE } from './types';
 
 const dialogPageReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_NEW_MESSAGE:
+    case DIALOGS.MESSAGE:
       return {
         ...state,
         dialogData: state.dialogData.map((n) => {

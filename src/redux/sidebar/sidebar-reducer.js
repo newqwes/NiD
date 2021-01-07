@@ -1,9 +1,9 @@
+import { SIDEBARS } from '../constants';
 import initialState from './initialState';
-import { ADD_EXCHANGE_RATE } from './types';
 
 const sidebarPageReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_EXCHANGE_RATE: {
+    case SIDEBARS.SET_EXCHANGE_RATE_SUCCESS: {
       return { ...state, exchangeRate: action.payload };
     }
     default:

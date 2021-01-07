@@ -1,11 +1,11 @@
 import {
-  addPost,
-  getUserProfile,
-  getUserStatus,
+  setPost,
+  loadUserProfile,
+  loadUserStatus,
   updateUserStatus,
-  changePhoto,
-  changeInfo,
-} from '../../../redux/profile/actions';
+  updatePhoto,
+  updateInfo,
+} from '../../../redux/actions';
 import { connect } from 'react-redux';
 import Profile from './Profile';
 import React from 'react';
@@ -24,9 +24,9 @@ const ProfileContainer = (props) => {
       userId = props.authUserId;
     }
 
-    props.getUserProfile(userId);
-    props.getUserStatus(userId);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    props.loadUserProfile(userId);
+    props.loadUserStatus(userId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [propUserId]);
 
   return <Profile {...props} isYourProfile={!propUserId} />;
@@ -45,12 +45,12 @@ const mapStateToProps = (state) => {
 
 export default compose(
   connect(mapStateToProps, {
-    addPost,
-    getUserProfile,
-    getUserStatus,
+    setPost,
+    loadUserProfile,
+    loadUserStatus,
     updateUserStatus,
-    changePhoto,
-    changeInfo,
+    updatePhoto,
+    updateInfo,
   }),
   withRouter,
   withAuthRedirect

@@ -11,17 +11,17 @@ import HeaderContainer from './components/Header';
 import Login from './components/Pages/Login/Login';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { getInitialized } from './redux/app/actions';
+import { loadInitializedApp } from './redux/actions';
 import Preloader from './components/common/Preloader';
 import { useEffect } from 'react';
 
 const App = (props) => {
   useEffect(() => {
-    props.getInitialized();
+    props.loadInitializedApp();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (!props.isInitialized) <Preloader />;
+  if (!props.isInitialized) return <Preloader />;
 
   return (
     <>
@@ -54,7 +54,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  getInitialized,
+  loadInitializedApp,
 };
 
 export default compose(withRouter, connect(mapStateToProps, mapDispatchToProps))(App);

@@ -23,7 +23,7 @@ const Users = (props) => {
                   disabled={props.isAnswerGone.some((id) => id === n.id)}
                   className={s.unSubscribeButton}
                   onClick={() => {
-                    props.unfollow(n.id);
+                    props.loadUnfollow(n.id);
                   }}
                 >
                   Отписаться
@@ -33,7 +33,7 @@ const Users = (props) => {
                   disabled={props.isAnswerGone.some((id) => id === n.id)}
                   className={s.subscribeButton}
                   onClick={() => {
-                    props.follow(n.id);
+                    props.loadFollow(n.id);
                   }}
                 >
                   Подписаться

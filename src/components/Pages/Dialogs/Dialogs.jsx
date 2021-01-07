@@ -15,7 +15,7 @@ const Dialogs = (props) => {
       path={n.url}
       render={() => (
         <DialogWithPeople
-          addNewMessageText={props.addNewMessageText}
+        loadNewMessageText={props.loadNewMessageText}
           dialogOnChangeTextarea={props.dialogOnChangeTextarea}
           dialogData={n}
         />

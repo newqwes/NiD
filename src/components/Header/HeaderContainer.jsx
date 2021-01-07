@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import { connect } from 'react-redux';
-import { getLogout } from '../../redux/auth/actions';
+import { loadLogout } from '../../redux/actions';
 import { compose } from 'redux';
 
 const HeaderContainer = (props) => <Header {...props} />;
@@ -11,7 +11,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  getLogout,
+  loadLogout,
 };
 
 export default compose(connect(mapStateToProps, mapDispatchToProps))(HeaderContainer);

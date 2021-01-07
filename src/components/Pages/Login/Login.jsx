@@ -3,15 +3,15 @@ import { reduxForm, Field } from 'redux-form';
 import { InputCustom } from '../../common/FormsControl/FormsControl';
 import { required, maxLengthCreator } from '../../../utils/validators/validators';
 import { connect } from 'react-redux';
-import { setLogin } from '../../../redux/auth/actions';
+import { loadLogin } from '../../../redux/actions';
 import { Redirect } from 'react-router-dom';
 import s from './Login.module.scss';
 
 const maxLength20 = maxLengthCreator(20);
 
-const Login = ({ setLogin, isAuth, captchaUrl }) => {
+const Login = ({ loadLogin, isAuth, captchaUrl }) => {
   const onSubmit = (formData) => {
-    setLogin({
+    loadLogin({
       email: formData.email,
       password: formData.password,
       remembeMe: formData.remembeMe,
@@ -85,7 +85,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  setLogin,
+  loadLogin,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -12,12 +12,12 @@ const Profile = (props) => {
     return <Preloader />;
   }
   const onSubmit = (formData) => {
-    props.changeInfo(formData);
+    props.updateInfo(formData);
     setEditMode(false);
   };
-  const onChangePhoto = (e) => {
+  const onUpdatePhoto = (e) => {
     if (e.target.files.length) {
-      props.changePhoto(e.target.files[0]);
+      props.updatePhoto(e.target.files[0]);
     }
   };
   return (
@@ -29,7 +29,7 @@ const Profile = (props) => {
               onSubmit={onSubmit}
               {...props}
               setEditMode={setEditMode}
-              onChangePhoto={onChangePhoto}
+              onUpdatePhoto={onUpdatePhoto}
               initialValues={props.userProfile}
             />
           ) : (
@@ -37,14 +37,14 @@ const Profile = (props) => {
               {...props}
               editMode={editMode}
               setEditMode={setEditMode}
-              onChangePhoto={onChangePhoto}
+              onUpdatePhoto={onUpdatePhoto}
             />
           )}
 
           <div className={s.post}>
             <Post
               postData={props.postData}
-              addPost={props.addPost}
+              setPost={props.setPost}
               postTextarea={props.postTextarea}
             />
           </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Header.module.scss';
 import { NavLink } from 'react-router-dom';
 
-const Header = ({ auth, getLogout }) => {
+const Header = ({ auth, loadLogout }) => {
   return (
     <header className={style.header}>
       <div className={style.wrapper}>
@@ -13,7 +13,7 @@ const Header = ({ auth, getLogout }) => {
               <NavLink className={style.login} to='/login'>
                 {auth.login} ID:{auth.id}
               </NavLink>
-              <button onClick={getLogout}>Выйти</button>
+              <button onClick={loadLogout}>Выйти</button>
             </div>
           ) : (
             <NavLink className={style.login} to='/login'>

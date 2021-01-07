@@ -1,17 +1,9 @@
 import initialState from './initialState';
-import {
-  IS_ANSVER_GONE,
-  IS_UPLOADED,
-  SET_USERS,
-  SET_USERS_PAGE,
-  SUBSCRIBE,
-  TOTAL_AMOUNT_USERS,
-  UNSUBSCRIBE,
-} from './types';
+import { USERS } from '../constants';
 
 const usersPageReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SUBSCRIBE:
+    case USERS.SUBSCRIBE_SUCCESS:
       return {
         ...state,
         usersData: state.usersData.map((n) => {
@@ -19,7 +11,7 @@ const usersPageReducer = (state = initialState, action) => {
           return n;
         }),
       };
-    case UNSUBSCRIBE:
+    case USERS.UNSUBSCRIBE_SUCCESS:
       return {
         ...state,
         usersData: state.usersData.map((n) => {
@@ -27,27 +19,27 @@ const usersPageReducer = (state = initialState, action) => {
           return n;
         }),
       };
-    case SET_USERS:
+    case USERS.SET_USERS_SUCCESS:
       return {
         ...state,
         usersData: action.users,
       };
-    case TOTAL_AMOUNT_USERS:
+    case USERS.TOTAL_AMOUNT_USERS:
       return {
         ...state,
         totalAmountUsers: action.count,
       };
-    case SET_USERS_PAGE:
+    case USERS.SET_USERS_PAGE_SUCCESS:
       return {
         ...state,
         currentPageUsers: action.pageNumber,
       };
-    case IS_UPLOADED:
+    case USERS.IS_UPLOADED:
       return {
         ...state,
         isUploaded: action.isUploadedValue,
       };
-    case IS_ANSVER_GONE:
+    case USERS.IS_ANSVER_GONE:
       return {
         ...state,
         isAnswerGone: action.booleanValue

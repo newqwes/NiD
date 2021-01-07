@@ -1,7 +1,7 @@
 import { takeEvery } from 'redux-saga/effects';
-import { GET_INITIALIZED } from './types';
+import { APPS } from '../constants';
 import { workerInitializeApp } from './workers';
 
 export function* watcherApp() {
-  yield takeEvery(GET_INITIALIZED, workerInitializeApp);
+  yield takeEvery(APPS.INITIALIZED, workerInitializeApp);
 }

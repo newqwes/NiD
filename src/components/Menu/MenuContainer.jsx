@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
-import { getRates } from '../../redux/sidebar/actions';
+import { loadRates } from '../../redux/actions';
 import React, { useEffect } from 'react';
 import { compose } from 'redux';
 import Menu from './Menu';
 
-const MenuContainer = ({ getRates, ...props }) => {
+const MenuContainer = ({ loadRates, ...props }) => {
   useEffect(() => {
-    getRates();
-  }, [getRates]);
+    loadRates();
+  }, [loadRates]);
 
   return <Menu {...props} />;
 };
@@ -17,4 +17,4 @@ const mapStateToProps = (state) => ({
   exchangeRate: state.menuSideBar.exchangeRate,
 });
 
-export default compose(connect(mapStateToProps, { getRates }))(MenuContainer);
+export default compose(connect(mapStateToProps, { loadRates }))(MenuContainer);

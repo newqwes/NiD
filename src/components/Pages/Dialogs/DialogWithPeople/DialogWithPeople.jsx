@@ -18,7 +18,7 @@ const DialogWithPeople = (props) => {
   ));
 
   let addNewMessage = (values) => {
-    props.addNewMessageText(props.dialogData.id, values.dialogTextarea);
+    props.loadNewMessageText(props.dialogData.id, values.dialogTextarea);
   };
   
   return (

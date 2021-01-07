@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga';
+import logger from 'redux-logger';
 
 import profilePageReducer from './profile/profile-reducer';
 import dialogPageReducer from './dialog/dialog-reducer';
@@ -25,7 +26,10 @@ const rootReducer = combineReducers({
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, sagaMiddleware)));
+const store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(logger, thunk, sagaMiddleware))
+);
 
 sagaMiddleware.run(rootSaga);
 

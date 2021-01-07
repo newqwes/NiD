@@ -1,9 +1,0 @@
-export const ADD_NEW_POST = 'ADD-NEW-POST';
-export const CHANGE_PHOTO_SUCCESS = 'CHANGE_PHOTO_SUCCESS';
-export const SET_USER_PROFILE = 'SET_USER_PROFILE';
-export const SET_USER_STATUS = 'SET_USER_STATUS';
-export const GET_USER_PROFILE = 'profile/GET_USER_PROFILE';
-export const GET_USER_STATUS = 'profile/GET_USER_STATUS';
-export const UPDATE_USER_STATUS = 'profile/UPDATE_USER_STATUS';
-export const CHANGE_PHOTO = 'profile/CHANGE_PHOTO';
-export const CHANGE_INFO = 'profile/CHANGE_INFO';

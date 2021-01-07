@@ -1,7 +1,7 @@
 import { takeEvery } from 'redux-saga/effects';
-import { GET_RATES } from './types';
+import { SIDEBARS } from '../constants';
 import { workerGetRates } from './workers';
 
 export function* watcherSidebar() {
-  yield takeEvery(GET_RATES, workerGetRates);
+  yield takeEvery(SIDEBARS.GET_RATES, workerGetRates);
 }

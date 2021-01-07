@@ -11,7 +11,7 @@ export const userAPI = {
     return rates;
   },
 
-  getUsers: async (usersOnPage, currentPageUsers) => {
+  getUsers: async ({ usersOnPage, currentPageUsers }) => {
     const respons = await instance.get(`users?count=${usersOnPage}&page=${currentPageUsers}`);
 
     return extractData(respons);
@@ -54,14 +54,14 @@ export const profileAPI = {
       status,
     }),
 
-  changePhoto(photo) {
+  updatePhoto(photo) {
     const formatData = new FormData();
     formatData.append('image', photo);
 
     return instance.put(`profile/photo`, formatData);
   },
 
-  changeInfo: (formData) => instance.put(`profile`, formData),
+  updateInfo: (formData) => instance.put(`profile`, formData),
 };
 
 export const authAPI = {

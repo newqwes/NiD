@@ -1,32 +1,27 @@
-import { getUsers, follow, unfollow, setUsersPage } from '../../../redux/users/actions';
+import { loadUsers, loadFollow, loadUnfollow, setUsersPage } from '../../../redux/actions';
 import { connect } from 'react-redux';
 import Users from './Users';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Preloader from '../../common/Preloader';
 import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 import { compose } from 'redux';
 
-class UsersContainer extends React.Component {
-  componentDidMount() {
-    this.props.getUsers(this.props.usersOnPage, this.props.currentPageUsers);
-  }
-  newSelectedPage = (currentPage) => {
-    this.props.getUsers(this.props.usersOnPage, currentPage);
-    this.props.setUsersPage(currentPage);
-  };
+const UsersContainer = (props) => {
+  useEffect(() => {
+    props.loadUsers({
+      usersOnPage: props.usersOnPage,
+      currentPageUsers: props.currentPageUsers,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  render() {
-    return (
-      <>
-        {this.props.isUploaded ? (
-          <Users {...this.props} newSelectedPage={this.newSelectedPage} />
-        ) : (
-          <Preloader />
-        )}
-      </>
-    );
-  }
-}
+  const newSelectedPage = (currentPage) => {
+    props.loadUsers(props.usersOnPage, currentPage);
+    props.setUsersPage(currentPage);
+  };
+  return props.isUploaded ? <Users {...props} newSelectedPage={newSelectedPage} /> : <Preloader />;
+};
+
 const mapStateToProps = (state) => {
   return {
     usersData: state.usersPage.usersData,
@@ -38,7 +33,14 @@ const mapStateToProps = (state) => {
   };
 };
 
+const mapDispatchToProps = {
+  setUsersPage,
+  loadUsers,
+  loadFollow,
+  loadUnfollow,
+};
+
 export default compose(
-  connect(mapStateToProps, { setUsersPage, getUsers, follow, unfollow }),
+  connect(mapStateToProps, mapDispatchToProps),
   withAuthRedirect
 )(UsersContainer);

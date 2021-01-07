@@ -1,9 +1,9 @@
 import initialState from './initialState';
-import { INITIALIZED_SUCCESS } from './types';
+import { APPS } from '../constants';
 
 const appReducer = (state = initialState, action) => {
   switch (action.type) {
-    case INITIALIZED_SUCCESS:
+    case APPS.INITIALIZED_SUCCESS:
       return {
         ...state,
         isInitialized: true,
