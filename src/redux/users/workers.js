@@ -3,8 +3,6 @@ import { userAPI } from '../../api/api';
 import isRequestOK from '../../utils/requestChecker/isRequestOK';
 import {
   isUploadedDis,
-  setUsers,
-  setAmountUsers,
   isAnsverGoneAC,
   subscribe,
   unsubscribe,
