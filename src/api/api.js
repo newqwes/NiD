@@ -64,19 +64,7 @@ export const profileAPI = {
   updateInfo: (formData) => instance.put(`profile`, formData),
 };
 
-export const authAPI = {
-  login: async (data) => {
-    const respons = await instance.post(`auth/login`, data);
-
-    return extractData(respons);
-  },
-
-  logout: async () => {
-    const respons = await instance.delete(`auth/login`);
-
-    return extractData(respons);
-  },
-};
+export const authAPI = {};
 
 export const securityAPI = {
   getCaptchaUrl: async () => {
