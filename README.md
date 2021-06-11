@@ -1,5 +1,5 @@
 # NiD
-## Sicial-network!
+## Social-network!
 ### Open [NiD](https://nid.ashyrov.ru/)
 
 Create with react & redux.
