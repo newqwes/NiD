@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import instance from './instance';
 
-const extractData = (respons) => respons.data;
+const extractData = respons => respons.data;
 
 export const userAPI = {
   getRates: async () => {
@@ -17,13 +17,13 @@ export const userAPI = {
     return extractData(respons);
   },
 
-  deleteUserFollow: async (id) => {
+  deleteUserFollow: async id => {
     const respons = await instance.delete(`follow/${id}`);
 
     return extractData(respons);
   },
 
-  postUserFollow: async (id) => {
+  postUserFollow: async id => {
     const respons = await instance.post(`follow/${id}`);
 
     return extractData(respons);
@@ -37,19 +37,19 @@ export const profileAPI = {
     return extractData(respons);
   },
 
-  getUserProfile: async (userUrlId) => {
+  getUserProfile: async userUrlId => {
     const respons = await instance.get(`profile/` + userUrlId);
 
     return extractData(respons);
   },
 
-  getUserStatus: async (userUrlId) => {
+  getUserStatus: async userUrlId => {
     const respons = await instance.get(`profile/status/` + userUrlId);
 
     return extractData(respons);
   },
 
-  updateUserStatus: (status) =>
+  updateUserStatus: status =>
     instance.put(`profile/status`, {
       status,
     }),
@@ -61,7 +61,7 @@ export const profileAPI = {
     return instance.put(`profile/photo`, formatData);
   },
 
-  changeInfo: (formData) => instance.put(`profile`, formData),
+  changeInfo: formData => instance.put(`profile`, formData),
 };
 
 export const authAPI = {

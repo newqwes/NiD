@@ -1,22 +1,16 @@
-import profilePageReducer from "./profile-reducer";
-import dialogPageReducer from "./dialog-reducer";
-import sidebarPageReducer from "./sidebar-reducer";
-import usersPageReducer from "./users-reducer";
-import authReducer from "./auth";
-import thunk from "redux-thunk";
-import {
-  reducer as formReducer
-} from "redux-form";
-import appReducer from "./app-reducer";
-const {
-  createStore,
-  combineReducers,
-  applyMiddleware,
-  compose,
-} = require("redux");
+import { reducer as formReducer } from 'redux-form';
+import thunk from 'redux-thunk';
 
+import authReducer from './auth';
+import appReducer from './app-reducer';
+import usersPageReducer from './users-reducer';
+import dialogPageReducer from './dialog-reducer';
+import profilePageReducer from './profile-reducer';
+import sidebarPageReducer from './sidebar-reducer';
 
-let reducers = combineReducers({
+const { createStore, combineReducers, applyMiddleware, compose } = require('redux');
+
+const reducers = combineReducers({
   profilePage: profilePageReducer,
   dialogPage: dialogPageReducer,
   menuSideBar: sidebarPageReducer,
@@ -25,8 +19,11 @@ let reducers = combineReducers({
   form: formReducer,
   app: appReducer,
 });
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
 
-window.store = store; //console call store.GetState() ....
+window.store = store;
+
 export default store;
