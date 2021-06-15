@@ -152,42 +152,46 @@ const changePhotoSuccess = (photos: any) => ({
 
 export const getUserProfile = (userUrlId: number) => async (dispatch: any) => {
   let data = await profileAPI.getUserProfile(userUrlId);
+
   dispatch(setUserProfile(data));
 };
 
 export const getUserStatus = (userUrlId: number) => async (dispatch: any) => {
-  let data = await profileAPI.getUserStatus(userUrlId);
+  let data: any = await profileAPI.getUserStatus(userUrlId);
+
   dispatch(setUserStatus(data));
 };
 
 export const updateUserStatus = (status: string) => async (dispatch: any) => {
-  let respons = await profileAPI.updateUserStatus(status);
-  if (respons.data.resultCode === 0) {
+  let { resultCode }: any = await profileAPI.updateUserStatus(status);
+
+  if (resultCode === 0) {
     dispatch(setUserStatus(status));
   }
 };
 
 export const changePhoto = (photo: string) => async (dispatch: any) => {
-  let respons = await profileAPI.changePhoto(photo);
-  if (respons.data.resultCode === 0) {
-    dispatch(changePhotoSuccess(respons.data.data.photos));
+  const respons: any = await profileAPI.changePhoto(photo);
+
+  if (respons.resultCode === 0) {
+    dispatch(changePhotoSuccess(respons.data.photos));
   }
 };
 
 export const changeInfo = (formData: any) => async (dispatch: any, getState: any) => {
   const userID = getState().auth.id;
-  let respons = await profileAPI.changeInfo(formData);
+  let { resultCode, messages }: any = await profileAPI.changeInfo(formData);
 
-  if (respons.data.resultCode === 0) {
+  if (resultCode === 0) {
     dispatch(getUserProfile(userID));
   } else {
     dispatch(
       stopSubmit('profile-form', {
-        _error: respons.data.messages[0],
+        _error: messages[0],
       }),
     );
 
-    return Promise.reject(respons.data.messages[0]);
+    return Promise.reject(messages[0]);
   }
 };
 

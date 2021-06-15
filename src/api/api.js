@@ -1,93 +1,99 @@
 import Axios from 'axios';
-import instance from './instance';
 
-const extractData = respons => respons.data;
+import { extractData } from '../utils';
+import instance from './instance';
 
 export const userAPI = {
   getRates: async () => {
-    const respons = await Axios.get('https://www.nbrb.by/api/exrates/rates/145');
-    const rates = respons.data.Cur_OfficialRate;
+    const response = await Axios.get('https://www.nbrb.by/api/exrates/rates/145');
+    const { Cur_OfficialRate } = extractData(response);
 
-    return rates;
+    return Cur_OfficialRate;
   },
 
   getUsers: async (usersOnPage, currentPageUsers) => {
-    const respons = await instance.get(`users?count=${usersOnPage}&page=${currentPageUsers}`);
+    const response = await instance.get(`users?count=${usersOnPage}&page=${currentPageUsers}`);
 
-    return extractData(respons);
+    return extractData(response);
   },
 
   deleteUserFollow: async id => {
-    const respons = await instance.delete(`follow/${id}`);
+    const response = await instance.delete(`follow/${id}`);
 
-    return extractData(respons);
+    return extractData(response);
   },
 
   postUserFollow: async id => {
-    const respons = await instance.post(`follow/${id}`);
+    const response = await instance.post(`follow/${id}`);
 
-    return extractData(respons);
+    return extractData(response);
   },
 };
 
 export const profileAPI = {
   getOwnProfile: async () => {
-    const respons = await instance.get(`auth/me`);
+    const response = await instance.get('auth/me');
 
-    return extractData(respons);
+    return extractData(response);
   },
 
   getUserProfile: async userUrlId => {
-    const respons = await instance.get(`profile/` + userUrlId);
+    const response = await instance.get(`profile/${userUrlId}`);
 
-    return extractData(respons);
+    return extractData(response);
   },
 
   getUserStatus: async userUrlId => {
-    const respons = await instance.get(`profile/status/` + userUrlId);
+    const response = await instance.get(`profile/status/${userUrlId}`);
 
-    return extractData(respons);
+    return extractData(response);
   },
 
-  updateUserStatus: status =>
-    instance.put(`profile/status`, {
-      status,
-    }),
-
-  changePhoto(photo) {
+  changePhoto: async photo => {
     const formatData = new FormData();
     formatData.append('image', photo);
 
-    return instance.put(`profile/photo`, formatData);
+    const response = await instance.put('profile/photo', formatData);
+
+    return extractData(response);
   },
 
-  changeInfo: formData => instance.put(`profile`, formData),
+  updateUserStatus: async status => {
+    const response = await instance.put('profile/status', { status });
+
+    return extractData(response);
+  },
+
+  changeInfo: async formData => {
+    const response = await instance.put('profile', formData);
+
+    return extractData(response);
+  },
 };
 
 export const authAPI = {
   login: async (email, password, rememberMe, captcha = null) => {
-    const respons = await instance.post(`auth/login`, {
+    const response = await instance.post('auth/login', {
       email,
       password,
       rememberMe,
       captcha,
     });
 
-    return extractData(respons);
+    return extractData(response);
   },
 
   logout: async () => {
-    const respons = await instance.delete(`auth/login`);
+    const response = await instance.delete('auth/login');
 
-    return extractData(respons);
+    return extractData(response);
   },
 };
 
 export const securityAPI = {
   getCaptchaUrl: async () => {
-    const respons = await instance.get('security/get-captcha-url');
-    const url = respons.data.url;
-    debugger;
-    return url;
+    const response = await instance.get('security/get-captcha-url');
+
+    return extractData(response);
   },
 };

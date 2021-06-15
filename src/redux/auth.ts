@@ -71,7 +71,7 @@ const getCaptcha = (payload: string): GetCaptchaActionType => ({
 });
 
 export const getOwnProfile = () => async (dispatch: any) => {
-  const { resultCode, data } = await profileAPI.getOwnProfile();
+  const { resultCode, data }: any = await profileAPI.getOwnProfile();
 
   if (isRequestOK(resultCode)) {
     dispatch(takeOwnAuth({ ...data, isAuth: true }));
@@ -79,13 +79,14 @@ export const getOwnProfile = () => async (dispatch: any) => {
 };
 
 export const getCaptchaUrl = () => async (dispatch: any) => {
-  const captchaUrl: string = await securityAPI.getCaptchaUrl();
-  dispatch(getCaptcha(captchaUrl));
+  const { url }: any = await securityAPI.getCaptchaUrl();
+
+  dispatch(getCaptcha(url));
 };
 
 export const login =
   (email: string, password: string, rememberMe: boolean, captcha: any) => async (dispatch: any) => {
-    const { resultCode, messages } = await authAPI.login(email, password, rememberMe, captcha);
+    const { resultCode, messages }: any = await authAPI.login(email, password, rememberMe, captcha);
 
     if (isRequestOK(resultCode)) dispatch(getOwnProfile());
 
@@ -100,7 +101,7 @@ export const login =
   };
 
 export const logout = () => async (dispatch: any) => {
-  const { resultCode } = await authAPI.logout();
+  const { resultCode }: any = await authAPI.logout();
 
   if (isRequestOK(resultCode)) {
     dispatch(takeOwnAuth({ email: null, id: null, isAuth: false, login: null }));
