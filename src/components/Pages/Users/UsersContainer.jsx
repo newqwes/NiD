@@ -1,21 +1,18 @@
-import {
-  getUsers,
-  follow,
-  unfollow,
-  setUsersPage,
-} from "../../../redux/users-reducer";
-import { connect } from "react-redux";
-import Users from "./Users";
-import React from "react";
-import Preloader from "../../common/Preloader/Preloader";
-import { withAuthRedirect } from "../../../hoc/withAuthRedirect";
-import { compose } from "redux";
+import { connect } from 'react-redux';
+import React from 'react';
+import { compose } from 'redux';
+
+import { setUsersPage } from '../../../actionCreators';
+import { getUsers, follow, unfollow } from '../../../actionCreators/thunk';
+import Users from './Users';
+import Preloader from '../../common/Preloader/Preloader';
+import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 
 class UsersContainer extends React.Component {
   componentDidMount() {
     this.props.getUsers(this.props.usersOnPage, this.props.currentPageUsers);
   }
-  newSelectedPage = (currentPage) => {
+  newSelectedPage = currentPage => {
     this.props.getUsers(this.props.usersOnPage, currentPage);
     this.props.setUsersPage(currentPage);
   };
@@ -32,7 +29,7 @@ class UsersContainer extends React.Component {
     );
   }
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     usersData: state.usersPage.usersData,
     usersOnPage: state.usersPage.usersOnPage,
@@ -45,5 +42,5 @@ const mapStateToProps = (state) => {
 
 export default compose(
   connect(mapStateToProps, { setUsersPage, getUsers, follow, unfollow }),
-  withAuthRedirect
+  withAuthRedirect,
 )(UsersContainer);

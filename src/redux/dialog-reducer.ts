@@ -1,4 +1,4 @@
-const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
+import { ADD_NEW_MESSAGE } from '../actions';
 
 let initialState = {
   dialogData: [
@@ -90,17 +90,5 @@ const dialogPageReducer = (state = initialState, action: any): InitialStateType 
       return state;
   }
 };
-
-type AddNewMessageTextActionType = {
-  type: typeof ADD_NEW_MESSAGE;
-  id: number;
-  value: string;
-};
-
-export const addNewMessageText = (id: number, value: string): AddNewMessageTextActionType => ({
-  type: ADD_NEW_MESSAGE,
-  id,
-  value,
-});
 
 export default dialogPageReducer;

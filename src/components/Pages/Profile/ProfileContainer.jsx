@@ -1,20 +1,21 @@
+import React from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
+
+import Profile from './Profile';
+import { addPost } from '../../../actionCreators';
 import {
-  addPost,
   getUserProfile,
   getUserStatus,
   updateUserStatus,
   changePhoto,
   changeInfo,
-} from '../../../redux/profile-reducer';
-import { connect } from 'react-redux';
-import Profile from './Profile';
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+} from '../../../actionCreators/thunk';
 import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
-import { compose } from 'redux';
-import { useEffect } from 'react';
 
-const ProfileContainer = (props) => {
+const ProfileContainer = props => {
   useEffect(() => {
     let userId = props.match.params.userId;
 
@@ -38,7 +39,7 @@ const ProfileContainer = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     postData: state.profilePage.postData,
     postTextarea: state.profilePage.postTextarea,
@@ -59,5 +60,5 @@ export default compose(
     changeInfo,
   }),
   withRouter,
-  withAuthRedirect
+  withAuthRedirect,
 )(ProfileContainer);

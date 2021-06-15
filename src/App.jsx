@@ -1,19 +1,20 @@
 import React from 'react';
+import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { useEffect } from 'react';
+
 import s from './App.module.scss';
 import News from './components/Pages/News/News';
 import Chat from './components/Pages/Chat/Chat';
-import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import MenuContainer from './components/Menu/MenuContainer';
 import ProfileContainer from './components/Pages/Profile/ProfileContainer';
 import DialogsContainer from './components/Pages/Dialogs/DialogsContainer';
 import UsersContainer from './components/Pages/Users/UsersContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Pages/Login/Login';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { initializeApp } from './redux/app-reducer';
 import Preloader from './components/common/Preloader/Preloader';
-import { useEffect } from 'react';
+import { initializeApp } from './actionCreators/thunk';
 
 const App = props => {
   useEffect(() => {

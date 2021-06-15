@@ -1,10 +1,11 @@
-import Menu from "./Menu";
-import { connect } from "react-redux";
-import { getRates } from "../../redux/sidebar-reducer";
-import React, { useEffect } from "react";
-import { compose } from "redux";
+import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { compose } from 'redux';
 
-const MenuContainer = (props) => {
+import { getRates } from '../../actionCreators/thunk';
+import Menu from './Menu';
+
+const MenuContainer = props => {
   useEffect(() => {
     props.getRates();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -12,7 +13,7 @@ const MenuContainer = (props) => {
 
   return <Menu {...props} />;
 };
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     menuItemData: state.menuSideBar.menuItemData,
     exchangeRate: state.menuSideBar.exchangeRate,

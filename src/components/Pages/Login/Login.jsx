@@ -1,16 +1,17 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+
+import { login } from '../../../actionCreators/thunk';
 import { InputCostom } from '../../common/FormsControl/FormsControl';
 import { required, maxLengthCreator } from '../../../utils/validators/validators';
-import { connect } from 'react-redux';
-import { login } from '../../../redux/auth';
-import { Redirect } from 'react-router-dom';
 import s from './Login.module.scss';
 
 const maxLength20 = maxLengthCreator(20);
 
 const Login = ({ login, isAuth, captchaUrl }) => {
-  const onSubmit = (formData) => {
+  const onSubmit = formData => {
     login(formData.email, formData.password, formData.remembeMe, formData.captcha);
   };
 
@@ -74,7 +75,7 @@ const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
 
 const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm);
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   captchaUrl: state.auth.captchaUrl,
   isAuth: state.auth.isAuth,
 });
