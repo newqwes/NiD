@@ -1,5 +1,8 @@
 import { stopSubmit } from 'redux-form';
 
+import { isTen, isZero } from '../utils';
+
+import { authAPI, profileAPI, securityAPI, userAPI } from '../api';
 import {
   addNewExchangeRate,
   getCaptcha,
@@ -11,25 +14,25 @@ import {
   subscribe,
   takeOwnAuth,
   unsubscribe,
+  changePhotoSuccess,
+  setUserProfile,
+  setUserStatus,
 } from '../actionCreators';
-import { changePhotoSuccess, setUserProfile, setUserStatus } from '../actionCreators';
-import { isTen, isZero } from '../utils';
-import { authAPI, profileAPI, securityAPI, userAPI } from '../api/api';
 
 export const getUserProfile = userUrlId => async dispatch => {
-  let data = await profileAPI.getUserProfile(userUrlId);
+  const data = await profileAPI.getUserProfile(userUrlId);
 
   dispatch(setUserProfile(data));
 };
 
 export const getUserStatus = userUrlId => async dispatch => {
-  let data = await profileAPI.getUserStatus(userUrlId);
+  const data = await profileAPI.getUserStatus(userUrlId);
 
   dispatch(setUserStatus(data));
 };
 
 export const updateUserStatus = status => async dispatch => {
-  let { resultCode } = await profileAPI.updateUserStatus(status);
+  const { resultCode } = await profileAPI.updateUserStatus(status);
 
   if (isZero(resultCode)) {
     dispatch(setUserStatus(status));
@@ -49,7 +52,8 @@ export const changePhoto = photo => async dispatch => {
 
 export const changeInfo = formData => async (dispatch, getState) => {
   const userID = getState().auth.id;
-  let { resultCode, messages } = await profileAPI.changeInfo(formData);
+
+  const { resultCode, messages } = await profileAPI.changeInfo(formData);
 
   if (isZero(resultCode)) {
     dispatch(getUserProfile(userID));
@@ -110,32 +114,42 @@ export const logout = () => async dispatch => {
 };
 
 export const getRates = () => async dispatch => {
-  let rate = await userAPI.getRates();
+  const rate = await userAPI.getRates();
+
   dispatch(addNewExchangeRate(rate));
 };
 
 export const getUsers = (usersOnPage, currentPageUsers) => async dispatch => {
   dispatch(isUploadedDis(false));
-  let data = await userAPI.getUsers(usersOnPage, currentPageUsers);
-  dispatch(setUsers(data.items));
-  dispatch(setAmountUsers(data.totalCount));
+
+  const { items, totalCount } = await userAPI.getUsers(usersOnPage, currentPageUsers);
+
+  dispatch(setUsers(items));
+  dispatch(setAmountUsers(totalCount));
+
   dispatch(isUploadedDis(true));
 };
 
 export const follow = id => async dispatch => {
   dispatch(isAnsverGoneAC(true, id));
-  let data = await userAPI.postUserFollow(id);
-  if (data.resultCode === 0) {
+
+  const { resultCode } = await userAPI.postUserFollow(id);
+
+  if (isZero(resultCode)) {
     dispatch(subscribe(id));
   }
+
   dispatch(isAnsverGoneAC(false, id));
 };
 
 export const unfollow = id => async dispatch => {
   dispatch(isAnsverGoneAC(true, id));
-  let data = await userAPI.deleteUserFollow(id);
-  if (data.resultCode === 0) {
+
+  const { resultCode } = await userAPI.deleteUserFollow(id);
+
+  if (isZero(resultCode)) {
     dispatch(unsubscribe(id));
   }
+
   dispatch(isAnsverGoneAC(false, id));
 };

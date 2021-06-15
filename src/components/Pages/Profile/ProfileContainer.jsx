@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { useEffect } from 'react';
@@ -50,15 +49,17 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = {
+  addPost,
+  getUserProfile,
+  getUserStatus,
+  updateUserStatus,
+  changePhoto,
+  changeInfo,
+};
+
 export default compose(
-  connect(mapStateToProps, {
-    addPost,
-    getUserProfile,
-    getUserStatus,
-    updateUserStatus,
-    changePhoto,
-    changeInfo,
-  }),
+  connect(mapStateToProps, mapDispatchToProps),
   withRouter,
   withAuthRedirect,
 )(ProfileContainer);

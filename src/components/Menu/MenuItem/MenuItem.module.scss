@@ -1,19 +1,22 @@
-@import "./../../../style/style_addictions";
+@import './../../../style/style_addictions';
 
 .li {
-    list-style-type: none;
-    display: grid;
-    align-items: center;
-    a {
-        padding: 10px;
-    }
+  list-style-type: none;
+  display: grid;
+  align-items: center;
+
+  a {
+    padding: 10px;
+  }
 }
+
 .link {
-    text-decoration: none;
-    @include font(1.4rem, 600, 0.05rem, 1.4rem);
-    color: $color_text_standart;
-    transition: 0.2s ease;
+  text-decoration: none;
+  @include font(1.4rem, 600, 0.05rem, 1.4rem);
+  color: $color_text_standart;
+  transition: 0.2s ease;
 }
+
 .active {
-    color: $color_primary;
+  color: $color_primary;
 }

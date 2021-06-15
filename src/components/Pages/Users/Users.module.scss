@@ -1,130 +1,128 @@
-@import "./../../../style/style_addictions";
+@import './../../../style/style_addictions';
 
 .usersWrapper {
-    display: grid;
-    grid-gap: 15px 0;
-    margin-left: 10px;
+  display: grid;
+  grid-gap: 15px 0;
+  margin-left: 10px;
 }
 
 .userContainer {
-    display: grid;
-    background-color: $color_text_wh;
-    padding: 10px;
-    border-radius: 3px;
-    box-shadow: 0 0 1px #141f2c94;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: auto;
-    text-align-last: right;
-    grid-template-areas:
-        "avatar fullName fullName . country"
-        "subButton status status . city";
+  display: grid;
+  background-color: $color_text_wh;
+  padding: 10px;
+  border-radius: 3px;
+  box-shadow: 0 0 1px #141f2c94;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto;
+  text-align-last: right;
+  grid-template-areas:
+    'avatar fullName fullName . country'
+    'subButton status status . city';
 }
 
 .imgAvatar {
-    height: 60px;
-    width: 60px;
+  height: 60px;
+  width: 60px;
 }
 
 .avatarWrapper {
-    grid-area: avatar;
-    text-align-last: center;
+  grid-area: avatar;
+  text-align-last: center;
 }
 
 .subscribeButtonWrapper {
-    grid-area: subButton;
-    text-align-last: center;
+  grid-area: subButton;
+  text-align-last: center;
 }
 
 .fullNameWrapper {
-    grid-area: fullName;
-    text-align-last: left;
+  grid-area: fullName;
+  text-align-last: left;
 }
 
 .statusWrapper {
-    grid-area: status;
-    text-align-last: left;
+  grid-area: status;
+  text-align-last: left;
 }
 
 .country {
-    grid-area: country;
-    @include font(1.3rem, 600, 0.1, 1.8rem);
+  grid-area: country;
+  @include font(1.3rem, 600, 0.1, 1.8rem);
 }
 
 .city {
-    grid-area: city;
-    @include font(1.3rem, 600, 0.1, 1.8rem);
+  grid-area: city;
+  @include font(1.3rem, 600, 0.1, 1.8rem);
 }
 
 .subscribeButtonWrapper {
-    button {
-        transition: 0.3s ease;
-        color: $color_text_wh;
-        border: none;
-        @include font(1.2rem, 600, 0.1, 1.8rem);
-        width: 65%;
-        border-radius: 3px;
-        cursor: pointer;
+  button {
+    transition: 0.3s ease;
+    color: $color_text_wh;
+    border: none;
+    @include font(1.2rem, 600, 0.1, 1.8rem);
+    width: 65%;
+    border-radius: 3px;
+    cursor: pointer;
 
-        &:active,
-        &:focus {
-            outline: none;
-        }
-
-        &:disabled {
-            opacity: 0.5;
-            cursor: wait;
-        }
-
+    &:active,
+    &:focus {
+      outline: none;
     }
 
-    .unSubscribeButton {
-        background-color: rgb(204, 66, 66);
-
-        &:active,
-        &:hover {
-            background-color: rgba(204, 66, 66, 0.897);
-        }
+    &:disabled {
+      opacity: 0.5;
+      cursor: wait;
     }
+  }
 
-    .subscribeButton {
-        background-color: $color_primary;
+  .unSubscribeButton {
+    background-color: rgb(204, 66, 66);
 
-        &:active,
-        &:hover {
-            background-color: #4a8da8e5;
-        }
+    &:active,
+    &:hover {
+      background-color: rgba(204, 66, 66, 0.897);
     }
+  }
 
+  .subscribeButton {
+    background-color: $color_primary;
+
+    &:active,
+    &:hover {
+      background-color: #4a8da8e5;
+    }
+  }
 }
 
 @media (max-width: 414px) {
-    .statusWrapper {
-        display: none;
-    }
+  .statusWrapper {
+    display: none;
+  }
 
-    .userContainer {
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-areas:
-            "avatar fullName ."
-            "subButton country city";
-    }
+  .userContainer {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      'avatar fullName .'
+      'subButton country city';
+  }
 
-    .subscribeButtonWrapper>button {
-        width: 100%;
-    }
+  .subscribeButtonWrapper > button {
+    width: 100%;
+  }
 
-    .usersSection {
-        grid-gap: 10px;
-        padding: 0 10px;
-    }
+  .usersSection {
+    grid-gap: 10px;
+    padding: 0 10px;
+  }
 }
 
 .nameLink {
-    text-decoration: none;
-    color: $color_text_standart;
-    transition: .2s ease;
+  text-decoration: none;
+  color: $color_text_standart;
+  transition: 0.2s ease;
 
-    &:hover {
-        color: $color_primary;
-    }
+  &:hover {
+    color: $color_primary;
+  }
 }

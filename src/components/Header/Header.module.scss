@@ -1,93 +1,105 @@
 @import './../../style/style_addictions';
 
 .header {
-    background-color: $color_primary;
-    height: 42px;
-    width: 100%;
-    position: fixed;
+  background-color: $color_primary;
+  height: 42px;
+  width: 100%;
+  position: fixed;
 }
 
 .wrapper {
-    width: $page__width;
-    margin: 0 auto;
+  width: $page__width;
+  margin: 0 auto;
 }
+
 .row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: space-between;
-    padding-top: 6px;
-    color: $color_text_wh;
-    &:last-child {
-        text-align: right;
-    }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  padding-top: 6px;
+  color: $color_text_wh;
+
+  &:last-child {
+    text-align: right;
+  }
 }
+
 .logo {
-    align-self: center;
-    justify-self: center;
-    font-family: 'MuseoModerno', cursive;
-    @include font(2.6rem, 400, 0.1rem, 3rem);
-    color: $color_text_wh;
-    border-radius: 50%;
-    cursor: pointer;
-    &:hover {
-        animation: shadow-pulse 1s infinite;
-    }
-    margin-right: auto;
+  align-self: center;
+  justify-self: center;
+  font-family: 'MuseoModerno', cursive;
+  @include font(2.6rem, 400, 0.1rem, 3rem);
+  color: $color_text_wh;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:hover {
+    animation: shadow-pulse 1s infinite;
+  }
+
+  margin-right: auto;
 }
 
 .title {
-    justify-self: right;
-    align-self: center;
-    h2 {
-        @include font(1.8rem, bold, 0.1rem, 1.8rem);
-        color: $color_text_wh;
-        margin: 0;
-    }
+  justify-self: right;
+  align-self: center;
+
+  h2 {
+    @include font(1.8rem, bold, 0.1rem, 1.8rem);
+    color: $color_text_wh;
+    margin: 0;
+  }
 }
+
 .titleMoney {
-    justify-self: right;
-    align-self: center;
-    h2 {
-        @include font(1.6rem, bold, 0.1rem, 1.6rem);
-        color: $color_text_wh;
-        margin: 0;
-    }
+  justify-self: right;
+  align-self: center;
+
+  h2 {
+    @include font(1.6rem, bold, 0.1rem, 1.6rem);
+    color: $color_text_wh;
+    margin: 0;
+  }
 }
 // pulse logo
 @keyframes shadow-pulse {
-    0% {
-        box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
-    }
-    100% {
-        box-shadow: 0 0 0 15px rgba(255, 0, 0, 0);
-    }
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 15px rgba(255, 0, 0, 0);
+  }
 }
+
 @keyframes shadow-pulse-big {
-    0% {
-        box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.1);
-    }
-    100% {
-        box-shadow: 0 0 0 30px rgba(255, 0, 0, 0);
-    }
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 0 30px rgba(255, 0, 0, 0);
+  }
 }
+
 @media (max-width: 414px) {
-    .wrapper {
-        width: auto;
-    }
-    .row {
-        display: grid;
-        grid-template-columns: 1fr;
-    }
+  .wrapper {
+    width: auto;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }
 
 .login {
-    margin-right: 5%;
-    transition: 0.3s ease;
-    align-self: center;
-    justify-self: center;
-    @include font(1.6rem, 400, 0.1rem, 2.4rem);
-    color: $color_text_wh;
-    &:hover {
-        color: rgb(227, 240, 255);
-    }
+  margin-right: 5%;
+  transition: 0.3s ease;
+  align-self: center;
+  justify-self: center;
+  @include font(1.6rem, 400, 0.1rem, 2.4rem);
+  color: $color_text_wh;
+
+  &:hover {
+    color: rgb(227, 240, 255);
+  }
 }

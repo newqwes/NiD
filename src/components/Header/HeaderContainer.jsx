@@ -1,13 +1,10 @@
-import React from 'react';
 import Header from './Header';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 import { logout } from '../../actionCreators/thunk';
 
-const HeaderContainer = props => {
-  return <Header {...props} />;
-};
+const HeaderContainer = props => <Header {...props} />;
 
 const mapStateToProps = state => {
   return {
@@ -15,4 +12,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default compose(connect(mapStateToProps, { logout }))(HeaderContainer);
+const mapDispatchToProps = { logout };
+
+export default compose(connect(mapStateToProps, mapDispatchToProps))(HeaderContainer);

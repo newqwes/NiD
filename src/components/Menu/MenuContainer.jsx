@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { compose } from 'redux';
 
 import { getRates } from '../../actionCreators/thunk';
@@ -13,11 +13,15 @@ const MenuContainer = props => {
 
   return <Menu {...props} />;
 };
-const mapStateToProps = state => {
-  return {
-    menuItemData: state.menuSideBar.menuItemData,
-    exchangeRate: state.menuSideBar.exchangeRate,
-    isAuth: state.auth.isAuth,
-  };
+
+const mapStateToProps = state => ({
+  menuItemData: state.menuSideBar.menuItemData,
+  exchangeRate: state.menuSideBar.exchangeRate,
+  isAuth: state.auth.isAuth,
+});
+
+const mapDispatchToProps = {
+  getRates,
 };
-export default compose(connect(mapStateToProps, { getRates }))(MenuContainer);
+
+export default compose(connect(mapStateToProps, mapDispatchToProps))(MenuContainer);

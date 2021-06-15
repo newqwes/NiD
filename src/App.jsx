@@ -1,20 +1,22 @@
-import React from 'react';
 import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
 
-import s from './App.module.scss';
-import News from './components/Pages/News/News';
-import Chat from './components/Pages/Chat/Chat';
+import { initializeApp } from './actionCreators/thunk';
+
 import MenuContainer from './components/Menu/MenuContainer';
 import ProfileContainer from './components/Pages/Profile/ProfileContainer';
 import DialogsContainer from './components/Pages/Dialogs/DialogsContainer';
 import UsersContainer from './components/Pages/Users/UsersContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
+
+import News from './components/Pages/News/News';
+import Chat from './components/Pages/Chat/Chat';
 import Login from './components/Pages/Login/Login';
 import Preloader from './components/common/Preloader/Preloader';
-import { initializeApp } from './actionCreators/thunk';
+
+import s from './App.module.scss';
 
 const App = props => {
   useEffect(() => {
@@ -52,10 +54,10 @@ const App = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    isInitialized: state.app.isInitialized,
-  };
-};
+const mapStateToProps = state => ({
+  isInitialized: state.app.isInitialized,
+});
 
-export default compose(withRouter, connect(mapStateToProps, { initializeApp }))(App);
+const mapDispatchToProps = { initializeApp };
+
+export default compose(withRouter, connect(mapStateToProps, mapDispatchToProps))(App);

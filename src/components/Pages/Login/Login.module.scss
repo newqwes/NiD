@@ -1,34 +1,33 @@
-@import "./../../../style/style_addictions";
+@import './../../../style/style_addictions';
 
 .login__wrapper {
-    margin-left: 10px;
-    text-align: center;
+  margin-left: 10px;
+  text-align: center;
 }
 
 .login__form {
-    display: grid;
-    grid-gap: 15px;
-
+  display: grid;
+  grid-gap: 15px;
 }
 
 .form__inputText {
-    input {
-        min-width: 250px;
-        min-height: 25px;
-    }
+  input {
+    min-width: 250px;
+    min-height: 25px;
+  }
 }
 
 .form__inputCheckBox {
-    input {
-        width: 50px;
-        min-height: 25px;
-    }
+  input {
+    width: 50px;
+    min-height: 25px;
+  }
 
-    font-size: 2.4rem;
+  font-size: 2.4rem;
 }
 
 .form__subbmit {
-    width: 80px;
-    height: 30px;
-    @include font(1.4rem, 600, 0.3rem, 1rem);
+  width: 80px;
+  height: 30px;
+  @include font(1.4rem, 600, 0.3rem, 1rem);
 }

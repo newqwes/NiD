@@ -1,4 +1,3 @@
-import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -27,51 +26,47 @@ const Login = ({ login, isAuth, captchaUrl }) => {
   );
 };
 
-const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
-  return (
-    <form onSubmit={handleSubmit} className={s.login__form}>
-      <div className={s.form__inputText}>
-        <Field
-          component={InputCostom}
-          validate={[required, maxLength20]}
-          name={'email'}
-          type='text'
-          placeholder={'Почта'}
-        />
-      </div>
-      <div className={s.form__inputText}>
-        <Field
-          component={InputCostom}
-          validate={[required, maxLength20]}
-          name={'password'}
-          type='password'
-          placeholder={'Пароль'}
-        />
-      </div>
-      <div className={s.form__inputCheckBox}>
-        <Field name={'remembeMe'} component={'input'} type={'checkbox'} />
-        Запомнить
-      </div>
-      {error && <div>{error}</div>}
+const LoginForm = ({ handleSubmit, error, captchaUrl }) => (
+  <form onSubmit={handleSubmit} className={s.login__form}>
+    <div className={s.form__inputText}>
+      <Field
+        component={InputCostom}
+        validate={[required, maxLength20]}
+        name={'email'}
+        type='text'
+        placeholder={'Почта'}
+      />
+    </div>
+    <div className={s.form__inputText}>
+      <Field
+        component={InputCostom}
+        validate={[required, maxLength20]}
+        name={'password'}
+        type='password'
+        placeholder={'Пароль'}
+      />
+    </div>
+    <div className={s.form__inputCheckBox}>
+      <Field name={'remembeMe'} component={'input'} type={'checkbox'} />
+      Запомнить
+    </div>
+    {error && <div>{error}</div>}
+    {captchaUrl && <img src={captchaUrl} alt='captchaUrl' />}
+    {captchaUrl && (
+      <Field
+        component={InputCostom}
+        validate={[required, maxLength20]}
+        name={'captcha'}
+        type='text'
+        placeholder={'Введите символы'}
+      />
+    )}
 
-      {captchaUrl && <img src={captchaUrl} alt='captchaUrl' />}
-
-      {captchaUrl && (
-        <Field
-          component={InputCostom}
-          validate={[required, maxLength20]}
-          name={'captcha'}
-          type='text'
-          placeholder={'Введите символы'}
-        />
-      )}
-
-      <div>
-        <button className={s.form__subbmit}>Войти</button>
-      </div>
-    </form>
-  );
-};
+    <div>
+      <button className={s.form__subbmit}>Войти</button>
+    </div>
+  </form>
+);
 
 const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm);
 
@@ -80,4 +75,8 @@ const mapStateToProps = state => ({
   isAuth: state.auth.isAuth,
 });
 
-export default connect(mapStateToProps, { login })(Login);
+const mapDispatchToProps = {
+  login,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
