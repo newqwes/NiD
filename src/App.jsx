@@ -1,9 +1,9 @@
 import React from 'react';
 import s from './App.module.scss';
 import News from './components/Pages/News/News';
-import Chat from './components/Pages/Chat/Chat';
+import Chat from './components/Pages/Chat';
 import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
-import MenuContainer from './components/Menu/MenuContainer';
+import Menu from './components/Menu';
 import ProfileContainer from './components/Pages/Profile/ProfileContainer';
 import DialogsContainer from './components/Pages/Dialogs/DialogsContainer';
 import UsersContainer from './components/Pages/Users/UsersContainer';
@@ -21,9 +21,7 @@ const App = props => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (!props.isInitialized) {
-    return <Preloader />;
-  }
+  if (!props.isInitialized) return <Preloader />;
 
   return (
     <>
@@ -35,13 +33,13 @@ const App = props => {
             <div className={s.content}>
               <Switch>
                 <Route path='/Profile/:userId?' render={() => <ProfileContainer />} />
-                <Route path='/' exact render={() => <Redirect to='/Profile' />} />
                 <Route path='/News' render={() => <News />} />
                 <Route path='/Chat' render={() => <Chat />} />
                 <Route path='/Users' render={() => <UsersContainer />} />
                 <Route path='/Dialogs' render={() => <DialogsContainer />} />
                 <Route path='/login' render={() => <Login />} />
-                <Route path='*' render={() => <div>404 NOT FOUND</div>} />
+                <Route path='/' exact render={() => <Redirect to='/Profile' />} />
+                <Route path='*' render={() => <h1>404 не найдена 404</h1>} />
               </Switch>
             </div>
           </div>
@@ -51,10 +49,12 @@ const App = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    isInitialized: state.app.isInitialized,
-  };
+const mapStateToProps = state => ({
+  isInitialized: state.app.isInitialized,
+});
+
+const mapDispatchToProps = {
+  loadInitializedApp,
 };
 
 export default compose(withRouter, connect(mapStateToProps, mapDispatchToProps))(App);
