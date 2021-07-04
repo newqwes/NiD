@@ -1,9 +1,9 @@
 import React from 'react';
 import s from './App.module.scss';
 import News from './components/Pages/News/News';
-import Chat from './components/Pages/Chat';
+import Chat from './components/Pages/Chat/Chat';
 import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
-import Menu from './components/Menu';
+import MenuContainer from './components/Menu/MenuContainer';
 import ProfileContainer from './components/Pages/Profile/ProfileContainer';
 import DialogsContainer from './components/Pages/Dialogs/DialogsContainer';
 import UsersContainer from './components/Pages/Users/UsersContainer';
@@ -15,13 +15,15 @@ import { loadInitializedApp } from './redux/actions';
 import Preloader from './components/common/Preloader';
 import { useEffect } from 'react';
 
-const App = (props) => {
+const App = props => {
   useEffect(() => {
     props.loadInitializedApp();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (!props.isInitialized) return <Preloader />;
+  if (!props.isInitialized) {
+    return <Preloader />;
+  }
 
   return (
     <>
@@ -33,13 +35,13 @@ const App = (props) => {
             <div className={s.content}>
               <Switch>
                 <Route path='/Profile/:userId?' render={() => <ProfileContainer />} />
+                <Route path='/' exact render={() => <Redirect to='/Profile' />} />
                 <Route path='/News' render={() => <News />} />
                 <Route path='/Chat' render={() => <Chat />} />
                 <Route path='/Users' render={() => <UsersContainer />} />
                 <Route path='/Dialogs' render={() => <DialogsContainer />} />
                 <Route path='/login' render={() => <Login />} />
-                <Route path='/' exact render={() => <Redirect to='/Profile' />} />
-                <Route path='*' render={() => <h1>404 не найдена 404</h1>} />
+                <Route path='*' render={() => <div>404 NOT FOUND</div>} />
               </Switch>
             </div>
           </div>
@@ -49,12 +51,10 @@ const App = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  isInitialized: state.app.isInitialized,
-});
-
-const mapDispatchToProps = {
-  loadInitializedApp,
+const mapStateToProps = state => {
+  return {
+    isInitialized: state.app.isInitialized,
+  };
 };
 
 export default compose(withRouter, connect(mapStateToProps, mapDispatchToProps))(App);
