@@ -1,14 +1,15 @@
-import React from 'react';
-import s from './DialogWithPeople.module.scss';
-import DialogOwn from './DialogOwn/DialogOwn';
 import { Field, reduxForm } from 'redux-form';
-import { TextareaCustom } from '../../../common/FormsControl/FormsControl';
+
+import DialogOwn from './DialogOwn/DialogOwn';
+import { TextareaCostom } from '../../../common/FormsControl/FormsControl';
 import { required, maxLengthCreator } from '../../../../utils/validators/validators';
+
+import s from './DialogWithPeople.module.scss';
 
 const maxLength1000 = maxLengthCreator(1000);
 
-const DialogWithPeople = (props) => {
-  let dialogOwn = props.dialogData.message.textOwn.map((n) => (
+const DialogWithPeople = props => {
+  let dialogOwn = props.dialogData.message.textOwn.map(n => (
     <DialogOwn
       key={props.dialogData.id}
       textOwn={n}
@@ -17,10 +18,10 @@ const DialogWithPeople = (props) => {
     />
   ));
 
-  let addNewMessage = (values) => {
-    props.loadNewMessageText(props.dialogData.id, values.dialogTextarea);
+  const addNewMessage = values => {
+    props.addNewMessageText(props.dialogData.id, values.dialogTextarea);
   };
-  
+
   return (
     <div className={s.dialogWithPeople}>
       <div className={s.section}>
@@ -44,19 +45,17 @@ const DialogWithPeople = (props) => {
   );
 };
 
-const AddMessageForm = (props) => {
-  return (
-    <form className={s.submit} onSubmit={props.handleSubmit}>
-      <Field
-        component={TextareaCustom}
-        validate={[required, maxLength1000]}
-        name='dialogTextarea'
-        placeholder='Введите текст'
-      />
-      <button>Отправить</button>
-    </form>
-  );
-};
+const AddMessageForm = ({ handleSubmit }) => (
+  <form className={s.submit} onSubmit={handleSubmit}>
+    <Field
+      component={TextareaCostom}
+      validate={[required, maxLength1000]}
+      name='dialogTextarea'
+      placeholder='Введите текст'
+    />
+    <button>Отправить</button>
+  </form>
+);
 
 const AddMessageFormRedux = reduxForm({ form: 'dialogAddMessageForm' })(AddMessageForm);
 

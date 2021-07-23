@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import styles from './Paginator.module.scss';
+import { useState } from 'react';
 import cn from 'classnames';
+
+import styles from './Paginator.module.scss';
 
 const Paginator = ({
   totalAmountItems,
@@ -11,7 +12,7 @@ const Paginator = ({
 }) => {
   const buttonsItemPage = Math.ceil(totalAmountItems / itemsOnPage);
 
-  let pages = [];
+  const pages = [];
 
   for (let i = 1; i <= buttonsItemPage; i++) {
     pages.push(i);
@@ -19,50 +20,50 @@ const Paginator = ({
 
   const portionCount = Math.ceil(buttonsItemPage / portionSize);
 
-  let [portionNumber, setPortionNumber] = useState((currentPageItems + 5) / portionSize);
+  const [portionNumber, setPortionNumber] = useState((currentPageItems + 5) / portionSize);
 
-  let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
+  const leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
 
-  let rightPortionPageNumber = portionNumber * portionSize;
-
-  const prefClick = () => setPortionNumber(portionNumber - 1);
-  const nextClick = () => setPortionNumber(portionNumber + 1);
-
-  const filterRange = (pages) => {
-    return pages.filter((page) => page >= leftPortionPageNumber && page <= rightPortionPageNumber);
-  };
-
-  const mapFilteredPages = (pages) => {
-    const filteredPages = filterRange(pages);
-
-    return filteredPages.map((page) => (
-      <span
-        className={cn(
-          {
-            [styles.selectedPage]: currentPageItems === page,
-          },
-          styles.pageNumber
-        )}
-        key={page}
-        onClick={() => newSelectedPage(page)}
-      >
-        {page}
-      </span>
-    ));
-  };
+  const rightPortionPageNumber = portionNumber * portionSize;
 
   return (
     <div className={styles.paginator}>
       {portionNumber > 1 && (
-        <button className={styles.buttonLeft} onClick={prefClick}>
+        <button
+          className={styles.buttonLeft}
+          onClick={() => {
+            setPortionNumber(portionNumber - 1);
+          }}>
           Предыдущиее
         </button>
       )}
 
-      {mapFilteredPages(pages)}
-      
+      {pages
+        .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
+        .map(p => {
+          return (
+            <span
+              className={cn(
+                {
+                  [styles.selectedPage]: currentPageItems === p,
+                },
+                styles.pageNumber,
+              )}
+              key={p}
+              onClick={e => {
+                newSelectedPage(p);
+              }}>
+              {p}
+            </span>
+          );
+        })}
+
       {portionCount > portionNumber && (
-        <button className={styles.buttonRight} onClick={nextClick}>
+        <button
+          className={styles.buttonRight}
+          onClick={() => {
+            setPortionNumber(portionNumber + 1);
+          }}>
           Следующие
         </button>
       )}

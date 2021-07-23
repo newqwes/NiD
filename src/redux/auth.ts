@@ -1,9 +1,18 @@
-import { AUTHS } from '../constants';
-import initialState from './initialState';
+import { TAKE_OWN_AUTH, GET_CAPTCHA } from '../actions';
 
-const authReducer = (state = initialState, action) => {
+const initialState = {
+  id: null as number | null,
+  email: null as string | null,
+  login: null as string | null,
+  captchaUrl: null as string | null,
+  isAuth: false,
+};
+
+export type InitialStateType = typeof initialState;
+
+const authReducer = (state = initialState, action: any): InitialStateType => {
   switch (action.type) {
-    case AUTHS.OWN_AUTH_SUCCESS:
+    case TAKE_OWN_AUTH:
       return action.payload
         ? {
             ...state,
@@ -12,7 +21,8 @@ const authReducer = (state = initialState, action) => {
         : {
             ...initialState,
           };
-    case AUTHS.CAPTCHA_SUCCESS:
+
+    case GET_CAPTCHA:
       return action.payload
         ? {
             ...state,

@@ -6,19 +6,24 @@
   border-top: 1px $color_border solid;
   padding: 5px;
   @include font(1.2rem, bold, 0.05rem, 1.4rem);
+
   &:hover {
     background-color: $color_border;
   }
+
   text-decoration: none;
   color: $color_text_standart;
   transition: 0.1s ease;
 }
+
 .a:first-child {
   border-top: none;
 }
+
 .active {
   color: $color_text_wh;
   background-color: $color_primary;
+
   &:hover {
     background-color: $color_primary;
   }
@@ -34,6 +39,7 @@
   .nameDialog {
     display: none;
   }
+
   .menu {
     position: fixed;
     display: grid;
@@ -43,12 +49,14 @@
     text-align: center;
     margin: 0 auto;
   }
+
   .ul {
     display: grid;
     grid-template-rows: 50px;
     grid-template-columns: repeat(3, 1fr);
     padding: 0;
   }
+
   .ul a {
     @include font(1.4rem, 700, 0.05rem, 1.4rem);
   }

@@ -1,22 +1,17 @@
-import React from 'react';
 import { reduxForm, Field } from 'redux-form';
-import { InputCustom } from '../../common/FormsControl/FormsControl';
-import { required, maxLengthCreator } from '../../../utils/validators/validators';
 import { connect } from 'react-redux';
-import { loadLogin } from '../../../redux/actions';
 import { Redirect } from 'react-router-dom';
+
+import { login } from '../../../actionCreators/thunk';
+import { InputCostom } from '../../common/FormsControl/FormsControl';
+import { required, maxLengthCreator } from '../../../utils/validators/validators';
 import s from './Login.module.scss';
 
 const maxLength20 = maxLengthCreator(20);
 
-const Login = ({ loadLogin, isAuth, captchaUrl }) => {
-  const onSubmit = (formData) => {
-    loadLogin({
-      email: formData.email,
-      password: formData.password,
-      remembeMe: formData.remembeMe,
-      captcha: formData.captcha,
-    });
+const Login = ({ login, isAuth, captchaUrl }) => {
+  const onSubmit = formData => {
+    login(formData.email, formData.password, formData.remembeMe, formData.captcha);
   };
 
   if (isAuth) {
@@ -31,61 +26,57 @@ const Login = ({ loadLogin, isAuth, captchaUrl }) => {
   );
 };
 
-const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
-  return (
-    <form onSubmit={handleSubmit} className={s.login__form}>
-      <div className={s.form__inputText}>
-        <Field
-          component={InputCustom}
-          validate={[required, maxLength20]}
-          name={'email'}
-          type='text'
-          placeholder={'Почта'}
-        />
-      </div>
-      <div className={s.form__inputText}>
-        <Field
-          component={InputCustom}
-          validate={[required, maxLength20]}
-          name={'password'}
-          type='password'
-          placeholder={'Пароль'}
-        />
-      </div>
-      <div className={s.form__inputCheckBox}>
-        <Field name={'remembeMe'} component={'input'} type={'checkbox'} />
-        Запомнить
-      </div>
-      {error && <div>{error}</div>}
+const LoginForm = ({ handleSubmit, error, captchaUrl }) => (
+  <form onSubmit={handleSubmit} className={s.login__form}>
+    <div className={s.form__inputText}>
+      <Field
+        component={InputCostom}
+        validate={[required, maxLength20]}
+        name={'email'}
+        type='text'
+        placeholder={'Почта'}
+      />
+    </div>
+    <div className={s.form__inputText}>
+      <Field
+        component={InputCostom}
+        validate={[required, maxLength20]}
+        name={'password'}
+        type='password'
+        placeholder={'Пароль'}
+      />
+    </div>
+    <div className={s.form__inputCheckBox}>
+      <Field name={'remembeMe'} component={'input'} type={'checkbox'} />
+      Запомнить
+    </div>
+    {error && <div>{error}</div>}
+    {captchaUrl && <img src={captchaUrl} alt='captchaUrl' />}
+    {captchaUrl && (
+      <Field
+        component={InputCostom}
+        validate={[required, maxLength20]}
+        name={'captcha'}
+        type='text'
+        placeholder={'Введите символы'}
+      />
+    )}
 
-      {captchaUrl && <img src={captchaUrl} alt='captchaUrl' />}
-
-      {captchaUrl && (
-        <Field
-          component={InputCustom}
-          validate={[required, maxLength20]}
-          name={'captcha'}
-          type='text'
-          placeholder={'Введите символы'}
-        />
-      )}
-
-      <div>
-        <button className={s.form__subbmit}>Войти</button>
-      </div>
-    </form>
-  );
-};
+    <div>
+      <button className={s.form__subbmit}>Войти</button>
+    </div>
+  </form>
+);
 
 const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm);
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   captchaUrl: state.auth.captchaUrl,
   isAuth: state.auth.isAuth,
 });
 
 const mapDispatchToProps = {
-  loadLogin,
+  login,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

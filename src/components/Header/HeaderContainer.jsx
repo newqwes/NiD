@@ -1,17 +1,17 @@
-import React from 'react';
 import Header from './Header';
 import { connect } from 'react-redux';
-import { loadLogout } from '../../redux/actions';
 import { compose } from 'redux';
 
-const HeaderContainer = (props) => <Header {...props} />;
+import { logout } from '../../actionCreators/thunk';
 
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-});
+const HeaderContainer = props => <Header {...props} />;
 
-const mapDispatchToProps = {
-  loadLogout,
+const mapStateToProps = state => {
+  return {
+    auth: state.auth,
+  };
 };
+
+const mapDispatchToProps = { logout };
 
 export default compose(connect(mapStateToProps, mapDispatchToProps))(HeaderContainer);

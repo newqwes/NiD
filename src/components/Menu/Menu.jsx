@@ -1,21 +1,19 @@
-import React from 'react';
-import style from './Menu.module.scss';
-import MenuItem from './MenuItem';
+import s from './Menu.module.scss';
+import MenuItem from './MenuItem/MenuItem';
 
-const Menu = ({ menuItemData, exchangeRate }) => {
-  return (
-    <nav className={style.menu}>
-      <ul className={style.ul}>
-        {menuItemData.map((item) => (
-          <MenuItem key={item.id} value={item.value} linkUrl={item.linkUrl} />
-        ))}
-      </ul>
-      <div className={style.infoWtapper}>
-        <div className={style.titleMoney}>
-          <h2>1$ = {exchangeRate}руб.</h2>
-        </div>
+const Menu = ({ menuItemData, exchangeRate }) => (
+  <nav className={s.menu}>
+    <ul className={s.ul}>
+      {menuItemData.map(m => (
+        <MenuItem key={m.id} value={m.value} linkUrl={m.linkUrl} />
+      ))}
+    </ul>
+    <div className={s.infoWtapper}>
+      <div className={s.titleMoney}>
+        <h2>1$ = {exchangeRate}руб.</h2>
       </div>
-    </nav>
-  );
-};
+    </div>
+  </nav>
+);
+
 export default Menu;

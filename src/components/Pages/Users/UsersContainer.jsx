@@ -1,46 +1,50 @@
-import { loadUsers, loadFollow, loadUnfollow, setUsersPage } from '../../../redux/actions';
 import { connect } from 'react-redux';
-import Users from './Users';
-import React, { useEffect } from 'react';
-import Preloader from '../../common/Preloader';
-import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
+import React from 'react';
 import { compose } from 'redux';
 
-const UsersContainer = (props) => {
-  useEffect(() => {
-    props.loadUsers({
-      usersOnPage: props.usersOnPage,
-      currentPageUsers: props.currentPageUsers,
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 
-  const newSelectedPage = (currentPage) => {
-    props.loadUsers(props.usersOnPage, currentPage);
-    props.setUsersPage(currentPage);
-  };
-  return props.isUploaded ? <Users {...props} newSelectedPage={newSelectedPage} /> : <Preloader />;
-};
+import { setUsersPage } from '../../../actionCreators';
+import { getUsers, follow, unfollow } from '../../../actionCreators/thunk';
 
-const mapStateToProps = (state) => {
-  return {
-    usersData: state.usersPage.usersData,
-    usersOnPage: state.usersPage.usersOnPage,
-    currentPageUsers: state.usersPage.currentPageUsers,
-    totalAmountUsers: state.usersPage.totalAmountUsers,
-    isUploaded: state.usersPage.isUploaded,
-    isAnswerGone: state.usersPage.isAnswerGone,
+import Users from './Users';
+import Preloader from '../../common/Preloader/Preloader';
+
+class UsersContainer extends React.Component {
+  componentDidMount() {
+    this.props.getUsers(this.props.usersOnPage, this.props.currentPageUsers);
+  }
+
+  newSelectedPage = currentPage => {
+    this.props.getUsers(this.props.usersOnPage, currentPage);
+    this.props.setUsersPage(currentPage);
   };
-};
+
+  render() {
+    return this.props.isUploaded ? (
+      <Users {...this.props} newSelectedPage={this.newSelectedPage} />
+    ) : (
+      <Preloader />
+    );
+  }
+}
+const mapStateToProps = state => ({
+  usersData: state.usersPage.usersData,
+  usersOnPage: state.usersPage.usersOnPage,
+  currentPageUsers: state.usersPage.currentPageUsers,
+  totalAmountUsers: state.usersPage.totalAmountUsers,
+  isUploaded: state.usersPage.isUploaded,
+  isAnswerGone: state.usersPage.isAnswerGone,
+});
 
 const mapDispatchToProps = {
   setUsersPage,
-  loadUsers,
-  loadFollow,
-  loadUnfollow,
+  getUsers,
+  follow,
+  unfollow,
 };
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withAuthRedirect
+  withAuthRedirect,
 )(UsersContainer);

@@ -4,11 +4,14 @@
   outline: none;
   width: 100%;
 }
+
 textarea.error {
   border: 1px rgb(236, 11, 11) solid;
 }
+
 .wrapperTextarea {
   text-align: left;
+
   span {
     color: rgb(236, 11, 11);
   }

@@ -1,38 +1,44 @@
-import {
-  setPost,
-  loadUserProfile,
-  loadUserStatus,
-  updateUserStatus,
-  updatePhoto,
-  updateInfo,
-} from '../../../redux/actions';
 import { connect } from 'react-redux';
-import Profile from './Profile';
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 import { compose } from 'redux';
 import { useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
 
-const ProfileContainer = (props) => {
-  const propUserId = props.match.params.userId;
+import Profile from './Profile';
+import { addPost } from '../../../actionCreators';
+import {
+  getUserProfile,
+  getUserStatus,
+  updateUserStatus,
+  changePhoto,
+  changeInfo,
+} from '../../../actionCreators/thunk';
+import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 
+const ProfileContainer = props => {
   useEffect(() => {
-    let userId = propUserId;
+    let userId = props.match.params.userId;
 
     if (!userId) {
       userId = props.authUserId;
     }
 
-    props.loadUserProfile(userId);
-    props.loadUserStatus(userId);
+    props.getUserProfile(userId);
+    props.getUserStatus(userId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [propUserId]);
-
-  return <Profile {...props} isYourProfile={!propUserId} />;
+  }, [props.match.params.userId]);
+  return (
+    <Profile
+      {...props}
+      updateUserStatus={props.updateUserStatus}
+      status={props.status}
+      isYourProfile={!props.match.params.userId}
+      changePhoto={props.changePhoto}
+      changeInfo={props.changeInfo}
+    />
+  );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     postData: state.profilePage.postData,
     postTextarea: state.profilePage.postTextarea,
@@ -43,15 +49,17 @@ const mapStateToProps = (state) => {
   };
 };
 
+const mapDispatchToProps = {
+  addPost,
+  getUserProfile,
+  getUserStatus,
+  updateUserStatus,
+  changePhoto,
+  changeInfo,
+};
+
 export default compose(
-  connect(mapStateToProps, {
-    setPost,
-    loadUserProfile,
-    loadUserStatus,
-    updateUserStatus,
-    updatePhoto,
-    updateInfo,
-  }),
+  connect(mapStateToProps, mapDispatchToProps),
   withRouter,
-  withAuthRedirect
+  withAuthRedirect,
 )(ProfileContainer);

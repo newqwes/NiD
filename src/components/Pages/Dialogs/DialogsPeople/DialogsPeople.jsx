@@ -1,14 +1,11 @@
-import React from 'react';
+import s from './DialogsPeople.module.scss';
 import { NavLink } from 'react-router-dom';
-import style from './DialogsPeople.module.scss';
 
-const DialogsPeople = ({ urlDialog, urlAvatarDialog, namePerson }) => {
-  return (
-    <NavLink to={urlDialog} activeClassName={style.active} className={style.a}>
-      <img src={urlAvatarDialog} alt='аватар' />
-      <span className={style.nameDialog}>{namePerson}</span>
-    </NavLink>
-  );
-};
+const DialogsPeople = ({ urlDialog, urlAvatarDialog, namePerson }) => (
+  <NavLink to={urlDialog} activeClassName={s.active} className={s.a}>
+    <img src={urlAvatarDialog} alt='' />
+    <span className={s.nameDialog}>{namePerson}</span>
+  </NavLink>
+);
 
 export default DialogsPeople;

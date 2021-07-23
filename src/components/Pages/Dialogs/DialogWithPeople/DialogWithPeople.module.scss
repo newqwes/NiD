@@ -1,9 +1,11 @@
 @import './../../../../style/style_addictions';
+
 .dialogWithPeople {
   display: grid;
   grid-gap: 20px;
   grid-template-rows: auto 40px;
 }
+
 .section {
   display: grid;
   box-shadow: 0 0 1px $color_text_standart;
@@ -14,9 +16,11 @@
   overflow: auto;
   align-content: start;
 }
+
 .containerOwn {
   text-align: right;
 }
+
 .imgEnemy img,
 .imgOwn img {
   width: 60px;
@@ -27,6 +31,7 @@
   display: grid;
   grid-template-columns: 1fr 7fr;
 }
+
 .containerOwn {
   display: grid;
   grid-template-columns: 7fr 1fr;
@@ -38,6 +43,7 @@
   max-height: 30px;
   grid-gap: 10px;
 }
+
 .messageOwn {
   width: 60%;
   margin: 0 0 0 auto;
@@ -47,26 +53,32 @@
   .section {
     height: 65vh;
   }
+
   .dialogWithPeople {
     display: grid;
     grid-gap: 10px;
     grid-template-rows: auto 40px;
+
     h3 {
       @include font(1.3rem, 600, 0.1, 2rem);
       margin: 0;
       padding: 0;
     }
   }
+
   .containerNameMessage {
     padding: 0 10px;
   }
+
   .containerOwn {
     padding-top: 10px;
   }
+
   .messageOwn {
     width: 100%;
     margin: 0 0 0 auto;
   }
+
   .submit {
     display: grid;
     position: fixed;
@@ -77,6 +89,7 @@
     width: 100%;
     left: 0;
   }
+
   .imgEnemy img,
   .imgOwn img {
     width: 50px;

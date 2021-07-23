@@ -1,34 +1,34 @@
-@import "./../../../style/style_addictions";
+@import './../../../style/style_addictions';
 
 .section {
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-    grid-gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-gap: 10px;
 }
 
 .dialogsPeople {
-    margin-left: 10px;
-    box-shadow: 0 0 1px $color_text_standart;
-    background-color: $color_text_wh;
-    overflow: auto;
-    height: 80vh;
+  margin-left: 10px;
+  box-shadow: 0 0 1px $color_text_standart;
+  background-color: $color_text_wh;
+  overflow: auto;
+  height: 80vh;
 }
 
-.dialogsPeople>a:last-child {
-    border-bottom: 1px $color_border solid;
+.dialogsPeople > a:last-child {
+  border-bottom: 1px $color_border solid;
 }
 
 @media (max-width: 414px) {
-    .section {
-        grid-template-columns: 1fr 5fr;
-        grid-gap: 0;
-        padding: 0 5px;
-    }
+  .section {
+    grid-template-columns: 1fr 5fr;
+    grid-gap: 0;
+    padding: 0 5px;
+  }
 
-    .dialogsPeople {
-        height: auto;
-        text-align: center;
-        background-color: $color_bg_content;
-        box-shadow: none;
-    }
+  .dialogsPeople {
+    height: auto;
+    text-align: center;
+    background-color: $color_bg_content;
+    box-shadow: none;
+  }
 }

@@ -1,13 +1,31 @@
-import React from 'react';
-import s from './Post.module.scss';
 import { reduxForm, Field } from 'redux-form';
+
 import { required, maxLengthCreator } from '../../../../utils/validators/validators';
-import { TextareaCustom } from '../../../common/FormsControl/FormsControl';
+import { TextareaCostom } from '../../../common/FormsControl/FormsControl';
+
+import s from './Post.module.scss';
 
 const maxLength200 = maxLengthCreator(200);
 
-const Post = (props) => {
-  const postDataElements = props.postData.map((n) => (
+const PostForm = ({ handleSubmit }) => {
+  return (
+    <form className={s.form} onSubmit={handleSubmit}>
+      <Field
+        name='postTextarea'
+        component={TextareaCostom}
+        placeholder='Что у Вас нового?'
+        type='text'
+        validate={[required, maxLength200]}
+      />
+      <button className={s.button}>Отправить</button>
+    </form>
+  );
+};
+
+const PostReduxForm = reduxForm({ form: 'postProfile' })(PostForm);
+
+const Post = ({ postData, addPost }) => {
+  const postDataElements = postData.map(n => (
     <div key={n.id} className={s.itemPost}>
       <div className={s.avatarContainer}>
         <img src={n.avatar} alt='' className={s.avatarImg} />
@@ -21,37 +39,20 @@ const Post = (props) => {
     </div>
   ));
 
-  const setPost = (values) => {
-    props.setPost(values.postTextarea);
+  const onSubmit = values => {
+    addPost(values.postTextarea);
   };
 
   return (
     <section className={s.section}>
       <div className={s.wrapper}>
         <div className={s.form__wrapper}>
-          <PostReduxForm onSubmit={setPost} />
+          <PostReduxForm onSubmit={onSubmit} />
         </div>
         {postDataElements}
       </div>
     </section>
   );
 };
-
-const PostForm = ({ handleSubmit }) => {
-  return (
-    <form className={s.form} onSubmit={handleSubmit}>
-      <Field
-        name='postTextarea'
-        component={TextareaCustom}
-        placeholder='Что у Вас нового?'
-        type='text'
-        validate={[required, maxLength200]}
-      />
-      <button className={s.button}>Отправить</button>
-    </form>
-  );
-};
-
-const PostReduxForm = reduxForm({ form: 'postProfile' })(PostForm);
 
 export default Post;

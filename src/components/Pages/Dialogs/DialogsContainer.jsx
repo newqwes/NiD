@@ -1,15 +1,16 @@
 import { connect } from 'react-redux';
-import Dialogs from './Dialogs';
-import { loadNewMessageText } from '../../../redux/actions';
-import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 import { compose } from 'redux';
 
-const mapStateToProps = (state) => ({
+import { addNewMessageText } from '../../../actionCreators';
+import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
+import Dialogs from './Dialogs';
+
+const mapStateToProps = state => ({
   dialogData: state.dialogPage.dialogData,
 });
 
 const mapDispatchToProps = {
-  loadNewMessageText,
+  addNewMessageText,
 };
 
 export default compose(connect(mapStateToProps, mapDispatchToProps), withAuthRedirect)(Dialogs);

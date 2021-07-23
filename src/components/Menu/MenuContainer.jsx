@@ -1,20 +1,27 @@
 import { connect } from 'react-redux';
-import { loadRates } from '../../redux/actions';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { compose } from 'redux';
+
+import { getRates } from '../../actionCreators/thunk';
 import Menu from './Menu';
 
-const MenuContainer = ({ loadRates, ...props }) => {
+const MenuContainer = props => {
   useEffect(() => {
-    loadRates();
-  }, [loadRates]);
+    props.getRates();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.getRates]);
 
   return <Menu {...props} />;
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   menuItemData: state.menuSideBar.menuItemData,
   exchangeRate: state.menuSideBar.exchangeRate,
+  isAuth: state.auth.isAuth,
 });
 
-export default compose(connect(mapStateToProps, { loadRates }))(MenuContainer);
+const mapDispatchToProps = {
+  getRates,
+};
+
+export default compose(connect(mapStateToProps, mapDispatchToProps))(MenuContainer);

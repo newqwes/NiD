@@ -1,7 +1,8 @@
+
 //Font mixin --> @include font(font-size, font-weight, letter-spacing, line-height);
-@mixin font($fontSize, $fontWeight: 400, $letterSpacing: 0.1, $lineHeight: $fontSize) {
+@mixin font($fontSize, $fontWeight: 400, $letterSpacing:0.1, $lineHeight:$fontSize) {
   font-size: $fontSize;
   font-weight: $fontWeight;
   letter-spacing: $letterSpacing;
   line-height: $lineHeight;
-}
+  }

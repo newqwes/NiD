@@ -1,25 +1,31 @@
-import React from 'react';
-import s from './Profile.module.scss';
-import Post from './Post/Post';
-import Preloader from '../../common/Preloader';
 import { useState } from 'react';
+
+import Post from './Post/Post';
+import Preloader from '../../common/Preloader/Preloader';
 import ProfileInfo from './ProfileInfo';
 import ProfileInfoForm from './ProfileInfoForm';
 
-const Profile = (props) => {
+import s from './Profile.module.scss';
+
+const Profile = props => {
   const [editMode, setEditMode] = useState(false);
+
   if (!props.userProfile) {
     return <Preloader />;
   }
-  const onSubmit = (formData) => {
-    props.updateInfo(formData);
-    setEditMode(false);
+
+  const onSubmit = formData => {
+    props.changeInfo(formData).then(() => {
+      setEditMode(false);
+    });
   };
-  const onUpdatePhoto = (e) => {
+
+  const onChangePhoto = e => {
     if (e.target.files.length) {
-      props.updatePhoto(e.target.files[0]);
+      props.changePhoto(e.target.files[0]);
     }
   };
+
   return (
     <section className={s.section}>
       <div className={s.wrapper}>
@@ -29,7 +35,7 @@ const Profile = (props) => {
               onSubmit={onSubmit}
               {...props}
               setEditMode={setEditMode}
-              onUpdatePhoto={onUpdatePhoto}
+              onChangePhoto={onChangePhoto}
               initialValues={props.userProfile}
             />
           ) : (
@@ -37,14 +43,13 @@ const Profile = (props) => {
               {...props}
               editMode={editMode}
               setEditMode={setEditMode}
-              onUpdatePhoto={onUpdatePhoto}
+              onChangePhoto={onChangePhoto}
             />
           )}
-
           <div className={s.post}>
             <Post
               postData={props.postData}
-              setPost={props.setPost}
+              addPost={props.addPost}
               postTextarea={props.postTextarea}
             />
           </div>

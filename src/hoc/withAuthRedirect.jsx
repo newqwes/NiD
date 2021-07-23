@@ -2,14 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-let mapStateToPropsForRedirect = (state) => ({
+let mapStateToPropsForRedirect = state => ({
   isAuth: state.auth.isAuth,
 });
 
-export const withAuthRedirect = (Component) => {
+export const withAuthRedirect = Component => {
   class RedirectComponent extends React.Component {
     render() {
-      if (!this.props.isAuth) return <Redirect to='/login' />;
+      if (!this.props.isAuth) return <Redirect to='/login' />; // включить когда нужна будет авторизация
       return <Component {...this.props} />;
     }
   }
