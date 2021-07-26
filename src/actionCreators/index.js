@@ -7,7 +7,6 @@ import {
   SET_USER_STATUS,
   SET_USER_PROFILE,
   CHANGE_PHOTO_SUCCESS,
-  ADD_EXCHANGE_RATE,
   SUBSCRIBE,
   UNSUBSCRIBE,
   SET_USERS,
@@ -56,8 +55,6 @@ export const changePhotoSuccess = photos => ({
   type: CHANGE_PHOTO_SUCCESS,
   photos,
 });
-
-export const addNewExchangeRate = rate => ({ type: ADD_EXCHANGE_RATE, rate });
 
 export const subscribe = id => ({ type: SUBSCRIBE, id });
 

@@ -4,7 +4,6 @@ import { isTen, isZero } from '../utils';
 
 import { authAPI, profileAPI, securityAPI, userAPI } from '../api';
 import {
-  addNewExchangeRate,
   getCaptcha,
   initializedSuccess,
   isAnsverGoneAC,
@@ -111,12 +110,6 @@ export const logout = () => async dispatch => {
   if (isZero(resultCode)) {
     dispatch(takeOwnAuth({ email: null, id: null, isAuth: false, login: null }));
   }
-};
-
-export const getRates = () => async dispatch => {
-  const rate = await userAPI.getRates();
-
-  dispatch(addNewExchangeRate(rate));
 };
 
 export const getUsers = (usersOnPage, currentPageUsers) => async dispatch => {

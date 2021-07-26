@@ -1,19 +1,37 @@
-import s from './Menu.module.scss';
-import MenuItem from './MenuItem/MenuItem';
+// import { map } from 'lodash/fp';
+import { Menu as AntMenu } from 'antd';
+import { NavLink } from 'react-router-dom';
 
-const Menu = ({ menuItemData, exchangeRate }) => (
-  <nav className={s.menu}>
-    <ul className={s.ul}>
-      {menuItemData.map(m => (
-        <MenuItem key={m.id} value={m.value} linkUrl={m.linkUrl} />
-      ))}
-    </ul>
-    <div className={s.infoWtapper}>
-      <div className={s.titleMoney}>
-        <h2>1$ = {exchangeRate}руб.</h2>
-      </div>
-    </div>
-  </nav>
-);
+// import s from './AntMenu.module.scss';
+// import MenuItem from './MenuItem/MenuItem';
+
+// const menuItemData = [
+//   { value: 'Мой профиль', linkUrl: '/Profile' },
+//   { value: 'Сообщения', linkUrl: '/Dialogs' },
+//   { value: 'Пользователи', linkUrl: '/Users' },
+// ];
+
+const Menu = () => {
+  return (
+    <AntMenu defaultSelectedKeys='1'>
+      <AntMenu.Item key='/Profile'>
+        <NavLink to='/Profile'>Мой профиль</NavLink>
+      </AntMenu.Item>
+      <AntMenu.Item key='/Dialogs'>Сообщения</AntMenu.Item>
+      <AntMenu.Item key='/Users'>Пользователи</AntMenu.Item>
+    </AntMenu>
+  );
+};
+
+// <nav className={s.menu}>
+//   <ul className={s.ul}>
+//     {map(
+//       ({ value, linkUrl }) => (
+//         <MenuItem key={linkUrl} value={value} linkUrl={linkUrl} />
+//       ),
+//       menuItemData,
+//     )}
+//   </ul>
+// </nav>
 
 export default Menu;

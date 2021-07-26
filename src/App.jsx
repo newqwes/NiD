@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 import { initializeApp } from './actionCreators/thunk';
 
-import MenuContainer from './components/Menu/MenuContainer';
+import Menu from './components/Menu';
 import ProfileContainer from './components/Pages/Profile/ProfileContainer';
 import DialogsContainer from './components/Pages/Dialogs/DialogsContainer';
 import UsersContainer from './components/Pages/Users/UsersContainer';
@@ -34,7 +34,7 @@ const App = props => {
       <section className={s.section}>
         <div className={s.wrapper}>
           <div className={s.row}>
-            <MenuContainer />
+            <Menu />
             <div className={s.content}>
               <Switch>
                 <Route path='/Profile/:userId?' render={() => <ProfileContainer />} />
