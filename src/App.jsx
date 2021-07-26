@@ -9,7 +9,7 @@ import Menu from './components/Menu';
 import ProfileContainer from './components/Pages/Profile/ProfileContainer';
 import DialogsContainer from './components/Pages/Dialogs/DialogsContainer';
 import UsersContainer from './components/Pages/Users/UsersContainer';
-import HeaderContainer from './components/Header/HeaderContainer';
+import Header from './components/Header';
 
 import News from './components/Pages/News/News';
 import Chat from './components/Pages/Chat/Chat';
@@ -30,7 +30,7 @@ const App = props => {
 
   return (
     <>
-      <HeaderContainer />
+      <Header />
       <section className={s.section}>
         <div className={s.wrapper}>
           <div className={s.row}>
