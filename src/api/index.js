@@ -1,16 +1,7 @@
-import Axios from 'axios';
-
 import { extractData } from '../utils';
 import instance from './instance';
 
 export const userAPI = {
-  getRates: async () => {
-    const response = await Axios.get('https://www.nbrb.by/api/exrates/rates/145');
-    const { Cur_OfficialRate } = extractData(response);
-
-    return Cur_OfficialRate;
-  },
-
   getUsers: async (usersOnPage, currentPageUsers) => {
     const response = await instance.get(`users?count=${usersOnPage}&page=${currentPageUsers}`);
 

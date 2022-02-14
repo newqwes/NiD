@@ -6,14 +6,12 @@ import appReducer from './app-reducer';
 import usersPageReducer from './users-reducer';
 import dialogPageReducer from './dialog-reducer';
 import profilePageReducer from './profile-reducer';
-import sidebarPageReducer from './sidebar-reducer';
 
 const { createStore, combineReducers, applyMiddleware, compose } = require('redux');
 
 const reducers = combineReducers({
   profilePage: profilePageReducer,
   dialogPage: dialogPageReducer,
-  menuSideBar: sidebarPageReducer,
   usersPage: usersPageReducer,
   auth: authReducer,
   form: formReducer,
